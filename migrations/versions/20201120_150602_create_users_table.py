@@ -27,6 +27,8 @@ def upgrade():
     sa.UniqueConstraint('email'),
     sa.UniqueConstraint('username')
     )
+
+    username = db.Column(db.String(), )
     # ### end Alembic commands ###qqqqqqqqq
 
 
