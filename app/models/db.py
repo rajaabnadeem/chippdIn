@@ -24,7 +24,7 @@ class Expense(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     description = db.Column(db.String(50), nullable=False)
-    amount = db.Column(db.Decimal(20, 2), nullable=False)
+    amount = db.Column(db.Numeric(20, 2), nullable=False)
     date = db.Column(db.Date, nullable=False)
     notes = db.Column(db.String(2000))
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
@@ -36,7 +36,7 @@ class Transaction(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     date = db.Column(db.Date, nullable=False)
-    amount = db.Column(db.Decimal(20, 2), nullable=False)
+    amount = db.Column(db.Numeric(20, 2), nullable=False)
     sender_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     getter_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 

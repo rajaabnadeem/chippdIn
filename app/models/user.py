@@ -9,7 +9,7 @@ class User(db.Model, UserMixin):
   first_name = db.Column(db.String(25), nullable = False)
   last_name = db.Column(db.String(25), nullable = False)
   email = db.Column(db.String(255), nullable = False, unique = True)
-  balance = db.Column(db.Decimal(20, 2), default=0.00)
+  balance = db.Column(db.Numeric(20, 2), default=0.00)
   hashed_password = db.Column(db.String(255), nullable = False)
   img_url = db.Column(db.String(2000))
 
