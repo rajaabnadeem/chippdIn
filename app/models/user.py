@@ -14,6 +14,12 @@ class User(db.Model, UserMixin):
   img_url = db.Column(db.String(2000))
 
 
+  groups = db.relationship('Group', secondary='user_groups')
+  expenses = db.relationship('Expense', back_populates='users')
+  transactions = db.relationship('Transaction', back_populates='users')
+  comments = db.relationship('Comment', back_populates='users')
+  
+
   @property
   def password(self):
     return self.hashed_password
