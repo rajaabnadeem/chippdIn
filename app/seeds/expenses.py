@@ -1,4 +1,7 @@
-from app.models.db import db, Group, UserGroup, Expense, Transaction, Comment, User
+from app.models.db import db, Group, UserGroup, Expense, Transaction, Comment
+from faker import Faker
+
+faker = Faker()
 
 
 def seed_expenses():

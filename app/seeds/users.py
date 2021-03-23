@@ -1,5 +1,8 @@
 from werkzeug.security import generate_password_hash
-from app.models.db import db, Group, UserGroup, Expense, Transaction, Comment, User
+from app.models.db import db, Group, UserGroup, Expense, Transaction, Comment
+from faker import Faker
+
+faker = Faker()
 
 # Adds a demo user, you can add other users here if you want
 
