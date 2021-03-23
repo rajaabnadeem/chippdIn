@@ -1,12 +1,13 @@
-from app.models import (db, Group, UserGroup, Expense,
-                        Transaction, Comment, User)
+from app.models import db, Group, UserGroup, Expense, Transaction, Comment
+from faker import Faker
+
+faker = Faker()
 
 
 def seed_expenses():
 
     expenses1 = Expense(description="Electric", amount=240, date=faker.date(
-        pattern='-%m-%d%Y', end_datetime=None), notes="Electric bill for
-        January", group_id=1, user_id=2)
+        pattern='-%m-%d%Y', end_datetime=None), notes="Electric bill for January", group_id=1, user_id=2)
     expenses2 = Expense(description="Flights", amount=400, date=faker.date(
         pattern='-%m-%d%Y', end_datetime=None), notes="Flights to Arubaaaaa",
         group_id=2, user_id=1)
