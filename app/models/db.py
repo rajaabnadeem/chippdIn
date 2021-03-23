@@ -87,7 +87,6 @@ class Transaction(db.Model):
     __tablename__ = 'transactions'
 
     id = db.Column(db.Integer, primary_key=True)
-    date = db.Column(db.Date, nullable=False)
     amount = db.Column(db.Numeric(20, 2), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     expense_id = db.Column(db.Integer, db.ForeignKey('expenses.id'))
