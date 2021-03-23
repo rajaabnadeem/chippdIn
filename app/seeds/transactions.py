@@ -1,4 +1,6 @@
-from app.models import db, Group, UserGroup, Expense, Transaction, Comment
+from app.models import (db, Group, UserGroup, Expense,
+                        Transaction, Comment, User)
+
 
 def seed_transactions():
 

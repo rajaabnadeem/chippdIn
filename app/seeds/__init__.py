@@ -11,6 +11,8 @@ from .comments import seed_comments, undo_comments
 seed_commands = AppGroup('seed')
 
 # Creates the `flask seed all` command
+
+
 @seed_commands.command('all')
 def seed():
     seed_users()
@@ -19,10 +21,12 @@ def seed():
     seed_expenses()
     seed_transactions()
     seed_comments()
-    
+
     # Add other seed functions here
 
 # Creates the `flask seed undo` command
+
+
 @seed_commands.command('undo')
 def undo():
     undo_comments()

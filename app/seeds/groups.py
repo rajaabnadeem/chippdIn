@@ -1,4 +1,6 @@
-from app.models import db, Group, UserGroup, Expense, Transaction, Comment
+from app.models import (db, Group, UserGroup, Expense,
+                        Transaction, Comment, User)
+
 
 def seed_groups():
 
@@ -6,7 +8,6 @@ def seed_groups():
     group2 = Group(name="Aruba", type="Vacation", img_url=null)
     group3 = Group(name="3731 Bates St.", type="House", img_url=null)
     group4 = Group(name="325 Coltart Ave.", type="Other", img_url=null)
-
 
     db.session.add(group1)
     db.session.add(group2)
