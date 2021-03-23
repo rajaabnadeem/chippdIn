@@ -1,9 +1,9 @@
-const SET_USER = 'session/SET_USER';
-const REMOVE_USER = 'session/REMOVE_USER';
+const SET_USER = 'session/setUser';
+const REMOVE_USER = 'session/removeUser';
 
 export const setUser = (user) => ({
     type: SET_USER,
-    user,
+    payload: user,
 });
 
 export const removeUser = () => ({
@@ -16,7 +16,8 @@ export const authenticate = () => async (dispatch) => {
     return dispatch(setUser(data));
 };
 
-export const login = async (email, password) => {
+export const login = (user) => async (dispatch) => {
+    const { email, password } = user;
     const response = await fetch('/api/auth/login/', {
         method: 'POST',
         headers: {
@@ -29,7 +30,7 @@ export const login = async (email, password) => {
     });
     const data = await response.json();
     console.log(data);
-    return data;
+    return dispatch(setUser(data));
 };
 
 export const logout = () => async (dispatch) => {
@@ -38,21 +39,27 @@ export const logout = () => async (dispatch) => {
 };
 
 export const signUp = (user) => async (dispatch) => {
-    const { firstName, lastName, email, password } = user;
+    const { first_name, last_name, email, password } = user;
     const response = await fetch('/api/auth/signup/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-            firstName,
-            lastName,
+            first_name,
+            last_name,
             email,
             password,
         }),
     });
     const data = await response.json();
     console.log(data);
+    return dispatch(setUser(data));
+};
+
+export const restoreUser = () => async (dispatch) => {
+    const response = await fetch('/api/auth/');
+    const data = await response.json();
     return dispatch(setUser(data));
 };
 

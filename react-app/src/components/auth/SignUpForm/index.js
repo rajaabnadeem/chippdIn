@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../../store/session';
 
 const SignUpForm = ({ authenticated, setAuthenticated }) => {
     const dispatch = useDispatch();
+    const history = useHistory();
     const [first_name, setFirstName] = useState('');
     const [last_name, setLastName] = useState('');
     const [email, setEmail] = useState('');
@@ -12,24 +13,14 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
 
     const onSignUp = async (e) => {
         e.preventDefault();
-
         const user = await dispatch(
-            sessionActions.signUp({
-                first_name,
-                last_name,
-                email,
-                password,
-            })
+            sessionActions.signUp({ first_name, last_name, email, password })
         );
-        if (!user.errors) {
+        if (!user.payload.errors) {
             setAuthenticated(true);
-            return <Redirect to="/" />;
+            history.push('/');
         }
     };
-
-    if (authenticated) {
-        return <Redirect to="/" />;
-    }
 
     const updateFirstName = (e) => {
         setFirstName(e.target.value);

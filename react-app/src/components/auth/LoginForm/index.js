@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../../store/session';
 
 const LoginForm = ({ authenticated, setAuthenticated }) => {
     const dispatch = useDispatch();
+    const history = useHistory();
     const [errors, setErrors] = useState([]);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -16,11 +17,10 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
 
     const onLogin = async (e) => {
         e.preventDefault();
-        const user = await sessionActions.login(email, password);
-        if (!user.errors) {
-            dispatch(sessionActions.setUser(user));
+        const user = await dispatch(sessionActions.login({ email, password }));
+        if (!user.payload.errors) {
             setAuthenticated(true);
-            return <Redirect to="/" />;
+            history.push('/');
         } else {
             setErrors(user.errors);
         }
@@ -38,9 +38,8 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
         <div>
             <form onSubmit={onLogin}>
                 <ul>
-                    {errors.map((error, idx) => (
-                        <li key={idx}>{error}</li>
-                    ))}
+                    {errors &&
+                        errors.map((error, idx) => <li key={idx}>{error}</li>)}
                 </ul>
                 <div>
                     <label htmlFor="email">Email</label>
