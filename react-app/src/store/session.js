@@ -1,28 +1,23 @@
 const SET_USER = 'session/SET_USER';
 const REMOVE_USER = 'session/REMOVE_USER';
 
-export const setUser = (user) => {
-    return {
-        type: SET_USER,
-        user,
-    };
-};
+export const setUser = (user) => ({
+    type: SET_USER,
+    user,
+});
 
-export const removeUser = () => {
-    return {
-        type: REMOVE_USER,
-    };
-};
+export const removeUser = () => ({
+    type: REMOVE_USER,
+});
 
 export const authenticate = () => async (dispatch) => {
-    const res = await fetch('/api/auth/');
-    const data = await res.json();
+    const response = await fetch('/api/auth/');
+    const data = await response.json();
     return dispatch(setUser(data));
 };
 
-export const login = (user) => async (dispatch) => {
-    const { email, password } = user;
-    const res = await fetch('/api/auth/login/', {
+export const login = async (email, password) => {
+    const response = await fetch('/api/auth/login/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -32,8 +27,9 @@ export const login = (user) => async (dispatch) => {
             password,
         }),
     });
-    const data = await res.json();
-    return dispatch(setUser(data));
+    const data = await response.json();
+    console.log(data);
+    return data;
 };
 
 export const logout = () => async (dispatch) => {
@@ -43,7 +39,7 @@ export const logout = () => async (dispatch) => {
 
 export const signUp = (user) => async (dispatch) => {
     const { firstName, lastName, email, password } = user;
-    const res = await fetch('/api/auth/signup/', {
+    const response = await fetch('/api/auth/signup/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -55,7 +51,8 @@ export const signUp = (user) => async (dispatch) => {
             password,
         }),
     });
-    const data = await res.json();
+    const data = await response.json();
+    console.log(data);
     return dispatch(setUser(data));
 };
 

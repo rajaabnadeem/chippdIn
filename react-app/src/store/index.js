@@ -4,7 +4,6 @@ import sessionReducer from './session';
 
 const rootReducer = combineReducers({
     session: sessionReducer,
-    stockData: StockReducer,
 });
 
 let enhancer;
