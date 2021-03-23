@@ -82,6 +82,16 @@ class Expense(db.Model):
     transactions = db.relationship('Transaction', back_populates='expenses')
     comments = db.relationship('Comment', back_populates='expenses')
 
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "description": self.first_name,
+            "amount": self.last_name,
+            "date": self.email,
+            "notes": self.balance,
+           
+        }
+
 
 class Transaction(db.Model):
     __tablename__ = 'transactions'
