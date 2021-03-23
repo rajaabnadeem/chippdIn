@@ -1,3 +1,5 @@
+import { csrfFetch } from './csrf';
+
 export const authenticate = async () => {
     const response = await fetch('/api/auth/', {
         headers: {
