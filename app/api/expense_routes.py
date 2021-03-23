@@ -17,15 +17,14 @@ def createExpense(group_id, user_id):
     created_expense = expense.to_dict()
     total_expense = created_expense['amount']
     expense_id = created_expense["id"]
-    
+
     group_users = UserGroup.query.filter(UserGroup.group_id == group_id).all()
     for group_user in group_users:
-        if group_user.id is not user_id:
-            transaction = Transaction()
-            transaction.expense_id = expense_id
-            transaction.user_id = group_user.user_id
-            transaction.amount = total_expense / len(group_users)
-            db.session.add(transaction)
+        transaction = Transaction()
+        transaction.expense_id = expense_id
+        transaction.user_id = group_user.user_id
+        transaction.amount = total_expense / len(group_users)
+        db.session.add(transaction)
     db.session.commit()
     return created_expense
 
