@@ -3,7 +3,8 @@ from flask_login import login_required
 from app.models import Expense, UserGroup, Transaction, db
 from app.forms import ExpenseForm
 
-expense_routes = Blueprint('group', __name__)
+expense_routes = Blueprint('expenses', __name__)
+
 
 @expense_routes.route('/', methods=["POST"])
 def createExpense(group_id, user_id):
@@ -27,7 +28,6 @@ def createExpense(group_id, user_id):
         db.session.add(transaction)
     db.session.commit()
     return created_expense
-
 
 
 # @expense_routes.route('/')

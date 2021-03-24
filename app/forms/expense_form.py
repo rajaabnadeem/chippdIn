@@ -5,7 +5,7 @@ from wtforms.validators import DataRequired
 
 class ExpenseForm(FlaskForm):
     description = StringField('Description', [DataRequired()])
-    amount  = IntegerField('Amount',[DataRequired()])
+    amount = IntegerField('Amount', [DataRequired()])
     date = DateField('Date', [DataRequired()])
     notes = TextAreaField('Notes')
     submit = SubmitField('Create Expense')
