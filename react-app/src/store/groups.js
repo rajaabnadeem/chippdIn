@@ -2,7 +2,7 @@ const LOAD_GROUPS = 'groups/getGroups';
 const SET_GROUP = 'groups/setGroup';
 
 export const getGroups = (groups, id) => ({
-    type: LOAD,
+    type: LOAD_GROUPS,
     payload: groups,
     id,
 });
@@ -13,40 +13,39 @@ export const setGroup = (group) => ({
 });
 
 export const getUserGroups = (id) => async (dispatch) => {
-    const res = await fetch(`/api/users/${id}/groups/`);
+    const res = await fetch(`/api/users/${id}/groups`);
     const groups = await res.json();
     dispatch(getGroups(groups, id));
 };
 
-export const createGroup = (groupData) => async (dispatch) => {
-    const { name, type, img_url, user_id } = groupData;
-    const res = await fetch(`/api/users/${user_id}/groups/`, {
+export const createGroup = (groupData, id) => async (dispatch) => {
+    // const { name, type } = groupData;
+    const res = await fetch(`/api/users/${id}/groups`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-            name,
-            type,
-            img_url,
-            user_id,
-        }),
+        body: JSON.stringify(
+            groupData
+            // name,
+            // type,
+        ),
     });
     const data = await res.json();
     return dispatch(setGroup(data));
 };
 
-export const editGroup = (groupData) => async (dispatch) => {
-    const res = await fetch(`/api/users/${user_id}/group/${id}/`, {
+export const editGroup = (groupData, id) => async (dispatch) => {
+    const res = await fetch(`/api/users/${id}/group/${groupData.id}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify(groupData),
     });
-    const data = await response.json();
+    const data = await res.json();
     console.log(data);
-    return dispatch(setExpense(data));
+    return dispatch(setGroup(data));
 };
 
 const initialState = {};
@@ -59,6 +58,11 @@ const groupsReducer = (state = initialState, action) => {
                 newState[group.id] = group;
             });
             return newState;
+        case SET_GROUP:
+            newState[action.payload.id] = action.payload
+            return newState;
+        default:
+            return state
     }
 };
 

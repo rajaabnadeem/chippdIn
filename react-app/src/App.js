@@ -3,13 +3,14 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
-import ExpenseForm from './components/exp/ExpenseForm';
-import ExpenseDetails from './components/exp/ExpenseDetails';
-import Group from './components/grp/Group';
+import ExpenseForm from './components/Expense/ExpenseForm';
+import ExpenseDetails from './components/Expense/ExpenseDetails';
+import Group from './components/Group';
 import NavBar from './components/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
+import Dashboard from './components/Dashboard'
 import { authenticate } from './store/session';
 import * as sessionActions from './store/session';
 import './index.css';
@@ -46,6 +47,9 @@ function App() {
                         authenticated={authenticated}
                         setAuthenticated={setAuthenticated}
                     />
+                </Route>
+                <Route path='/dashboard'>
+                    <Dashboard/>
                 </Route>
                 <Route path="/sign-up" exact={true}>
                     <SignUpForm

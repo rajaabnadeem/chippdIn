@@ -17,11 +17,10 @@ def getGroups(user_id):
 
 
 @group_routes.route('/', methods=['POST'])
-def createGroup(user_id):
+def createGroup():
     form = GroupForm()
     group = Group()
     form.populate_obj(group)
-    group.user_id = val
     db.session.add(group)
     db.session.commit()
     return group.to_dict()

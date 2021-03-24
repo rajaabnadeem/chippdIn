@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Redirect, useHistory, NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import './Group.css';
-import { getExpenses } from '../../../store/expenses';
+import { getExpenses } from '../../store/expenses';
 
 const Group = ({ name, img_url, type }) => {
     const dispatch = useDispatch();
