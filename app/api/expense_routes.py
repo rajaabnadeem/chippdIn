@@ -29,5 +29,4 @@ def createExpense(group_id, user_id):
     return created_expense
 
 
-
-# @expense_routes.route('/')
+    
