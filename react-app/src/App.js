@@ -4,6 +4,8 @@ import { useDispatch } from 'react-redux';
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
 import ExpenseForm from './components/exp/ExpenseForm';
+import ExpenseDetails from './components/exp/ExpenseDetails';
+import Group from './components/grp/Group';
 import NavBar from './components/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
@@ -34,6 +36,11 @@ function App() {
         <>
             <NavBar setAuthenticated={setAuthenticated} />
             <Switch>
+                {/*route for testing groups, temporary */}
+                <ProtectedRoute path="/groups" exact={true} authenticated={authenticated}>
+                    <Group />
+                    <ExpenseDetails />
+                </ProtectedRoute>
                 <Route path="/login" exact={true}>
                     <LoginForm
                         authenticated={authenticated}
@@ -62,7 +69,7 @@ function App() {
                 </ProtectedRoute>
 
                 <ProtectedRoute
-                    path="/users/:userId/expenses/expense-form"
+                    path="/expenses/expense-form"
                     exact={true}
                     authenticated={authenticated}
                 >

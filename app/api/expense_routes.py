@@ -2,6 +2,7 @@ from flask import Blueprint
 from flask_login import login_required
 from app.models import Expense, UserGroup, Transaction, db
 from app.forms import ExpenseForm
+from flask import jsonify
 
 expense_routes = Blueprint('expenses', __name__)
 
@@ -29,5 +30,12 @@ def createExpense(group_id, user_id):
     db.session.commit()
     return created_expense
 
+@expense_routes.route('/')
+def getExpenses(group_id, user_id):
+    expenses = Expense.query.filter(Expense.group_id == group_id).all()
+    expenseDict = {}
+    for expense in expenses:
+        expenseDict[expense.id] = expense.to_dict()
+    return expenseDict
 
-# @expense_routes.route('/')
+
