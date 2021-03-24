@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Redirect, useHistory, NavLink } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../../store/session';
-import logo from '../../../images/logo2.jpg';
+import logo from '../../../images/logo3.jpg';
 import './LoginForm.css';
 
 const LoginForm = ({ authenticated, setAuthenticated }) => {
@@ -55,13 +55,13 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
                         </ul>
                     </div>
                     <div className="email-label-container">
-                        <label className="email-label">Email</label>
+                        <label className="email-label">Email address</label>
                     </div>
-                    <div className="email-input">
+                    <div className="email-input-container">
                         <input
+                            className="email-input"
                             name="email"
                             type="text"
-                            placeholder="Email"
                             value={email}
                             onChange={updateEmail}
                         />
@@ -69,29 +69,29 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
                     <div className="password-label-container">
                         <label className="password-label">Password</label>
                     </div>
-                    <div className="password-input">
+                    <div className="password-input-container">
                         <input
+                            className="password-input"
                             name="password"
-                            type="password"
-                            placeholder="Password"
+                            type={showPassword ? 'text' : 'password'}
                             value={password}
                             onChange={updatePassword}
                         />
-                        <div className="login-button-container">
-                            <button className="login-button" type="submit">
-                                Log In
-                            </button>
-                        </div>
-                        <div className="already-memeber-container">
-                            <div className="already-member">
-                                {"Don't have an account?  "}
-                                <NavLink
-                                    className="login-navlink"
-                                    to="/sign-up"
-                                >
-                                    Click here
-                                </NavLink>
-                            </div>
+                    </div>
+                    <div className="show-password" onClick={passwordToggle}>
+                        show password
+                    </div>
+                    <div className="login-button-container">
+                        <button className="login-button" type="submit">
+                            Log In
+                        </button>
+                    </div>
+                    <div className="not-member-container">
+                        <div className="not-member">
+                            {"Don't have an account?  "}
+                            <NavLink className="login-navlink" to="/sign-up">
+                                Click here
+                            </NavLink>
                         </div>
                     </div>
                 </form>

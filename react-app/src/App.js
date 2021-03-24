@@ -9,6 +9,7 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
 import * as sessionActions from './store/session';
+import './index.css';
 
 function App() {
     const dispatch = useDispatch();
