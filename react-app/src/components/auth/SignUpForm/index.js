@@ -10,6 +10,7 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
     const [last_name, setLastName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [errors, setErrors] = useState([]);
 
     const onSignUp = async (e) => {
         e.preventDefault();
@@ -19,6 +20,8 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
         if (!user.payload.errors) {
             setAuthenticated(true);
             history.push('/');
+        } else {
+            setErrors(user.payload.errors);
         }
     };
 
@@ -40,11 +43,10 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
 
     return (
         <form onSubmit={onSignUp}>
-            {/* <ul>
-                {errors.map((error, idx) => (
-                    <li key={idx}>{error}</li>
-                ))}
-            </ul> */}
+            <ul>
+                {errors &&
+                    errors.map((error, idx) => <li key={idx}>{error}</li>)}
+            </ul>
             <div>
                 <label>First Name</label>
                 <input

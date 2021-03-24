@@ -1,0 +1,45 @@
+.login-container {
+    padding: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-image-container {
+    padding: 25px;
+}
+
+.login-image {
+    height: 250px;
+    width: 250px;
+    padding: 25px;
+}
+
+.login-form-container {
+    height: 250px;
+    width: 250px;
+    padding: 25px;
+}
+
+.email-label-container,
+.password-label-container,
+.login-button-container {
+    margin-top: 20px;
+}
+
+.email-input,
+.password-input,
+.already-memeber-container {
+    margin-top: 5px;
+}
+
+.login-button {
+    height: 50px;
+    width: 100px;
+    background-color: #fc4c02;
+    border: 2px solid #fc4c02;
+    border-radius: 0.25em;
+    color: white;
+    font-size: 16px;
+}
