@@ -54,6 +54,15 @@ class Group(db.Model):
     users = db.relationship('User', secondary='user_groups')
     expenses = db.relationship('Expense', back_populates='groups')
 
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+            "type": self.type,
+            "img_url": self.img_url,
+            "user_id": self.user_id,
+        }
+
 
 class UserGroup(db.Model):
     __tablename__ = 'user_groups'
@@ -113,7 +122,6 @@ class Transaction(db.Model):
             "expense_id": self.expense_id
         }
 
-    
 
 class Comment(db.Model):
     __tablename__ = 'comments'

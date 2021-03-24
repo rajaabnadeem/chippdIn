@@ -4,7 +4,8 @@ from app.models import Expense, UserGroup, Transaction, db
 from app.forms import ExpenseForm
 from flask import jsonify
 
-expense_routes = Blueprint('group', __name__)
+expense_routes = Blueprint('expenses', __name__)
+
 
 @expense_routes.route('/', methods=["POST"])
 def createExpense(group_id, user_id):
@@ -37,4 +38,4 @@ def getExpenses(group_id, user_id):
         expenseDict[expense.id] = expense.to_dict()
     return expenseDict
 
-    
+
