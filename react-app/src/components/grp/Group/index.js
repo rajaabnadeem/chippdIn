@@ -23,7 +23,7 @@ const Group = ({ name, img_url, type }) => {
     const handleViewExpense = () => {
         return;
     };
-
+    const group_id = 2
     return (
         <div className="groupContainer">
             <div className="groupDetails">
@@ -37,9 +37,8 @@ const Group = ({ name, img_url, type }) => {
             <div className="expenseDetails">
                 <h1>Expense:</h1>
                 <select>
-                    <option value="expense1">expense 1</option>
-                    <option value="expense2">expense 2</option>
-                    <option value="expense3">expense 3</option>
+                    { Object.entries(expenses).map(([key, value]) => value.group_id === group_id ? (<option key={key} value={`${key}`}>{value.description}</option>) : null
+                    )}
                 </select>
                 <button onclick={handleViewExpense}>view expense</button>
             </div>

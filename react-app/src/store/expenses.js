@@ -48,12 +48,11 @@ const expensesReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOAD:
       for(let expenses in action.payload){
-        newState[expenses.id] = expenses
+        newState[action.payload[expenses].id] = action.payload[expenses];
       }
       return newState;
 
     case SET_EXPENSE:
-      console.log(action.payload)
       newState[action.payload.id] = action.payload
       return newState;
 

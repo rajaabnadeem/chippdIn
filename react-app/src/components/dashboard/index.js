@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Redirect, useHistory, NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { Group } from '../grp';
+import  Group  from '../grp/Group';
 
 const Dashboard = ({}) => {
     const dispatch = useDispatch();
@@ -27,3 +27,6 @@ const Dashboard = ({}) => {
         </div>
     );
 };
+
+
+export default Dashboard

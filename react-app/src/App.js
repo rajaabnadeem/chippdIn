@@ -5,6 +5,7 @@ import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
 import ExpenseForm from './components/exp/ExpenseForm';
 import ExpenseDetails from './components/exp/ExpenseDetails';
+import Dashboard from './components/dashboard'
 import Group from './components/grp/Group';
 import NavBar from './components/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
@@ -33,58 +34,64 @@ function App() {
     }
 
     return (
-        <>
-            <NavBar setAuthenticated={setAuthenticated} />
-            <Switch>
-                {/*route for testing groups, temporary */}
-                <ProtectedRoute path="/groups" exact={true} authenticated={authenticated}>
-                    <Group />
-                    <ExpenseDetails />
-                </ProtectedRoute>
-                <Route path="/login" exact={true}>
-                    <LoginForm
-                        authenticated={authenticated}
-                        setAuthenticated={setAuthenticated}
-                    />
-                </Route>
-                <Route path="/sign-up" exact={true}>
-                    <SignUpForm
-                        authenticated={authenticated}
-                        setAuthenticated={setAuthenticated}
-                    />
-                </Route>
-                <ProtectedRoute
-                    path="/users"
-                    exact={true}
-                    authenticated={authenticated}
-                >
-                    <UsersList />
-                </ProtectedRoute>
-                <ProtectedRoute
-                    path="/users/:userId"
-                    exact={true}
-                    authenticated={authenticated}
-                >
-                    <User />
-                </ProtectedRoute>
+      <>
+        <NavBar setAuthenticated={setAuthenticated} />
+        <Switch>
+          {/*route for testing groups, temporary */}
+          <ProtectedRoute
+            path="/groups"
+            exact={true}
+            authenticated={authenticated}
+          >
+            <Group />
+            <ExpenseDetails />
+          </ProtectedRoute>
+          <Route path="/login" exact={true}>
+            <LoginForm
+              authenticated={authenticated}
+              setAuthenticated={setAuthenticated}
+            />
+          </Route>
+          <Route path="/sign-up" exact={true}>
+            <SignUpForm
+              authenticated={authenticated}
+              setAuthenticated={setAuthenticated}
+            />
+          </Route>
+          <ProtectedRoute
+            path="/users"
+            exact={true}
+            authenticated={authenticated}
+          >
+            <UsersList />
+          </ProtectedRoute>
+          <ProtectedRoute
+            path="/users/:userId"
+            exact={true}
+            authenticated={authenticated}
+          >
+            <User />
+          </ProtectedRoute>
 
-                <ProtectedRoute
-                    path="/expenses/expense-form"
-                    exact={true}
-                    authenticated={authenticated}
-                >
-                    <ExpenseForm />
-                </ProtectedRoute>
+          <ProtectedRoute
+            path="/expenses/expense-form"
+            exact={true}
+            authenticated={authenticated}
+          >
+            <ExpenseForm />
+          </ProtectedRoute>
 
-                <ProtectedRoute
-                    path="/"
-                    exact={true}
-                    authenticated={authenticated}
-                >
-                    <h1>My Home Page</h1>
-                </ProtectedRoute>
-            </Switch>
-        </>
+          <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
+            <h1>My Home Page</h1>
+          </ProtectedRoute>
+          <ProtectedRoute 
+             path="/dashboard" 
+             exact={true} 
+             authenticated={authenticated}>
+            <Dashboard />
+          </ProtectedRoute>
+        </Switch>
+      </>
     );
 }
 
