@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, session, request
-from app.models import User, db, Group
+from app.models import User, db, Group, UserGroup
 from app.forms import GroupForm
 from flask_login import login_required
 
@@ -8,8 +8,11 @@ group_routes = Blueprint('groups', __name__)
 
 @group_routes.route('/')
 def getGroups(user_id):
-    groups = Group.query.filter(Group.user_id == user_id)
-    return groups.to_dict()
+    userGroups = UserGroup.query.filter(UserGroup.user_id == user_id)
+    groups = []
+    for group in userGroups:
+        groups.append(Group.query.find(Group.id == group.group_id).one())
+    return groups
 
 
 @group_routes.route('/', methods=['POST'])
