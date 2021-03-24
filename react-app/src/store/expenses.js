@@ -27,7 +27,6 @@ export const createExpense = (expenseData) => async (dispatch) => {
     }
   );
     const data = await response.json();
-    console.log(data)
     return dispatch(setExpense(data));
 };
 
@@ -40,6 +39,8 @@ const expensesReducer = (state = initialState, action) => {
       return newState;
 
     case SET_EXPENSE:
+      console.log(action.payload)
+      newState[action.payload.id] = action.payload
       return newState;
 
     default:

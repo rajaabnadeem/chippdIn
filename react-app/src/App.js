@@ -62,7 +62,7 @@ function App() {
                 </ProtectedRoute>
 
                 <ProtectedRoute
-                    path="/users/:userId/expenses/expense-form"
+                    path="/expenses/expense-form"
                     exact={true}
                     authenticated={authenticated}
                 >

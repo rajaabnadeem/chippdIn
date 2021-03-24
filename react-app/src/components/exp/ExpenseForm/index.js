@@ -10,12 +10,14 @@ const ExpenseForm = () => {
     const [amount, setAmount] = useState("")
     const [date, setDate] = useState("")
     const [notes, setNotes] = useState("")
-    const { userId } = useParams();
-
+    const user = useSelector(state => state.session.user)
+    let userId
+    if (user) {
+      userId = user.id
+    }
     const handleSumbit = async (e) => {
         e.preventDefault()
         await dispatch(createExpense({ description, amount, date, notes, user_id:userId }));
-
     }
 
     return (
