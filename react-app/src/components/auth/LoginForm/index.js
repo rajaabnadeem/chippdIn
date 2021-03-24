@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { Redirect, useHistory } from 'react-router-dom';
+import { Redirect, useHistory, NavLink } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../../store/session';
+import logo from '../../../images/logo3.jpg';
+import './LoginForm.css';
 
 const LoginForm = ({ authenticated, setAuthenticated }) => {
     const dispatch = useDispatch();
@@ -22,7 +24,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
             setAuthenticated(true);
             history.push('/');
         } else {
-            setErrors(user.errors);
+            setErrors(user.payload.errors);
         }
     };
 
@@ -35,34 +37,65 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
     };
 
     return (
-        <div>
-            <form onSubmit={onLogin}>
-                <ul>
-                    {errors &&
-                        errors.map((error, idx) => <li key={idx}>{error}</li>)}
-                </ul>
-                <div>
-                    <label htmlFor="email">Email</label>
-                    <input
-                        name="email"
-                        type="text"
-                        placeholder="Email"
-                        value={email}
-                        onChange={updateEmail}
-                    />
+        <div className="login-container">
+            <div className="login-image-container">
+                <img className="login-image" src={logo}></img>
+            </div>
+            <div className="login-form-container">
+                <div className="login-title-container">
+                    <div className="login-title">WELCOME TO CHIPPDIN</div>
                 </div>
-                <div>
-                    <label htmlFor="password">Password</label>
-                    <input
-                        name="password"
-                        type="password"
-                        placeholder="Password"
-                        value={password}
-                        onChange={updatePassword}
-                    />
-                    <button type="submit">Login</button>
-                </div>
-            </form>
+                <form className="login-form" onSubmit={onLogin}>
+                    <div className="login-errors-container">
+                        <ul className="login-errors-list">
+                            {errors &&
+                                errors.map((error, idx) => (
+                                    <li key={idx}>{error}</li>
+                                ))}
+                        </ul>
+                    </div>
+                    <div className="email-label-container">
+                        <label className="email-label">Email address</label>
+                    </div>
+                    <div className="email-input-container">
+                        <input
+                            className="email-input"
+                            name="email"
+                            type="text"
+                            value={email}
+                            onChange={updateEmail}
+                        />
+                    </div>
+                    <div className="password-label-container">
+                        <label className="password-label">Password</label>
+                    </div>
+                    <div className="password-input-container">
+                        <input
+                            className="password-input"
+                            name="password"
+                            type={showPassword ? 'text' : 'password'}
+                            value={password}
+                            onChange={updatePassword}
+                        />
+                    </div>
+                    <div className="show-password" onClick={passwordToggle}>
+                        show password
+                    </div>
+                    <div className="login-button-container">
+                        <button className="login-button" type="submit">
+                            Log In
+                        </button>
+                    </div>
+                    <div className="not-member-container">
+                        <div className="not-member">
+                            {"Don't have an account?  "}
+                            <NavLink className="login-navlink" to="/sign-up">
+                                Click here
+                            </NavLink>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
     );
 };

@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@900&display=swap');
+
+.signup-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.signup-image-container {
+    margin-bottom: 40px;
+    margin-right: 20px;
+}
+
+.signup-image {
+    height: 200px;
+    width: 180px;
+    padding: 20px;
+    opacity: 0.85;
+}
+
+.signup-form-container {
+    height: 250px;
+    width: 250px;
+    padding: 25px;
+    margin-right: 100px;
+}
+
+.firstname-input,
+.lastname-input,
+.s-email-input,
+.s-password-input {
+    padding: 5px;
+    margin-top: 10px;
+    height: 30px;
+    width: 275px;
+    font-size: 14pt;
+    background: rgb(250, 247, 254);
+    border-radius: 0.15em;
+    border: 1px solid rgb(158, 150, 165);
+}
+
+::placeholder {
+    font-size: 10pt;
+    font-style: italic;
+}
+
+.s-email-input-container,
+.s-password-input-container,
+.signup-button {
+    margin-top: 20px;
+}
+
+.signup-title {
+    font-size: 18pt;
+    font-weight: bold;
+    font-family: 'Lato', sans-serif;
+}
+
+.real-signup-title {
+    color: rgb(172, 171, 171);
+    font-weight: bold;
+    font-size: 14pt;
+}
+
+.signup-title-b {
+    font-size: 16pt;
+}
+
+.signup-button {
+    height: 50px;
+    width: 130px;
+    background-color: #ff621e;
+    border: 2px solid #ff621e;
+    border-radius: 0.25em;
+    color: white;
+    font-size: 15pt;
+}
+
+.already-member-container {
+    margin-top: 10px;
+    font-size: 10pt;
+}
+
+.signup-navlink {
+    color: rgb(0, 132, 255);
+    text-decoration: none;
+}

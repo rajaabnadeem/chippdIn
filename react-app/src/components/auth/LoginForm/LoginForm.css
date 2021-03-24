@@ -1,0 +1,83 @@
+.login-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-image-container {
+    margin-bottom: 40px;
+    margin-right: 20px;
+}
+
+.login-image {
+    height: 200px;
+    width: 180px;
+    padding: 20px;
+    opacity: 0.85;
+}
+
+.login-form-container {
+    height: 250px;
+    width: 250px;
+    padding: 25px;
+    margin-right: 100px;
+}
+
+.login-title {
+    color: rgb(172, 171, 171);
+    font-weight: bold;
+    font-size: 14pt;
+}
+
+.email-label-container,
+.password-label-container,
+.login-button-container {
+    margin-top: 20px;
+}
+
+.email-label,
+.password-label {
+    font-size: 18pt;
+}
+
+.email-input,
+.password-input {
+    margin-top: 10px;
+    height: 30px;
+    width: 275px;
+    font-size: 14pt;
+    color: rgb(109, 107, 107);
+    background: rgb(250, 247, 254);
+    border-radius: 0.15em;
+    border: 1px solid rgb(158, 150, 165);
+}
+
+.login-button {
+    height: 40px;
+    width: 90px;
+    background-color: #ff621e;
+    border: 2px solid #ff621e;
+    border-radius: 0.25em;
+    color: white;
+    font-size: 15pt;
+}
+
+.not-member {
+    margin-top: 10px;
+    font-size: 10pt;
+}
+
+.login-navlink {
+    color: rgb(0, 132, 255);
+    text-decoration: none;
+}
+
+.show-password {
+    margin-top: 5px;
+    font-size: 8pt;
+    cursor: pointer;
+    color: rgb(172, 171, 171);
+    width: 275px;
+    text-align: right;
+}

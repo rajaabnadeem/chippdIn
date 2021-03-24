@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { Redirect, useHistory } from 'react-router-dom';
+import { Redirect, useHistory, NavLink } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../../store/session';
+import logo from '../../../images/logo3.jpg';
+import './SignUpForm.css';
 
 const SignUpForm = ({ authenticated, setAuthenticated }) => {
     const dispatch = useDispatch();
@@ -10,6 +12,27 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
     const [last_name, setLastName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [errors, setErrors] = useState([]);
+    const [showSignup, setShowSignup] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
+
+    function passwordToggle() {
+        setShowPassword(!showPassword);
+    }
+
+    const duration = 2000;
+
+    const defaultStyle = {
+        transition: `opacity ${duration}ms ease-in-out`,
+        opacity: 0,
+    };
+
+    const transitionStyles = {
+        entering: { opacity: 1 },
+        entered: { opacity: 1 },
+        exiting: { opacity: 0 },
+        exited: { opacity: 0 },
+    };
 
     const onSignUp = async (e) => {
         e.preventDefault();
@@ -19,6 +42,8 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
         if (!user.payload.errors) {
             setAuthenticated(true);
             history.push('/');
+        } else {
+            setErrors(user.payload.errors);
         }
     };
 
@@ -39,50 +64,96 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
     };
 
     return (
-        <form onSubmit={onSignUp}>
-            {/* <ul>
-                {errors.map((error, idx) => (
-                    <li key={idx}>{error}</li>
-                ))}
-            </ul> */}
-            <div>
-                <label>First Name</label>
-                <input
-                    type="text"
-                    name="first_name"
-                    onChange={updateFirstName}
-                    value={first_name}
-                ></input>
+        <div className="signup-container">
+            <div className="signup-image-container">
+                <img className="signup-image" src={logo}></img>
             </div>
-            <div>
-                <label>Last Name</label>
-                <input
-                    type="text"
-                    name="last_name"
-                    onChange={updateLastName}
-                    value={last_name}
-                ></input>
+            <div className="signup-form-container">
+                <div className="signup-title-container">
+                    <div className="real-signup-title">INTRODUCE YOURSELF</div>
+                </div>
+                <form onSubmit={onSignUp}>
+                    <div className="signup-errors-container">
+                        <ul className="signup-errors-list">
+                            {errors &&
+                                errors.map((error, idx) => (
+                                    <li key={idx}>{error}</li>
+                                ))}
+                        </ul>
+                    </div>
+                    <div className="firstname-input-container">
+                        <div className="signup-title">Hi there! My name is</div>
+                        <input
+                            className="firstname-input"
+                            type="text"
+                            name="first_name"
+                            onChange={updateFirstName}
+                            value={first_name}
+                            placeholder="firstname"
+                            onClick={() => setShowSignup(true)}
+                        ></input>
+                    </div>
+
+                    {showSignup && (
+                        <div className="trans-div">
+                            <div className="lastname-input-container">
+                                <input
+                                    className="lastname-input"
+                                    type="text"
+                                    name="last_name"
+                                    onChange={updateLastName}
+                                    value={last_name}
+                                    placeholder="lastname"
+                                ></input>
+                            </div>
+                            <div className="s-email-input-container">
+                                <div className="signup-title-b">
+                                    Here's my email address:
+                                </div>
+                                <input
+                                    className="s-email-input"
+                                    type="text"
+                                    name="email"
+                                    onChange={updateEmail}
+                                    value={email}
+                                ></input>
+                            </div>
+                            <div className="s-password-input-container">
+                                <div className="signup-title-b">
+                                    And here's my password:
+                                </div>
+                                <input
+                                    className="s-password-input"
+                                    type={showPassword ? 'text' : 'password'}
+                                    name="password"
+                                    onChange={updatePassword}
+                                    value={password}
+                                ></input>
+                            </div>
+                            <div
+                                className="show-password"
+                                onClick={passwordToggle}
+                            >
+                                show password
+                            </div>
+                        </div>
+                    )}
+                    <div className="signup-button-container">
+                        <button className="signup-button" type="submit">
+                            Sign me up!
+                        </button>
+                    </div>
+                    <div className="already-member-container">
+                        <div className="already-member">
+                            {'Already have an account?  '}
+                            <NavLink className="signup-navlink" to="/login">
+                                Click here
+                            </NavLink>
+                        </div>
+                    </div>
+                </form>
             </div>
-            <div>
-                <label>Email</label>
-                <input
-                    type="text"
-                    name="email"
-                    onChange={updateEmail}
-                    value={email}
-                ></input>
-            </div>
-            <div>
-                <label>Password</label>
-                <input
-                    type="password"
-                    name="password"
-                    onChange={updatePassword}
-                    value={password}
-                ></input>
-            </div>
-            <button type="submit">Sign Up</button>
-        </form>
+        </div>
     );
 };
 
