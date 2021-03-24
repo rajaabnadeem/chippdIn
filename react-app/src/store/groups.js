@@ -1,67 +1,65 @@
-const LOAD_GROUPS = 'groups/getGroups'
-const SET_GROUP = "groups/setGroup";
+const LOAD_GROUPS = 'groups/getGroups';
+const SET_GROUP = 'groups/setGroup';
 
-export const getGroups = (groups, user_id) => ({
+export const getGroups = (groups, id) => ({
     type: LOAD,
     payload: groups,
-    user_id
-})
+    id,
+});
 
 export const setGroup = (group) => ({
-  type: SET_GROUP,
-  payload: group,
+    type: SET_GROUP,
+    payload: group,
 });
 
 export const getUserGroups = (id) => async (dispatch) => {
-    const res = await fetch(`/api/users/${id}/groups/`)
-    const groups = await res.json()
-    dispatch(getGroups(groups, id))
-}
+    const res = await fetch(`/api/users/${id}/groups/`);
+    const groups = await res.json();
+    dispatch(getGroups(groups, id));
+};
 
 export const createGroup = (groupData) => async (dispatch) => {
-    const { name, type, img_url, user_id } = groupData
-    const res = await fetch(`/api/users/${user_id}/groups/`,
-    {
+    const { name, type, img_url, user_id } = groupData;
+    const res = await fetch(`/api/users/${user_id}/groups/`, {
         method: 'POST',
         headers: {
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json',
         },
         body: JSON.stringify({
             name,
             type,
             img_url,
-            user_id
-        })
-    })
-    const data = await res.json()
-    return dispatch(setGroup(data))
-}
+            user_id,
+        }),
+    });
+    const data = await res.json();
+    return dispatch(setGroup(data));
+};
 
 export const editGroup = (groupData) => async (dispatch) => {
-    const res = await fetch(`/api/users/${user_id}/group/${id}/`,
-    {
-        method: "PUT",
+    const res = await fetch(`/api/users/${user_id}/group/${id}/`, {
+        method: 'PUT',
         headers: {
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json',
         },
-        body: JSON.stringify(groupData)
-    })
+        body: JSON.stringify(groupData),
+    });
     const data = await response.json();
-    console.log(data)
+    console.log(data);
     return dispatch(setExpense(data));
-}
+};
 
 const initialState = {};
 
 const groupsReducer = (state = initialState, action) => {
-    let newState = {};
+    let newState = JSON.parse(JSON.stringify(state));
     switch (action.type) {
         case LOAD_GROUPS:
-            action.groups.forEach(group => {
-                newState[group.id] = group
-            })
-            return {...state, ...newState};
+            action.groups.forEach((group) => {
+                newState[group.id] = group;
+            });
+            return newState;
     }
-}
+};
 
-export default groupsReducer
+export default groupsReducer;
