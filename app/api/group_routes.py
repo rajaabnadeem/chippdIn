@@ -11,7 +11,9 @@ def getGroups(user_id):
     userGroups = UserGroup.query.filter(UserGroup.user_id == user_id)
     groups = []
     for group in userGroups:
+        db.session.add(group)
         groups.append(Group.query.find(Group.id == group.group_id).one())
+    db.session.commit()
     return groups
 
 

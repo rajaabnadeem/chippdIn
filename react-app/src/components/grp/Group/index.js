@@ -1,44 +1,50 @@
-import React, { useEffect } from "react"
-import "./Group.css"
-import {useSelector, useDispatch} from "react-redux"
-import { getExpenses } from "../../../store/expenses"
+import React, { useState, useEffect } from 'react';
+import { Redirect, useHistory, NavLink } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import './Group.css';
+import { getExpenses } from '../../../store/expenses';
 
-const Group = () => {
-    const dispatch = useDispatch()
+const Group = ({ name, img_url, type }) => {
+    const dispatch = useDispatch();
     const user = useSelector((state) => state.session.user);
-    const expenses = useSelector((state) => state.expenses)
+    const expenses = useSelector((state) => state.expenses);
     let userId;
     if (user) {
-      userId = user.id;
+        userId = user.id;
     }
 
     useEffect(() => {
-        dispatch(getExpenses(userId, 1))
-    }, [])
+        dispatch(getExpenses(userId, 1));
+    }, []);
 
     const handleViewGroup = () => {
-        return
-    }
+        return;
+    };
     const handleViewExpense = () => {
-        return
-    }
-    return (<div className="groupContainer">
-    <div className="groupDetails">
-        <img src="https://thumbs.dreamstime.com/b/gray-man-avatar-design-concept-ai-supported-81256396.jpg"></img>
-        <h1>Group name goes here</h1>
-        <button onClick={handleViewGroup}>view group</button>
-    </div>
-    <div className="expenseDetails">
-        <h1>Expense:</h1>
-        <select>
-            
-            <option value="expense1">expense 1</option>
-            <option value="expense2">expense 2</option>
-            <option value="expense3">expense 3</option>
-        </select>
-        <button onClick={handleViewExpense}>view expense</button>
-    </div>
-    </div>)
-}
+        return;
+    };
 
-export default Group
+    return (
+        <div className="groupContainer">
+            <div className="groupDetails">
+                <img src={img_url}></img>
+                <h1>{name}</h1>
+                <div className="groupTypeContainer">
+                    <p className="groupType">{type}</p>
+                </div>
+                <button onclick={handleViewGroup}>view group</button>
+            </div>
+            <div className="expenseDetails">
+                <h1>Expense:</h1>
+                <select>
+                    <option value="expense1">expense 1</option>
+                    <option value="expense2">expense 2</option>
+                    <option value="expense3">expense 3</option>
+                </select>
+                <button onclick={handleViewExpense}>view expense</button>
+            </div>
+        </div>
+    );
+};
+
+export default Group;
