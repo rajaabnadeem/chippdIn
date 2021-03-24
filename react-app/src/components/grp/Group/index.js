@@ -1,28 +1,42 @@
-import React from "react"
+import React, { useEffect } from "react"
 import "./Group.css"
 import {useSelector, useDispatch} from "react-redux"
+import { getExpenses } from "../../../store/expenses"
 
 const Group = () => {
-const handleViewGroup = () => {
-    return
-}
-const handleViewExpense = () => {
-    return
-}
+    const dispatch = useDispatch()
+    const user = useSelector((state) => state.session.user);
+    const expenses = useSelector((state) => state.expenses)
+    let userId;
+    if (user) {
+      userId = user.id;
+    }
+
+    useEffect(() => {
+        dispatch(getExpenses(userId, 1))
+    }, [])
+
+    const handleViewGroup = () => {
+        return
+    }
+    const handleViewExpense = () => {
+        return
+    }
     return (<div className="groupContainer">
     <div className="groupDetails">
         <img src="https://thumbs.dreamstime.com/b/gray-man-avatar-design-concept-ai-supported-81256396.jpg"></img>
         <h1>Group name goes here</h1>
-        <button onclick={handleViewGroup}>view group</button>
+        <button onClick={handleViewGroup}>view group</button>
     </div>
     <div className="expenseDetails">
         <h1>Expense:</h1>
         <select>
+            
             <option value="expense1">expense 1</option>
             <option value="expense2">expense 2</option>
             <option value="expense3">expense 3</option>
         </select>
-        <button onclick={handleViewExpense}>view expense</button>
+        <button onClick={handleViewExpense}>view expense</button>
     </div>
     </div>)
 }
