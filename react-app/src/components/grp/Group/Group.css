@@ -1,0 +1,22 @@
+.groupContainer{
+    border: 1px solid black;
+    max-width: 500px;
+    padding: 10px;
+    margin: 10px;
+}
+
+.groupDetails {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+}
+
+.expenseDetails {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+}
+
+.groupDetails > img{
+    width: 100px;
+}
