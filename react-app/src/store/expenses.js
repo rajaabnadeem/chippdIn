@@ -1,15 +1,16 @@
-const LOAD = "expense/load";
-const SET_EXPENSE = "expense/setExpense";
+const LOAD = "expenses/load";
+const SET_EXPENSE = "expenses/setExpense";
 
 export const setExpense = (expense) => ({
   type: SET_EXPENSE,
   payload: expense,
 });
 
-const createExpense = (expenseData) => async (dispatch) => {
-  const { description, amount, date, notes, user_id, group_id } = expenseData;
+export const createExpense = (expenseData) => async (dispatch) => {
+  let { description, amount, date, notes, user_id, group_id } = expenseData;
+  group_id = 1 
   const response = await fetch(
-    `/api/users/${user_id}/groups/${group_id}/expense`,
+    `/api/users/${user_id}/groups/${group_id}/expense/`,
     {
       method: "POST",
       headers: {
@@ -32,7 +33,7 @@ const createExpense = (expenseData) => async (dispatch) => {
 
 const initialState = {};
 
-const expenseReducer = (state = initialState, action) => {
+const expensesReducer = (state = initialState, action) => {
   let newState = JSON.parse(JSON.stringify(state));
   switch (action.type) {
     case LOAD:
@@ -46,4 +47,4 @@ const expenseReducer = (state = initialState, action) => {
   }
 };
 
-export default expenseReducer;
+export default expensesReducer;
