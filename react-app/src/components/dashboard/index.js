@@ -8,13 +8,14 @@ const Dashboard = ({}) => {
     const sessionGroups = useSelector((state) => state.session.groups);
 
     return (
-        <div className="container">
-            <div className="left"></div>
-            <div className="center">
-                <div>
+        <div className="dashboard-container">
+            <div className="left-dash"></div>
+            <div className="center-dash">
+                <div className="groups-container">
                     {sessionGroups &&
                         sessionGroups.foreach((group) => (
                             <Group
+                                className="group-component"
                                 name={group.name}
                                 type={group.type}
                                 img_url={group.img_url}
@@ -22,7 +23,7 @@ const Dashboard = ({}) => {
                         ))}
                 </div>
             </div>
-            <div className="right"></div>
+            <div className="right-dash"></div>
         </div>
     );
 };

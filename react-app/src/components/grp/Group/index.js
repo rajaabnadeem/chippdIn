@@ -1,11 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Redirect, useHistory, NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import './Group.css';
+import { getExpenses } from '../../../store/expenses';
 
 const Group = ({ name, img_url, type }) => {
     const dispatch = useDispatch();
-    const sessionGroups = useSelector((state) => state.session.groups);
+    const user = useSelector((state) => state.session.user);
+    const expenses = useSelector((state) => state.expenses);
+    let userId;
+    if (user) {
+        userId = user.id;
+    }
+
+    useEffect(() => {
+        dispatch(getExpenses(userId, 1));
+    }, []);
 
     const handleViewGroup = () => {
         return;
@@ -13,6 +23,7 @@ const Group = ({ name, img_url, type }) => {
     const handleViewExpense = () => {
         return;
     };
+
     return (
         <div className="groupContainer">
             <div className="groupDetails">

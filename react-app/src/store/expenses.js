@@ -11,11 +11,11 @@ export const loadExpenses = (expenses) => ({
   payload: expenses,
 })
 
-// export const getExpense = () => async(dispatch) => {
-//   const response = await fetch(`/api/users/${user_id}/groups/${group_id}/expenses`)
-//   const data = response.json()
-//   return dispatch(loadExpense(data))
-// }
+export const getExpenses = (user_id, group_id) => async(dispatch) => {
+  const response = await fetch(`/api/users/${user_id}/groups/${group_id}/expenses`)
+  const data = await response.json()
+  return dispatch(loadExpenses(data))
+}
 
 export const createExpense = (expenseData) => async (dispatch) => {
   let { description, amount, date, notes, user_id, group_id } = expenseData;
@@ -47,7 +47,9 @@ const expensesReducer = (state = initialState, action) => {
   let newState = JSON.parse(JSON.stringify(state));
   switch (action.type) {
     case LOAD:
-      console.log(action.payload)
+      for(let expenses in action.payload){
+        newState[expenses.id] = expenses
+      }
       return newState;
 
     case SET_EXPENSE:

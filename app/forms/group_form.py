@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import SelectFeild, StringField, DateField, IntegerField, SubmitField, TextAreaField
+from wtforms import SelectField, StringField, DateField, IntegerField, SubmitField, TextAreaField
 from wtforms.validators import DataRequired
 
 
@@ -9,6 +9,6 @@ class GroupForm(FlaskForm):
                ('Vacation', 'Vacation'), ('Other', 'Other')]
 
     name = StringField('Name', [DataRequired()])
-    type = SelectFeild('Type', choices=choices)
+    type = SelectField('Type', choices=choices)
     img_url = StringField('Group Photo')
     submit = SubmitField('Create Group')
