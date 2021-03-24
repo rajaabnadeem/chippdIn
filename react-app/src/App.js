@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
+import ExpenseForm from './components/exp/ExpenseForm';
 import NavBar from './components/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
@@ -58,6 +59,15 @@ function App() {
                 >
                     <User />
                 </ProtectedRoute>
+
+                <ProtectedRoute
+                    path="/users/:userId/expenses/expense-form"
+                    exact={true}
+                    authenticated={authenticated}
+                >
+                    <ExpenseForm />
+                </ProtectedRoute>
+
                 <ProtectedRoute
                     path="/"
                     exact={true}
