@@ -32,7 +32,7 @@ def createExpense(group_id, user_id):
 
 @expense_routes.route('/')
 def getExpenses(group_id, user_id):
-    expenses = Expense.query.filter(Expense.group_id == group_id).all()
+    expenses = Expense.query.all()
     expenseDict = {}
     for expense in expenses:
         expenseDict[expense.id] = expense.to_dict()
