@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import './Group.css';
 import { getExpenses } from '../../store/expenses';
 
-const Group = ({ name, img_url, type }) => {
+const Group = ({ groupName, groupType, imgUrl }) => {
     const dispatch = useDispatch();
     const user = useSelector((state) => state.session.user);
     const expenses = useSelector((state) => state.expenses);
@@ -27,10 +27,10 @@ const Group = ({ name, img_url, type }) => {
     return (
         <div className="groupContainer">
             <div className="groupDetails">
-                <img src={img_url}></img>
-                <h1>{name}</h1>
+                <img src={imgUrl}></img>
+                <h1>{groupName}</h1>
                 <div className="groupTypeContainer">
-                    <p className="groupType">{type}</p>
+                    <p className="groupType">{groupType}</p>
                 </div>
                 <button onclick={handleViewGroup}>view group</button>
             </div>

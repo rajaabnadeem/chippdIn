@@ -9,12 +9,12 @@ group_routes = Blueprint('groups', __name__)
 @group_routes.route('/')
 def getGroups(user_id):
     userGroups = UserGroup.query.filter(UserGroup.user_id == user_id).all()
-    groups = []
+    groupsDict = {}
     for group in userGroups:
         newGroup = Group.query.find(
             Group.id == group.group_id)
-        groups.append(newGroup.to_dict())
-    return groups
+        groupsDict[newGroup.id] = newGroup.to_dict()
+    return groupsDict
 
 
 @group_routes.route('/', methods=['POST'])
@@ -23,6 +23,12 @@ def createGroup(user_id):
     group = Group()
     form.populate_obj(group)
     db.session.add(group)
+    db.session.commit()
+    userGroup = UserGroup()
+    groupDict = group.to_dict()
+    userGroup.group_id = groupDict['id']
+    userGroup.user_id = user_id
+    db.session.add(userGroup)
     db.session.commit()
     return group.to_dict()
 

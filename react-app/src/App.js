@@ -3,16 +3,12 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
-import ExpenseForm from './components/Expense/ExpenseForm';
-import ExpenseDetails from './components/Expense/ExpenseDetails';
-import Group from './components/Group';
 import NavBar from './components/NavBar';
-import ProtectedRoute from './components/auth/ProtectedRoute';
-import UsersList from './components/UsersList';
-import User from './components/User';
 import Dashboard from './components/dashboard';
+import LandingPage from './components/LandingPage';
 import { authenticate } from './store/session';
 import * as sessionActions from './store/session';
+import * as groupActions from './store/groups';
 import './index.css';
 
 function App() {
@@ -24,6 +20,7 @@ function App() {
         const user = await authenticate();
         if (!user.errors) {
             dispatch(sessionActions.restoreUser());
+            dispatch(groupActions.getUserGroups(user.id));
             setAuthenticated(true);
         }
         setLoaded(true);
@@ -37,23 +34,11 @@ function App() {
         <>
             <NavBar setAuthenticated={setAuthenticated} />
             <Switch>
-                {/*route for testing groups, temporary */}
-                <ProtectedRoute
-                    path="/groups"
-                    exact={true}
-                    authenticated={authenticated}
-                >
-                    <Group />
-                    <ExpenseDetails />
-                </ProtectedRoute>
                 <Route path="/login" exact={true}>
                     <LoginForm
                         authenticated={authenticated}
                         setAuthenticated={setAuthenticated}
                     />
-                </Route>
-                <Route path="/dashboard">
-                    <Dashboard />
                 </Route>
                 <Route path="/sign-up" exact={true}>
                     <SignUpForm
@@ -61,36 +46,13 @@ function App() {
                         setAuthenticated={setAuthenticated}
                     />
                 </Route>
-                <ProtectedRoute
-                    path="/users"
-                    exact={true}
-                    authenticated={authenticated}
-                >
-                    <UsersList />
-                </ProtectedRoute>
-                <ProtectedRoute
-                    path="/users/:userId"
-                    exact={true}
-                    authenticated={authenticated}
-                >
-                    <User />
-                </ProtectedRoute>
-
-                <ProtectedRoute
-                    path="/expenses/expense-form"
-                    exact={true}
-                    authenticated={authenticated}
-                >
-                    <ExpenseForm />
-                </ProtectedRoute>
-
-                <ProtectedRoute
-                    path="/"
-                    exact={true}
-                    authenticated={authenticated}
-                >
-                    <h1>My Home Page</h1>
-                </ProtectedRoute>
+                <Route path="/dashboard">
+                    <Dashboard />
+                </Route>
+                <Route path="/" exact={true} authenticated={authenticated}>
+                    <LandingPage />
+                </Route>
+                <Route>Page Not Found</Route>
             </Switch>
         </>
     );

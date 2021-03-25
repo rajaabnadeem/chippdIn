@@ -7,20 +7,21 @@ export const setGroup = (group) => ({
 });
 
 export const getUserGroups = (id) => async (dispatch) => {
-    const res = await fetch(`/api/groups/${id}`);
+    const res = await fetch(`/api/users/${id}/groups/`);
     const groups = await res.json();
-    dispatch(setGroup(groups));
-    return groups;
+    for (let group in groups) {
+        dispatch(setGroup(group));
+    }
 };
 
 export const createGroup = (groupData, id) => async (dispatch) => {
     // const { name, type } = groupData;
     const res = await fetch(`/api/users/${id}/groups/`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(groupData),
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(groupData),
     });
     const data = await res.json();
     dispatch(setGroup(data));
@@ -43,10 +44,11 @@ export const editGroup = (groupData, id) => async (dispatch) => {
 const initialState = {};
 
 const groupsReducer = (state = initialState, action) => {
-    let newState;
+    let newState = JSON.parse(JSON.stringify(state));
     switch (action.type) {
         case SET_GROUP:
-            return { ...state, ...action.payload };
+            newState[action.payload.id] = action.payload;
+            return newState;
         default:
             return state;
     }
