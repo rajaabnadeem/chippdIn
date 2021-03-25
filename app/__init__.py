@@ -44,7 +44,6 @@ app.register_blueprint(
     group_routes, url_prefix='/api/users/<user_id>/groups/')
 
 app.register_blueprint(comment_routes, url_prefix='/api/expenses/<expense_id>/comments')
-=======
 app.register_blueprint(
     transaction_routes, url_prefix='/api/users/${user_id}/groups/${group_id}/transactions/'
 )
