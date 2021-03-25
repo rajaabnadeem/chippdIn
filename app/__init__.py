@@ -42,7 +42,7 @@ app.register_blueprint(
 app.register_blueprint(
     group_routes, url_prefix='/api/users/<user_id>/groups/')
 app.register_blueprint(
-    '/api/users/${user_id}/groups/${group_id}/transactions/'
+    transaction_routes, url_prefix='/api/users/${user_id}/groups/${group_id}/transactions/'
 )
 db.init_app(app)
 Migrate(app, db)

@@ -65,7 +65,16 @@ const Group = ({ groupId }) => {
                             ) : null
                         )}
                     </select>
-                    <button onclick={handleViewExpense}>view expense</button>
+                    <div>
+                        <button onclick={handleViewExpense}>
+                            view expense
+                        </button>
+                    </div>
+                    <div>
+                        <button onclick={toggleTransactions}>
+                            view transaction
+                        </button>
+                    </div>
                 </div>
             </div>
         );
