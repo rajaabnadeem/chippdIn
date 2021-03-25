@@ -1,0 +1,35 @@
+
+* {
+    margin: 0
+}
+
+.container__navbar {
+    background: rgb(86, 146, 86);
+    display: inline-block;
+    width: 100%;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: larger;
+  }
+
+  .container__navbar a:hover {
+    color: #000000;
+    position: sticky;
+    background: lightgreen;
+  }
+
+  .container__navbar a {
+    color: #ffffff;
+    background: rgb(86, 146, 86);
+    margin-right: 20px;
+  }
+
+  .navbar__links {
+        display:flex;
+        flex-direction: row;
+        padding: 8px 0px;
+  }
+
+  .dropdown {
+      display: flex;
+      flex-direction: end;
+  }
