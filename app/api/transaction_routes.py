@@ -15,13 +15,14 @@ def getTransactions(group_id):
     for expense in expenses:
         trans = Transaction.query.filter(
             Transaction.expense_id == exp.id).all()
-        for trans
-        result[i] = {
-            "description": expense.description,
-            "transactionAmount": transaction.amount,
-            "date": expense.date,
-            "getter": expense.user_id,
-            'sender': transaction.user_id,
-            'paid': transaction.paid
+        for tran in trans{
+            result[i] = {
+                "description": expense.description,
+                "transactionAmount": tran.amount,
+                "date": expense.date,
+                "getter": expense.user_id,
+                'sender': tran.user_id,
+                'paid': tran.paid
+            }
         }
     return result
