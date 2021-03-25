@@ -1,0 +1,36 @@
+.footer {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+    "line1 devs"
+    "line2 devs";
+    border: 1px solid black;
+    padding: 20px 50px;
+}
+
+.line1,
+.line2 {
+    margin: auto 0;
+}
+.devContainer {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    grid-area: devs;
+    margin-left: auto;
+    background-color: black;
+    row-gap: 2px;
+    column-gap: 1px;
+}
+.dev {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding: 20px;
+    background-color: white;
+}
+
+.dev >  * {
+    margin: 0 10px;
+}
