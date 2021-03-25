@@ -15,6 +15,7 @@ def getTransactions(group_id):
     for expense in expenses:
         trans = Transaction.query.filter(
             Transaction.expense_id == exp.id).all()
+        for trans
         result[i] = {
             "description": expense.description,
             "transactionAmount": transaction.amount,
