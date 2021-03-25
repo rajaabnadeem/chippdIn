@@ -6,6 +6,7 @@ import { NavLink } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
+
 const Transactions = ({ transactions, group }) => {
     const dispatch = useDispatch();
     const history = useHistory();

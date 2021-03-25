@@ -12,10 +12,9 @@ import { getComments } from '../../store/comments'
 const Dashboard = ({}) => {
     const sessionGroups = useSelector((state) => state.groups);
     const dispatch = useDispatch()
-    const dispatch = useDispatch();
     const user = useSelector((state) => state.session.user);
     const groups = useSelector((state) => state.groups);
-  
+
     useEffect(() => {
         return dispatch(getComments())},
         [])
