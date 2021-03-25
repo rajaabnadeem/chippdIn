@@ -60,7 +60,6 @@ class Group(db.Model):
             "name": self.name,
             "type": self.type,
             "img_url": self.img_url,
-            "user_id": self.user_id,
         }
 
 

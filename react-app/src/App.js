@@ -3,15 +3,12 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
-import ExpenseForm from './components/exp/ExpenseForm';
-import ExpenseDetails from './components/exp/ExpenseDetails';
-import Dashboard from './components/dashboard'
-import Group from './components/grp/Group';
-import Footer from './components/Footer'
+import LandingPage from './components/LandingPage';
+import Dashboard from './components/dashboard';
+import Transactions from './components/Transactions';
+import Footer from './components/Footer';
 import NavBar from './components/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
-import UsersList from './components/UsersList';
-import User from './components/User';
 import { authenticate } from './store/session';
 import * as sessionActions from './store/session';
 import './index.css';
@@ -35,57 +32,47 @@ function App() {
     }
 
     return (
-      <>
-        <NavBar setAuthenticated={setAuthenticated} />
-        <Switch>
+        <>
+            <NavBar setAuthenticated={setAuthenticated} />
+            <Switch>
+                <Route path="/login" exact={true}>
+                    <LoginForm
+                        authenticated={authenticated}
+                        setAuthenticated={setAuthenticated}
+                    />
+                </Route>
+                <Route path="/sign-up" exact={true}>
+                    <SignUpForm
+                        authenticated={authenticated}
+                        setAuthenticated={setAuthenticated}
+                    />
+                </Route>
 
-          <Route path="/login" exact={true}>
-            <LoginForm
-              authenticated={authenticated}
-              setAuthenticated={setAuthenticated}
-            />
-          </Route>
-          <Route path="/sign-up" exact={true}>
-            <SignUpForm
-              authenticated={authenticated}
-              setAuthenticated={setAuthenticated}
-            />
-          </Route>
-          <ProtectedRoute
-            path="/users"
-            exact={true}
-            authenticated={authenticated}
-          >
-            <UsersList />
-          </ProtectedRoute>
-          <ProtectedRoute
-            path="/users/:userId"
-            exact={true}
-            authenticated={authenticated}
-          >
-            <User />
-          </ProtectedRoute>
+                <ProtectedRoute
+                    path="/dashboard"
+                    exact={true}
+                    authenticated={authenticated}
+                >
+                    <Dashboard />
+                </ProtectedRoute>
+                <ProtectedRoute
+                    path="/transactions"
+                    exact={true}
+                    authenticated={authenticated}
+                >
+                    <Transactions />
+                </ProtectedRoute>
 
-          <ProtectedRoute
-            path="/expenses/expense-form"
-            exact={true}
-            authenticated={authenticated}
-          >
-            <ExpenseForm />
-          </ProtectedRoute>
-
-          <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
-            <h1>My Home Page</h1>
-          </ProtectedRoute>
-          <ProtectedRoute 
-             path="/dashboard" 
-             exact={true} 
-             authenticated={authenticated}>
-            <Dashboard />
-          </ProtectedRoute>
-        </Switch>
-        <Footer />
-      </>
+                <ProtectedRoute
+                    path="/"
+                    exact={true}
+                    authenticated={authenticated}
+                >
+                    <LandingPage />
+                </ProtectedRoute>
+            </Switch>
+            <Footer />
+        </>
     );
 }
 

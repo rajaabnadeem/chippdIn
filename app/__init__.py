@@ -37,9 +37,9 @@ app.config.from_object(Config)
 app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(
-    expense_routes, url_prefix='/api/users/<user_id>/groups/<group_id>/expenses')
+    expense_routes, url_prefix='/api/users/<user_id>/groups/<group_id>/expenses/')
 app.register_blueprint(
-    group_routes, url_prefix='/api/users/<user_id>/groups/<group_id>')
+    group_routes, url_prefix='/api/users/<user_id>/groups/')
 db.init_app(app)
 Migrate(app, db)
 
