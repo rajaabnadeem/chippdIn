@@ -4,55 +4,26 @@ import { useDispatch, useSelector } from 'react-redux';
 import './Group.css';
 import { getExpenses } from '../../../store/expenses';
 import Transactions from '../../Transactions';
+import groupsReducer from '../../../store/groups';
 
-const Group = ({ name, img_url, type }) => {
+const Group = ({ groupId }) => {
     const dispatch = useDispatch();
-    const [sortColumn, setSortColumn] = useState('');
-    const [data, setData] = useState([]);
-    const [loading, setLoading] = useState(false);
-    const [sortType, setSortType] = useState('asc');
-    const [item, setItem] = useState('');
     const [showTransactions, setShowTransactions] = useState(false);
 
     const user = useSelector((state) => state.session.user);
-    const expenses = useSelector((state) => state.expenses);
-    const transactionsss = useSelector((state) => state.transactions);
-    const transaction = Object.values(transactionsss);
+    const groups = useSelector((state) => state.groups); //object
+    const expenses = useSelector((state) => state.expenses); // object
+    const transactions = useSelector((state) => state.transactions); // object
+    const transactionsArray = Object.values(transactions); // array of objs
+    const expensesArray = Object.values(expenses); // array of objs
+    const currGroup = Object.values(groups).map(
+        (group) => group.id === groupId
+    ); //obj
 
     const toggleTransactions = () => {
         showTransactions
             ? setShowTransactions(false)
             : setShowTransactions(true);
-    };
-
-    const getData = () => {
-        if (sortColumn && sortType) {
-            return data.sort((a, b) => {
-                let n = a[sortColumn];
-                let s = b[sortColumn];
-                if (typeof n === 'string') {
-                    n = n.charCodeAt(0);
-                }
-                if (typeof s === 'string') {
-                    s = s.charCodeAt(0);
-                }
-                if (sortType === 'asc') {
-                    return n - s;
-                } else {
-                    return s - n;
-                }
-            });
-        }
-        return data;
-    };
-
-    const fakeLoader = (sortColumn, sortType) => {
-        setLoading(true);
-        setTimeout(() => {
-            setSortColumn(sortColumn);
-            setSortType(sortType);
-            setLoading(false);
-        }, 500);
     };
 
     let userId;
@@ -72,14 +43,14 @@ const Group = ({ name, img_url, type }) => {
     };
     const group_id = 2;
 
-    if (showTransactions) {
+    if (!showTransactions) {
         return (
             <div className="groupContainer">
                 <div className="groupDetails">
-                    <img src={img_url}></img>
-                    <h1>{name}</h1>
+                    <img src={currGroup.img_url}></img>
+                    <h1>{currGroup.name}</h1>
                     <div className="groupTypeContainer">
-                        <p className="groupType">{type}</p>
+                        <p className="groupType">{currGroup.type}</p>
                     </div>
                     <button onclick={handleViewGroup}>view group</button>
                 </div>
@@ -99,7 +70,11 @@ const Group = ({ name, img_url, type }) => {
             </div>
         );
     } else {
-        return <div className="transactionContainer"></div>;
+        return (
+            <div className="transactionContainer">
+                <Transactions transactions={transactionsArray} />
+            </div>
+        );
     }
 };
 
