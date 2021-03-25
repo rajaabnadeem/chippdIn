@@ -1,8 +1,8 @@
-"""please
+"""new seeders
 
-Revision ID: 1194e2992368
+Revision ID: 2e8d3ad50e6c
 Revises: 
-Create Date: 2021-03-22 18:51:39.367433
+Create Date: 2021-03-25 17:00:42.738178
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '1194e2992368'
+revision = '2e8d3ad50e6c'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -68,6 +68,7 @@ def upgrade():
     op.create_table('transactions',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('amount', sa.Numeric(precision=20, scale=2), nullable=False),
+    sa.Column('paid', sa.Boolean(), nullable=True),
     sa.Column('user_id', sa.Integer(), nullable=True),
     sa.Column('expense_id', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['expense_id'], ['expenses.id'], ),

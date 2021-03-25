@@ -107,6 +107,7 @@ class Transaction(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     amount = db.Column(db.Numeric(20, 2), nullable=False)
+    paid = db.Column(db.Boolean, default=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     expense_id = db.Column(db.Integer, db.ForeignKey('expenses.id'))
 
@@ -117,6 +118,7 @@ class Transaction(db.Model):
         return {
             "id": self.id,
             "amount": self.amount,
+            "paid": self.paid,
             "user_id": self.user_id,
             "expense_id": self.expense_id
         }
