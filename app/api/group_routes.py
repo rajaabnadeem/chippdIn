@@ -11,8 +11,9 @@ def getGroups(user_id):
     userGroups = UserGroup.query.filter(UserGroup.user_id == user_id).all()
     groups = []
     for group in userGroups:
-        groups.append(Group.query.find(
-            Group.id == group.group_id).one().to_dict())
+        newGroup = Group.query.find(
+            Group.id == group.group_id)
+        groups.append(newGroup.to_dict())
     return groups
 
 

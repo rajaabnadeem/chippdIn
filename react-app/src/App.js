@@ -10,7 +10,7 @@ import NavBar from './components/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
-import Dashboard from './components/Dashboard'
+import Dashboard from './components/dashboard';
 import { authenticate } from './store/session';
 import * as sessionActions from './store/session';
 import './index.css';
@@ -38,7 +38,11 @@ function App() {
             <NavBar setAuthenticated={setAuthenticated} />
             <Switch>
                 {/*route for testing groups, temporary */}
-                <ProtectedRoute path="/groups" exact={true} authenticated={authenticated}>
+                <ProtectedRoute
+                    path="/groups"
+                    exact={true}
+                    authenticated={authenticated}
+                >
                     <Group />
                     <ExpenseDetails />
                 </ProtectedRoute>
@@ -48,8 +52,8 @@ function App() {
                         setAuthenticated={setAuthenticated}
                     />
                 </Route>
-                <Route path='/dashboard'>
-                    <Dashboard/>
+                <Route path="/dashboard">
+                    <Dashboard />
                 </Route>
                 <Route path="/sign-up" exact={true}>
                     <SignUpForm

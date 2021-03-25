@@ -59,8 +59,6 @@ class Group(db.Model):
             "id": self.id,
             "name": self.name,
             "type": self.type,
-            "img_url": self.img_url,
-            "user_id": self.user_id,
         }
 
 
