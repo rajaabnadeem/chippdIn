@@ -12,6 +12,7 @@ from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
 from .api.expense_routes import expense_routes
 from .api.group_routes import group_routes
+from .api.comment_routes import comment_routes
 from .api.transaction_routes import transaction_routes
 
 from .seeds import seed_commands
@@ -41,9 +42,13 @@ app.register_blueprint(
     expense_routes, url_prefix='/api/users/<user_id>/groups/<group_id>/expenses/')
 app.register_blueprint(
     group_routes, url_prefix='/api/users/<user_id>/groups/')
+
+app.register_blueprint(comment_routes, url_prefix='/api/expenses/<expense_id>/comments')
+=======
 app.register_blueprint(
     transaction_routes, url_prefix='/api/users/${user_id}/groups/${group_id}/transactions/'
 )
+
 db.init_app(app)
 Migrate(app, db)
 
