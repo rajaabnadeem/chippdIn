@@ -5,9 +5,15 @@ import Group from '../grp/Group';
 import NewGroup from '../grp/NewGroup';
 import ExpenseForm from '../exp/ExpenseForm';
 import ExpenseDetails from '../exp/ExpenseDetails';
+import { getComments } from '../../store/comments'
 
 const Dashboard = ({}) => {
     const sessionGroups = useSelector((state) => state.groups);
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        return dispatch(getComments())},
+        [])
 
     return (
         <div className="dashboard-container">

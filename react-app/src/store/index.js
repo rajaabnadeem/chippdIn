@@ -3,11 +3,13 @@ import thunk from 'redux-thunk';
 import sessionReducer from './session';
 import expensesReducer from './expenses';
 import groupsReducer from './groups';
+import commentsReducer from './comments'
 
 const rootReducer = combineReducers({
     session: sessionReducer,
     expenses: expensesReducer,
     groups: groupsReducer,
+    comments: commentsReducer
 });
 
 let enhancer;
