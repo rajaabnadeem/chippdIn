@@ -6,8 +6,8 @@ export const setGroup = (group) => ({
     payload: group,
 });
 
-export const getUserGroups = (id) => async (dispatch) => {
-    const res = await fetch(`/api/users/${id}/groups/`);
+export const getUserGroups = (user_id) => async (dispatch) => {
+    const res = await fetch(`/api/users/${user_id}/groups/`);
     const groups = await res.json();
     for (let group in groups) {
         dispatch(setGroup(group));

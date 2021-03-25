@@ -8,7 +8,7 @@ transaction_routes = Blueprint('transactions', __name__)
 
 
 @transaction_routes.route('/')
-def getTransactions(group_id):
+def getTransactions(user_id, group_id):
     expenses = Expense.query.filter(Expense.group_id == group_id).all()
     result = {}
     i = 0

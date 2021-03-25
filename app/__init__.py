@@ -43,10 +43,11 @@ app.register_blueprint(
 app.register_blueprint(
     group_routes, url_prefix='/api/users/<user_id>/groups/')
 
-app.register_blueprint(comment_routes, url_prefix='/api/expenses/<expense_id>/comments')
-=======
 app.register_blueprint(
-    transaction_routes, url_prefix='/api/users/${user_id}/groups/${group_id}/transactions/'
+    comment_routes, url_prefix='/api/expenses/<expense_id>/comments')
+
+app.register_blueprint(
+    transaction_routes, url_prefix='/api/users/<user_id>/groups/<group_id>/transactions/'
 )
 
 db.init_app(app)

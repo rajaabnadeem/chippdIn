@@ -4,12 +4,9 @@ import { useDispatch } from 'react-redux';
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
 import LandingPage from './components/LandingPage';
-import Dashboard from './components/Dashboard';
-import Transactions from './components/Transactions';
-import Footer from './components/Footer';
-import Comment from './components/cmt/Comment'
-import CommentContainer from './components/cmt/CommentContainer'
-// import NavBar from './components/NavBar';
+import Dashboard from './components/dashboard';
+
+import NavBar from './components/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import { authenticate } from './store/session';
 import * as sessionActions from './store/session';
@@ -35,12 +32,7 @@ function App() {
 
     return (
         <>
-        {/* {Temporary routes for comments go here} */}
-            <Route path = '/comment'>
-                {/* <Comment /> */}
-                <CommentContainer />
-            </Route>
-            {/* <NavBar setAuthenticated={setAuthenticated} /> */}
+            <NavBar setAuthenticated={setAuthenticated} />
             <Switch>
                 <Route path="/login" exact={true}>
                     <LoginForm
@@ -61,13 +53,6 @@ function App() {
                     authenticated={authenticated}
                 >
                     <Dashboard />
-                </ProtectedRoute>
-                <ProtectedRoute
-                    path="/transactions"
-                    exact={true}
-                    authenticated={authenticated}
-                >
-                    <Transactions />
                 </ProtectedRoute>
 
                 <ProtectedRoute

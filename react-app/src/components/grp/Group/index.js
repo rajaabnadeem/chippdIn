@@ -36,10 +36,6 @@ const Group = ({ group }) => {
         return;
     };
 
-    if (showTransactions) {
-        dispatch(getTransactions(userId, group.id));
-    }
-
     if (!showTransactions) {
         return (
             <div className="groupContainer">

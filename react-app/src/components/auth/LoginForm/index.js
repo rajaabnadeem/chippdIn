@@ -22,7 +22,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
         const user = await dispatch(sessionActions.login({ email, password }));
         if (!user.payload.errors) {
             setAuthenticated(true);
-            history.push('/');
+            history.push('/dashboard');
         } else {
             setErrors(user.payload.errors);
         }
