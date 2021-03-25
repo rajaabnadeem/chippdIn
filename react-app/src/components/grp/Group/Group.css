@@ -1,8 +1,9 @@
-.groupContainer{
+.groupContainer {
     border: 1px solid black;
     max-width: 500px;
     padding: 10px;
     margin: 10px;
+    height: 200px;
 }
 
 .groupDetails {
@@ -17,6 +18,6 @@
     margin: 10px;
 }
 
-.groupDetails > img{
+.groupDetails > img {
     width: 100px;
 }

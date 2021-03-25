@@ -37,7 +37,7 @@ const Dashboard = ({}) => {
                                 value={group.name}
                                 key={group.id}
                                 className="group-component"
-                                groupId={group.id}
+                                group={group}
                             />
                         ))}
                 </div>
