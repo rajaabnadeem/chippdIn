@@ -5,15 +5,29 @@ import Group from '../grp/Group';
 import NewGroup from '../grp/NewGroup';
 import ExpenseForm from '../exp/ExpenseForm';
 import ExpenseDetails from '../exp/ExpenseDetails';
+import Transactions from '../Transactions';
+import { getUserGroups } from '../../store/groups';
 import { getComments } from '../../store/comments'
 
 const Dashboard = ({}) => {
     const sessionGroups = useSelector((state) => state.groups);
     const dispatch = useDispatch()
-
+    const dispatch = useDispatch();
+    const user = useSelector((state) => state.session.user);
+    const groups = useSelector((state) => state.groups);
+  
     useEffect(() => {
         return dispatch(getComments())},
         [])
+
+    let userId;
+    if (user) {
+        userId = user.id;
+    }
+
+    useEffect(() => {
+        dispatch(getUserGroups(userId));
+    }, []);
 
     return (
         <div className="dashboard-container">
@@ -24,15 +38,13 @@ const Dashboard = ({}) => {
             <div className="center-dash">
                 <h1>GROUP CONTAINERS</h1>
                 <div className="groups-container">
-                    {sessionGroups &&
-                        Object.keys(sessionGroups).map((group, idx) => (
+                    {groups &&
+                        Object.values(groups).map((group) => (
                             <Group
-                                value={group}
-                                key={idx}
+                                value={group.name}
+                                key={group.id}
                                 className="group-component"
-                                groupName={group.name}
-                                groupType={group.type}
-                                imgUrl={group.img_url}
+                                groupId={group.id}
                             />
                         ))}
                 </div>
