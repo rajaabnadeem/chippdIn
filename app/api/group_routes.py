@@ -18,7 +18,7 @@ def getGroups(user_id):
 
 
 @group_routes.route('/', methods=['POST'])
-def createGroup():
+def createGroup(user_id):
     form = GroupForm()
     group = Group()
     form.populate_obj(group)

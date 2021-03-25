@@ -13,7 +13,7 @@ const NewGroup = () => {
 
     const submit = async (e) => {
         e.preventDefault();
-        await dispatch(groupActions.createGroup({ name, types }, user.id));
+        await dispatch(groupActions.createGroup({ name, type }, user.id));
     };
     return (
         <div>

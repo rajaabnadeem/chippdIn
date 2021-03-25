@@ -7,6 +7,14 @@ from flask import jsonify
 expense_routes = Blueprint('expenses', __name__)
 
 
+@expense_routes.route('/')
+def getExpenses(group_id, user_id):
+    expenses = Expense.query.filter(Expense.group_id == group_id).all()
+    expenseDict = {}
+    for expense in expenses:
+        expenseDict[expense.id] = expense.to_dict()
+    return expenseDict
+    
 @expense_routes.route('/', methods=["POST"])
 def createExpense(group_id, user_id):
     form = ExpenseForm()
@@ -30,12 +38,6 @@ def createExpense(group_id, user_id):
     db.session.commit()
     return created_expense
 
-@expense_routes.route('/')
-def getExpenses(group_id, user_id):
-    expenses = Expense.query.filter(Expense.group_id == group_id).all()
-    expenseDict = {}
-    for expense in expenses:
-        expenseDict[expense.id] = expense.to_dict()
-    return expenseDict
+
 
 

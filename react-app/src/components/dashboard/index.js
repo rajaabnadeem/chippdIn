@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Redirect, useHistory, NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import Group from '../Group';
-
+import NewGroup from '../NewGroup'
 const Dashboard = ({}) => {
     const dispatch = useDispatch();
     const sessionGroups = useSelector((state) => state.groups);
@@ -12,6 +12,7 @@ const Dashboard = ({}) => {
             <div className="left-dash"></div>
             <div className="center-dash">
                 <div className="groups-container">
+                    <NewGroup />
                     {/* {sessionGroups &&
                         sessionGroups.map((group, idx) => (
                             <Group

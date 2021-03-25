@@ -13,14 +13,14 @@ export const getUserGroups = (id) => async (dispatch) => {
     return groups;
 };
 
-export const createGroup = (groupData) => async (dispatch) => {
+export const createGroup = (groupData, id) => async (dispatch) => {
     // const { name, type } = groupData;
-    const res = await fetch(`/api/groups`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(groupData),
+    const res = await fetch(`/api/users/${id}/groups/`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(groupData),
     });
     const data = await res.json();
     dispatch(setGroup(data));
