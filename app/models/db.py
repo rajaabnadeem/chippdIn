@@ -132,3 +132,11 @@ class Comment(db.Model):
 
     users = db.relationship('User', back_populates='comments')
     expenses = db.relationship('Expense', back_populates='comments')
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "comment": self.comment,
+            "user_id": self.user_id,
+            "expense_id": self.expense_id
+        }

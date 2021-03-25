@@ -14,13 +14,13 @@ const CommentContainer = () => {
     if (user) {
       user_id = user.id
     }
-
+    const expense_id = 2
     useEffect(() => {
-        return dispatch(getComments(user_id))},
+        return dispatch(getComments(expense_id))},
         [])
 
     return (
-        commentArr.map(comment => (
+        comments.map(comment => (
             <Comment comment={comment.comment}
              first_name={comment.first_name}
              last_name={comment.last_name}/>
