@@ -6,7 +6,7 @@ import { NavLink } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
-const Transactions = ({ transactions }) => {
+const Transactions = ({ transactions, group }) => {
     const dispatch = useDispatch();
     const history = useHistory();
     const [sortColumn, setSortColumn] = useState('');
@@ -56,6 +56,7 @@ const Transactions = ({ transactions }) => {
             <Table
                 data={getData()}
                 height={200}
+                width={500}
                 sortColumn={sortColumn}
                 sortType={sortType}
                 onSortColumn={fakeLoader}

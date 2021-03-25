@@ -5,20 +5,18 @@ import './Group.css';
 import { getExpenses } from '../../../store/expenses';
 import Transactions from '../../Transactions';
 import groupsReducer from '../../../store/groups';
+import { getTransactions } from '../../../store/transactions';
 
-const Group = ({ groupId }) => {
+const Group = ({ group }) => {
     const dispatch = useDispatch();
     const [showTransactions, setShowTransactions] = useState(false);
 
     const user = useSelector((state) => state.session.user);
-    const groups = useSelector((state) => state.groups); //object
+
     const expenses = useSelector((state) => state.expenses); // object
     const transactions = useSelector((state) => state.transactions); // object
     const transactionsArray = Object.values(transactions); // array of objs
     const expensesArray = Object.values(expenses); // array of objs
-    const currGroup = Object.values(groups).map(
-        (group) => group.id === groupId
-    ); //obj
 
     const toggleTransactions = () => {
         showTransactions
@@ -31,34 +29,33 @@ const Group = ({ groupId }) => {
         userId = user.id;
     }
 
-    useEffect(() => {
-        dispatch(getExpenses(userId, 1));
-    }, []);
-
     const handleViewGroup = () => {
         return;
     };
     const handleViewExpense = () => {
         return;
     };
-    const group_id = 2;
+
+    if (showTransactions) {
+        dispatch(getTransactions(userId, group.id));
+    }
 
     if (!showTransactions) {
         return (
             <div className="groupContainer">
                 <div className="groupDetails">
-                    <img src={currGroup.img_url}></img>
-                    <h1>{currGroup.name}</h1>
+                    <img src={group.img_url}></img>
+                    <h1>{group.name}</h1>
                     <div className="groupTypeContainer">
-                        <p className="groupType">{currGroup.type}</p>
+                        <p className="groupType">{group.type}</p>
                     </div>
-                    <button onclick={handleViewGroup}>view group</button>
+                    <button onClick={handleViewGroup}>view group</button>
                 </div>
                 <div className="expenseDetails">
                     <h1>Expense:</h1>
                     <select>
                         {Object.entries(expenses).map(([key, value]) =>
-                            value.group_id === group_id ? (
+                            value.group_id === group.id ? (
                                 <option key={key} value={`${key}`}>
                                     {value.description}
                                 </option>
@@ -66,12 +63,12 @@ const Group = ({ groupId }) => {
                         )}
                     </select>
                     <div>
-                        <button onclick={handleViewExpense}>
+                        <button onClick={handleViewExpense}>
                             view expense
                         </button>
                     </div>
                     <div>
-                        <button onclick={toggleTransactions}>
+                        <button onClick={toggleTransactions}>
                             view transaction
                         </button>
                     </div>
@@ -81,7 +78,10 @@ const Group = ({ groupId }) => {
     } else {
         return (
             <div className="transactionContainer">
-                <Transactions transactions={transactionsArray} />
+                <Transactions transactions={transactionsArray} group={group} />
+                <div>
+                    <button onClick={toggleTransactions}>{'< back'}</button>
+                </div>
             </div>
         );
     }
