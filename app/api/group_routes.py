@@ -8,12 +8,17 @@ group_routes = Blueprint('groups', __name__)
 
 @group_routes.route('/')
 def getGroups(user_id):
-    userGroups = UserGroup.query.filter(UserGroup.user_id == user_id).all()
+    userGroups = UserGroup.query.join(Group).filter(UserGroup.user_id == user_id).all()
     groupsDict = {}
-    for group in userGroups:
-        newGroup = Group.query.find(
-            Group.id == group.group_id)
-        groupsDict[newGroup.id] = newGroup.to_dict()
+    for userGroup in userGroups:
+        groupsDict[userGroup.group.id] = userGroup.group.to_dict()
+    # userGroups = UserGroup.query.filter(UserGroup.user_id == user_id).all()
+    # groupsDict = {}
+    # for group in userGroups:
+    #     newGroup = Group.query.find(
+    #         Group.id == group.group_id)
+    #     groupsDict[newGroup.id] = newGroup.to_dict()
+    # print (groupsDict)
     return groupsDict
 
 

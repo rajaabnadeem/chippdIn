@@ -25,11 +25,12 @@ const Dashboard = ({}) => {
         userId = user.id;
     }
 
-    useEffect(async () => {
+    useEffect(() => {
+        console.log(userId)
         if (userId) {
-            await dispatch(getUserGroups(user.id));
+            dispatch(getUserGroups(user.id));
         }
-    }, []);
+    }, [dispatch, user]);
 
     return (
         <div className="dashboard-container">

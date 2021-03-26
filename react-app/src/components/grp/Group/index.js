@@ -4,14 +4,29 @@ import './Group.css';
 import Transactions from '../../Transactions';
 import { getTransactions } from '../../../store/transactions';
 import ExpenseForm from '../../exp/ExpenseForm';
+import ExpenseDetails from '../../exp/ExpenseDetails';
+import Modal from 'react-modal';
+import { setExpense } from '../../../store/expenses';
 
 const Group = ({ group }) => {
     const dispatch = useDispatch();
     const [showTransactions, setShowTransactions] = useState(false);
-
+    const [modalIsOpen, setModalIsOpen] = useState(false);
+    const [expense, setExpense] = useState([]);
     const user = useSelector((state) => state.session.user);
     const expenses = useSelector((state) => state.expenses);
     const transactions = useSelector((state) => state.transactions);
+
+    Modal.setAppElement(document.getElementById('root'));
+
+    const style = {
+        overlay: {
+            textAlign: 'center',
+            top: '35px',
+            backgroundColor: 'rgba(0,0, 0, 0.1)',
+            zIndex: '1000',
+        },
+    };
 
     const toggleTransactions = async () => {
         await dispatch(getTransactions(userId, group.id));
@@ -29,11 +44,16 @@ const Group = ({ group }) => {
         dispatch(getTransactions(userId, group.id));
     }, [dispatch]);
 
-    const handleViewGroup = () => {
-        return;
+    const handleExpenses = () => {
+        modalIsOpen ? setModalIsOpen(false) : setModalIsOpen(true);
     };
-    const handleViewExpense = () => {
-        return;
+
+    const exp = (e) => {
+        Object.entries(expenses).map(([key, value]) => {
+            if (key === e.target.value) {
+                setExpense(value);
+            }
+        });
     };
 
     if (!showTransactions) {
@@ -45,11 +65,14 @@ const Group = ({ group }) => {
                     <div className="groupTypeContainer">
                         <p className="groupType">{group.type}</p>
                     </div>
-                    <button onClick={handleViewGroup}>view group</button>
                 </div>
                 <div className="expenseDetails">
                     <h1>Expense:</h1>
-                    <select>
+                    <select
+                        value={expense}
+                        onChange={(e) => setExpense(e.target.value)}
+                        onClick={exp}
+                    >
                         {Object.entries(expenses).map(([key, value]) =>
                             value.group_id === group.id ? (
                                 <option key={key} value={`${key}`}>
@@ -59,10 +82,16 @@ const Group = ({ group }) => {
                         )}
                     </select>
                     <div>
-                        <button onClick={handleViewExpense}>
-                            view expense
-                        </button>
+                        <button onClick={handleExpenses}>view expense</button>
                     </div>
+                    <Modal
+                        className="exp-modal"
+                        style={style}
+                        isOpen={modalIsOpen}
+                    >
+                        <ExpenseDetails expense={expense} />
+                        <button onClick={handleExpenses}>x</button>
+                    </Modal>
                     <div>
                         <button onClick={toggleTransactions}>
                             view transaction
