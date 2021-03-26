@@ -25,9 +25,9 @@ const Dashboard = ({}) => {
         userId = user.id;
     }
 
-    useEffect(async () => {
+    useEffect(() => {
         if (userId) {
-            await dispatch(getUserGroups(user.id));
+            dispatch(getUserGroups(user.id));
         }
     }, []);
 
