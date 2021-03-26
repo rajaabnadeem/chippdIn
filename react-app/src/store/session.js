@@ -59,18 +59,17 @@ export const signUp = (user) => async (dispatch) => {
 export const restoreUser = () => async (dispatch) => {
     const response = await fetch('/api/auth/');
     const data = await response.json();
-    return dispatch(setUser(data));
+    dispatch(setUser(data));
+    return response;
 };
 
-const initialState = { user: null };
+const initialState = { user: {} };
 
 const sessionReducer = (state = initialState, action) => {
     let newState;
     switch (action.type) {
         case SET_USER:
-            newState = Object.assign({}, state);
-            newState.user = action.payload;
-            return newState;
+            return { ...state, ...{ user: action.payload } };
         case REMOVE_USER:
             newState = Object.assign({}, state);
             newState.user = null;
