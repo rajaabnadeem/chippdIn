@@ -16,6 +16,7 @@ const ExpenseForm = ({ group }) => {
         userId = user.id;
     }
     const handleSumbit = async (e) => {
+        // console.log(group)
         e.preventDefault();
         await dispatch(
             createExpense({

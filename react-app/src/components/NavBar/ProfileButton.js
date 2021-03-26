@@ -38,7 +38,7 @@ function ProfileButton({ user }) {
 
   return (
     <>
-    <div onMouseLeave={openMenu} onClick={openMenu}>
+    <div className = 'dropdown' onMouseLeave={openMenu} onClick={openMenu}>
       <button >
         <i className="fas fa-user-circle" />
       {user.first_name}</button>
@@ -46,8 +46,8 @@ function ProfileButton({ user }) {
         <ul className="profile_dropdown">
             <div>{user.first_name} {user.last_name}</div>
             <div>My Balance: ${user.balance}</div>
-            <NavLink to = '/dashboard'>My Groups</NavLink>
-            <NavLink to = '/transactions'>My Transactions</NavLink>
+            <NavLink to = '/dashboard'>Add a Group</NavLink>
+            {/* <NavLink to = '/transactions'>My Transactions</NavLink> */}
             <button onClick={logout}>Log Out</button>
         </ul>
       )}

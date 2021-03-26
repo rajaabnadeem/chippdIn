@@ -1,35 +1,44 @@
 
-* {
-    margin: 0
-}
-
 .container__navbar {
-    background: rgb(86, 146, 86);
-    display: inline-block;
+    /* background-color: rgb(125, 185, 149); */
+    background-color: rgb(148, 218, 176);
+
     width: 100%;
-    font-family: 'Rajdhani', sans-serif;
     font-size: larger;
+    height: 50px
   }
 
   .container__navbar a:hover {
-    color: #000000;
+    color: black;
     position: sticky;
-    background: lightgreen;
+    background-color: rgb(148, 218, 176);
   }
 
   .container__navbar a {
     color: #ffffff;
-    background: rgb(86, 146, 86);
     margin-right: 20px;
   }
 
   .navbar__links {
         display:flex;
         flex-direction: row;
-        padding: 8px 0px;
+        padding: 8px 5px;
+        height: 10%;
+  }
+
+   img {
+    height: 35px;
+    margin: 0px 10px
+  }
+
+  .anchor {
+    height: 100px
+  }
+
+  .anchor:hover{
+    height: 1px
   }
 
   .dropdown {
-      display: flex;
-      flex-direction: end;
+    color: yellow
   }
