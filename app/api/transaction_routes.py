@@ -11,12 +11,12 @@ transaction_routes = Blueprint('transactions', __name__)
 def getTransactions(user_id, group_id):
     expenses = Expense.query.filter(Expense.group_id == group_id).all()
     result = {}
-    i = 0
     for expense in expenses:
         trans = Transaction.query.filter(
-            Transaction.expense_id == exp.id).all()
+            Transaction.expense_id == expense.id).all()
         for tran in trans:
-            result[i] = {
+            print('this is the transaction:', tran.id)
+            result[tran.id] = {
                 "description": expense.description,
                 "transactionAmount": tran.amount,
                 "date": expense.date,
@@ -24,5 +24,4 @@ def getTransactions(user_id, group_id):
                 'sender': tran.user_id,
                 'paid': tran.paid
             }
-
     return result

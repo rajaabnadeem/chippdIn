@@ -1,47 +1,40 @@
 import 'rsuite-table/dist/css/rsuite-table.css';
 import { HeaderCell, Table, Column, Cell } from 'rsuite-table';
 import React, { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
-import { useHistory } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
 
-
-const Transactions = ({ transactions, group }) => {
-    const dispatch = useDispatch();
-    const history = useHistory();
+const Transactions = ({ transactions }) => {
     const [sortColumn, setSortColumn] = useState('');
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(false);
     const [sortType, setSortType] = useState('asc');
     const [item, setItem] = useState('');
-    
-    // const getData = () => {
-    //     if (sortColumn && sortType) {
-    //         return data.sort((a, b) => {
-    //             let n = a[sortColumn];
-    //             let s = b[sortColumn];
-    //             if (typeof n === 'string') { 
-    //                 n = n.charCodeAt(0);
-    //             }
-    //             if (typeof s === 'string') {
-    //                 s = s.charCodeAt(0);
-    //             }
-    //             if (sortType === 'asc') {
-    //                 return n - s;
-    //             } else {
-    //                 return s - n;
-    //             }
-    //         });
-    //     }
-    //     return data;
-    // };
 
     useEffect(() => {
+        setData(Object.values(transactions));
         setSortColumn('date');
-        setData(transactions);
         setSortType('desc');
-
     }, []);
+
+    const getData = () => {
+        if (sortColumn && sortType) {
+            return data.sort((a, b) => {
+                let n = a[sortColumn];
+                let s = b[sortColumn];
+                if (typeof n === 'string') {
+                    n = n.charCodeAt(0);
+                }
+                if (typeof s === 'string') {
+                    s = s.charCodeAt(0);
+                }
+                if (sortType === 'asc') {
+                    return n - s;
+                } else {
+                    return s - n;
+                }
+            });
+        }
+        return data;
+    };
 
     const fakeLoader = (sortColumn, sortType) => {
         setLoading(true);
@@ -55,7 +48,7 @@ const Transactions = ({ transactions, group }) => {
     return (
         <div>
             <Table
-                // data={getData()}
+                data={getData()}
                 height={200}
                 width={500}
                 sortColumn={sortColumn}
@@ -66,7 +59,7 @@ const Transactions = ({ transactions, group }) => {
             >
                 <Column width={100} align="center" resizable sortable>
                     <HeaderCell>Expense</HeaderCell>
-                    <Cell dataKey="name" />
+                    <Cell dataKey="description" />
                 </Column>
                 <Column width={100} align="center" resizable sortable>
                     <HeaderCell>Date</HeaderCell>
@@ -82,7 +75,7 @@ const Transactions = ({ transactions, group }) => {
                 </Column>
                 <Column width={100} align="center" resizable sortable>
                     <HeaderCell>Amount</HeaderCell>
-                    <Cell dataKey="amount" />
+                    <Cell dataKey="transactionAmount" />
                 </Column>
                 <Column width={100} align="center" resizable sortable>
                     <HeaderCell></HeaderCell>

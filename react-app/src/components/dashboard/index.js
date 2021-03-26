@@ -16,25 +16,20 @@ const Dashboard = ({}) => {
     const user = useSelector((state) => state.session.user);
     const groups = useSelector((state) => state.groups);
 
-    useEffect(() => {
-        return dispatch(getComments());
-    }, []);
+    // useEffect(() => {
+    //     return dispatch(getComments());
+    // }, []);
 
     let userId;
     if (user) {
         userId = user.id;
     }
 
-    useEffect(() => {
+    useEffect(async () => {
         if (userId) {
-            dispatch(getUserGroups(userId));
-            if (groups) {
-                Object.values(groups).forEach((g) => {
-                    dispatch(getTransactions(userId, g.id));
-                });
-            }
+            await dispatch(getUserGroups(user.id));
         }
-    }, [dispatch]);
+    }, []);
 
     return (
         <div className="dashboard-container">
@@ -56,12 +51,7 @@ const Dashboard = ({}) => {
                         ))}
                 </div>
             </div>
-            <div className="right-dash">
-                <h1>EXPENSE FORM</h1>
-                <ExpenseForm />
-                <h1>EXPENSE DETAILS</h1>
-                <ExpenseDetails />
-            </div>
+            <div className="right-dash"></div>
         </div>
     );
 };

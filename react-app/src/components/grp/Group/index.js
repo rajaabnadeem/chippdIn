@@ -1,24 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import { Redirect, useHistory, NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import './Group.css';
-import { getExpenses } from '../../../store/expenses';
 import Transactions from '../../Transactions';
-import groupsReducer from '../../../store/groups';
 import { getTransactions } from '../../../store/transactions';
+import ExpenseForm from '../../exp/ExpenseForm';
 
 const Group = ({ group }) => {
     const dispatch = useDispatch();
     const [showTransactions, setShowTransactions] = useState(false);
 
     const user = useSelector((state) => state.session.user);
+    const expenses = useSelector((state) => state.expenses);
+    const transactions = useSelector((state) => state.transactions);
 
-    const expenses = useSelector((state) => state.expenses); // object
-    const transactions = useSelector((state) => state.transactions); // object
-    const transactionsArray = Object.values(transactions); // array of objs
-    const expensesArray = Object.values(expenses); // array of objs
-
-    const toggleTransactions = () => {
+    const toggleTransactions = async () => {
+        await dispatch(getTransactions(userId, group.id));
         showTransactions
             ? setShowTransactions(false)
             : setShowTransactions(true);
@@ -28,6 +24,10 @@ const Group = ({ group }) => {
     if (user) {
         userId = user.id;
     }
+
+    useEffect(() => {
+        dispatch(getTransactions(userId, group.id));
+    }, [dispatch]);
 
     const handleViewGroup = () => {
         return;
@@ -68,13 +68,16 @@ const Group = ({ group }) => {
                             view transaction
                         </button>
                     </div>
+                    <div className="create-expense">
+                        <ExpenseForm group={group} />
+                    </div>
                 </div>
             </div>
         );
     } else {
         return (
             <div className="transactionContainer">
-                <Transactions transactions={transactionsArray} group={group} />
+                <Transactions transactions={transactions} group={group} />
                 <div>
                     <button onClick={toggleTransactions}>{'< back'}</button>
                 </div>
