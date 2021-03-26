@@ -4,12 +4,12 @@ import { useDispatch } from 'react-redux';
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
 import LandingPage from './components/LandingPage';
-import Dashboard from './components/Dashboard';
+import Dashboard from './components/dashboard';
 import Transactions from './components/Transactions';
-import Group from './components/grp/Group'
+import Group from './components/grp/Group';
 import Footer from './components/Footer';
-import Comment from './components/cmt/Comment'
-import CommentContainer from './components/cmt/CommentContainer'
+import Comment from './components/cmt/Comment';
+import CommentContainer from './components/cmt/CommentContainer';
 import NavBar from './components/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import { authenticate } from './store/session';
@@ -21,14 +21,14 @@ function App() {
     const [authenticated, setAuthenticated] = useState(false);
     const [loaded, setLoaded] = useState(false);
 
-    useEffect(async () => {
-        const user = await authenticate();
+    useEffect(() => {
+        const user = authenticate();
         if (!user.errors) {
             dispatch(sessionActions.restoreUser());
             setAuthenticated(true);
         }
         setLoaded(true);
-    }, [dispatch]);
+    });
 
     if (!loaded) {
         return null;
@@ -36,11 +36,6 @@ function App() {
 
     return (
         <>
-        {/* {Temporary routes for comments go here} */}
-            <Route path = '/comment'>
-                {/* <Comment /> */}
-                <CommentContainer />
-            </Route>
             <NavBar setAuthenticated={setAuthenticated} />
             <Switch>
                 <Route path="/login" exact={true}>
@@ -55,9 +50,7 @@ function App() {
                         setAuthenticated={setAuthenticated}
                     />
                 </Route>
-                <Route path = '/groups'>
-                    {/* <Group /> */}
-                </Route>
+                <Route path="/groups">{/* <Group /> */}</Route>
 
                 <ProtectedRoute
                     path="/dashboard"
@@ -65,13 +58,6 @@ function App() {
                     authenticated={authenticated}
                 >
                     <Dashboard />
-                </ProtectedRoute>
-                <ProtectedRoute
-                    path="/transactions"
-                    exact={true}
-                    authenticated={authenticated}
-                >
-                    <Transactions />
                 </ProtectedRoute>
 
                 <ProtectedRoute

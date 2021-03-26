@@ -1,20 +1,19 @@
 import 'rsuite-table/dist/css/rsuite-table.css';
 import { HeaderCell, Table, Column, Cell } from 'rsuite-table';
 import React, { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
 
-import { useHistory } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-
-
-const Transactions = ({ transactions, group }) => {
-    const dispatch = useDispatch();
-    const history = useHistory();
+const Transactions = ({ transactions }) => {
     const [sortColumn, setSortColumn] = useState('');
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(false);
     const [sortType, setSortType] = useState('asc');
     const [item, setItem] = useState('');
+
+    useEffect(() => {
+        setData(Object.values(transactions));
+        setSortColumn('date');
+        setSortType('desc');
+    }, []);
 
     const getData = () => {
         if (sortColumn && sortType) {
@@ -37,19 +36,13 @@ const Transactions = ({ transactions, group }) => {
         return data;
     };
 
-    useEffect(() => {
-        setSortColumn('date');
-        setData(transactions);
-        setSortType('desc');
-    }, []);
-
     const fakeLoader = (sortColumn, sortType) => {
         setLoading(true);
         setTimeout(() => {
             setSortColumn(sortColumn);
             setSortType(sortType);
             setLoading(false);
-        }, 500);
+        }, 1000);
     };
 
     return (
@@ -66,7 +59,7 @@ const Transactions = ({ transactions, group }) => {
             >
                 <Column width={100} align="center" resizable sortable>
                     <HeaderCell>Expense</HeaderCell>
-                    <Cell dataKey="name" />
+                    <Cell dataKey="description" />
                 </Column>
                 <Column width={100} align="center" resizable sortable>
                     <HeaderCell>Date</HeaderCell>
@@ -82,7 +75,7 @@ const Transactions = ({ transactions, group }) => {
                 </Column>
                 <Column width={100} align="center" resizable sortable>
                     <HeaderCell>Amount</HeaderCell>
-                    <Cell dataKey="amount" />
+                    <Cell dataKey="transactionAmount" />
                 </Column>
                 <Column width={100} align="center" resizable sortable>
                     <HeaderCell></HeaderCell>

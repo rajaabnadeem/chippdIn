@@ -7,25 +7,28 @@ import ExpenseForm from '../exp/ExpenseForm';
 import ExpenseDetails from '../exp/ExpenseDetails';
 import Transactions from '../Transactions';
 import { getUserGroups } from '../../store/groups';
-import { getComments } from '../../store/comments'
+import { getComments } from '../../store/comments';
+import { getTransactions } from '../../store/transactions';
 
 const Dashboard = ({}) => {
     const sessionGroups = useSelector((state) => state.groups);
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
     const user = useSelector((state) => state.session.user);
     const groups = useSelector((state) => state.groups);
 
-    useEffect(() => {
-        return dispatch(getComments())},
-        [])
+    // useEffect(() => {
+    //     return dispatch(getComments());
+    // }, []);
 
     let userId;
     if (user) {
         userId = user.id;
     }
 
-    useEffect(() => {
-        dispatch(getUserGroups(userId));
+    useEffect(async () => {
+        if (userId) {
+            await dispatch(getUserGroups(user.id));
+        }
     }, []);
 
     return (
@@ -48,12 +51,7 @@ const Dashboard = ({}) => {
                         ))}
                 </div>
             </div>
-            <div className="right-dash">
-                <h1>EXPENSE FORM</h1>
-                <ExpenseForm />
-                <h1>EXPENSE DETAILS</h1>
-                <ExpenseDetails />
-            </div>
+            <div className="right-dash"></div>
         </div>
     );
 };
