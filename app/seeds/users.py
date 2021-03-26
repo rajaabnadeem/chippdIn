@@ -9,12 +9,12 @@ faker = Faker()
 
 def seed_users():
 
-    demo = User(first_name='Demo', last_name='User', email="demo@user.com", balance=0, hashed_password='password')
-    user1 = User(first_name=faker.first_name(), last_name=faker.last_name(), email=faker.email(), balance=0, hashed_password='password')
-    user2 = User(first_name=faker.first_name(), last_name=faker.last_name(), email=faker.email(), balance=0, hashed_password='password')
-    user3 = User(first_name=faker.first_name(), last_name=faker.last_name(), email=faker.email(), balance=0, hashed_password='password')
-    user4 = User(first_name=faker.first_name(), last_name=faker.last_name(), email=faker.email(), balance=0, hashed_password='password')
-    user5 = User(first_name=faker.first_name(), last_name=faker.last_name(), email=faker.email(), balance=0, hashed_password='password')
+    demo = User(first_name='Demo', last_name='User', email="demo@user.com", balance=0, hashed_password=generate_password_hash('password'))
+    user1 = User(first_name=faker.first_name(), last_name=faker.last_name(), email=faker.email(), balance=0, hashed_password=generate_password_hash('password'))
+    user2 = User(first_name=faker.first_name(), last_name=faker.last_name(), email=faker.email(), balance=0, hashed_password=generate_password_hash('password'))
+    user3 = User(first_name=faker.first_name(), last_name=faker.last_name(), email=faker.email(), balance=0, hashed_password=generate_password_hash('password'))
+    user4 = User(first_name=faker.first_name(), last_name=faker.last_name(), email=faker.email(), balance=0, hashed_password=generate_password_hash('password'))
+    user5 = User(first_name=faker.first_name(), last_name=faker.last_name(), email=faker.email(), balance=0, hashed_password=generate_password_hash('password'))
 
     db.session.add(demo)
     db.session.add(user1)
