@@ -24,7 +24,7 @@ def createComment(expense_id, user_id):
     comment.expense_id = expense_id
     db.session.add(comment)
     db.session.commit()
-    user = User.query.filter(User.id == comment.user_id)
+    user = User.query.filter(User.id == comment.user_id).one()
     returnObj = comment.to_dict()
     returnObj['first_name'] = user.first_name
     returnObj['last_name'] = user.last_name
