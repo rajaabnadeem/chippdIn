@@ -2,9 +2,9 @@ import 'rsuite-table/dist/css/rsuite-table.css';
 import { HeaderCell, Table, Column, Cell } from 'rsuite-table';
 import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+
 
 const Transactions = ({ transactions, group }) => {
     const dispatch = useDispatch();
@@ -14,32 +14,33 @@ const Transactions = ({ transactions, group }) => {
     const [loading, setLoading] = useState(false);
     const [sortType, setSortType] = useState('asc');
     const [item, setItem] = useState('');
-
-    const getData = () => {
-        if (sortColumn && sortType) {
-            return data.sort((a, b) => {
-                let n = a[sortColumn];
-                let s = b[sortColumn];
-                if (typeof n === 'string') {
-                    n = n.charCodeAt(0);
-                }
-                if (typeof s === 'string') {
-                    s = s.charCodeAt(0);
-                }
-                if (sortType === 'asc') {
-                    return n - s;
-                } else {
-                    return s - n;
-                }
-            });
-        }
-        return data;
-    };
+    
+    // const getData = () => {
+    //     if (sortColumn && sortType) {
+    //         return data.sort((a, b) => {
+    //             let n = a[sortColumn];
+    //             let s = b[sortColumn];
+    //             if (typeof n === 'string') { 
+    //                 n = n.charCodeAt(0);
+    //             }
+    //             if (typeof s === 'string') {
+    //                 s = s.charCodeAt(0);
+    //             }
+    //             if (sortType === 'asc') {
+    //                 return n - s;
+    //             } else {
+    //                 return s - n;
+    //             }
+    //         });
+    //     }
+    //     return data;
+    // };
 
     useEffect(() => {
         setSortColumn('date');
         setData(transactions);
         setSortType('desc');
+
     }, []);
 
     const fakeLoader = (sortColumn, sortType) => {
@@ -48,13 +49,13 @@ const Transactions = ({ transactions, group }) => {
             setSortColumn(sortColumn);
             setSortType(sortType);
             setLoading(false);
-        }, 500);
+        }, 1000);
     };
 
     return (
         <div>
             <Table
-                data={getData()}
+                // data={getData()}
                 height={200}
                 width={500}
                 sortColumn={sortColumn}

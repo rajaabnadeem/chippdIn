@@ -11,6 +11,7 @@ import { getComments } from '../../store/comments';
 import { getTransactions } from '../../store/transactions';
 
 const Dashboard = ({}) => {
+<<<<<<< HEAD
     const dispatch = useDispatch();
 
     const user = useSelector((state) => state.session.user);
@@ -19,6 +20,16 @@ const Dashboard = ({}) => {
     // useEffect(() => {
     //     return dispatch(getComments());
     // }, []);
+=======
+    const sessionGroups = useSelector((state) => state.groups);
+    const dispatch = useDispatch()
+    const user = useSelector((state) => state.session.user);
+    const groups = useSelector((state) => state.groups);
+
+    useEffect(() => {
+        return dispatch(getComments())},
+        [])
+>>>>>>> daa0e0c2a53cfc805ffdcd33401317a8de85e93b
 
     let userId;
     if (user) {

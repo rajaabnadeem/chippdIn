@@ -12,7 +12,7 @@ export const getTransactions = (user_id, group_id) => async (dispatch) => {
         `/api/users/${user_id}/groups/${group_id}/transactions/`
     );
     const data = await res.json();
-    return dispatch(loadExpenses);
+    return dispatch(loadExpenses(data));
 };
 
 const initialState = {};
