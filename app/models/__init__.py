@@ -1,1 +1,6 @@
-from .db import db, User, Group, UserGroup, Transaction, Expense, Comment
+from .db import db, User, 
+from .db import Group
+from .db import UserGroup
+from .db import Expense
+from .db import Transaction
+from .db import Comment

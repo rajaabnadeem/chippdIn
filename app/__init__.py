@@ -8,12 +8,12 @@ from flask_wtf.csrf import CSRFProtect, generate_csrf
 from flask_login import LoginManager
 
 from .models import db, User
-from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
-from .api.expense_routes import expense_routes
+from .api.user_routes import user_routes
 from .api.group_routes import group_routes
-from .api.comment_routes import comment_routes
+from .api.expense_routes import expense_routes
 from .api.transaction_routes import transaction_routes
+from .api.comment_routes import comment_routes
 
 from .seeds import seed_commands
 
