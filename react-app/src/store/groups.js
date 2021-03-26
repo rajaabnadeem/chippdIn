@@ -7,11 +7,10 @@ export const setGroup = (group) => ({
 });
 
 export const getUserGroups = (user_id) => async (dispatch) => {
+    console.log('problem -> ', user_id)
     const res = await fetch(`/api/users/${user_id}/groups/`);
     const groups = await res.json();
-    for (let group in groups) {
-        dispatch(setGroup(group));
-    }
+        dispatch(setGroup(groups));
 };
 
 export const createGroup = (groupData, id) => async (dispatch) => {
@@ -47,7 +46,9 @@ const groupsReducer = (state = initialState, action) => {
     let newState = JSON.parse(JSON.stringify(state));
     switch (action.type) {
         case SET_GROUP:
-            newState[action.payload.id] = action.payload;
+            for (let key in action.payload) {
+            newState[action.payload[key].id] = action.payload[key];
+            }
             return newState;
         default:
             return state;

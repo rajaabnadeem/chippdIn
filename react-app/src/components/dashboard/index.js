@@ -26,10 +26,11 @@ const Dashboard = ({}) => {
     }
 
     useEffect(() => {
+        console.log(userId)
         if (userId) {
             dispatch(getUserGroups(user.id));
         }
-    }, []);
+    }, [dispatch, user]);
 
     return (
         <div className="dashboard-container">
