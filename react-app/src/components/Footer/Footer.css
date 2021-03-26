@@ -5,8 +5,15 @@
     grid-template-areas:
     "line1 devs"
     "line2 devs";
-    border: 1px solid black;
-    padding: 20px 50px;
+    background-color: rgb(148, 218, 176);
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 15%;
+    text-align: center;
+    z-index: 1000;
+    float: bottom
 }
 
 .line1,
@@ -22,13 +29,14 @@
     background-color: black;
     row-gap: 2px;
     column-gap: 1px;
+
 }
 .dev {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    padding: 20px;
-    background-color: white;
+    padding: 10px;
+    background-color: rgb(148, 218, 176);
 }
 
 .dev >  * {

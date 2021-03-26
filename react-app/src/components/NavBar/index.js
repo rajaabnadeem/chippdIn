@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux'
 import LogoutButton from '../auth/LogoutButton';
 import ProfileButton from './ProfileButton';
+import logo from '../../images/logo3.png';
 import './NavBar.css'
 
 
@@ -26,8 +27,10 @@ const NavBar = ({ setAuthenticated }) => {
   return (
     <div className = 'container__navbar'>
         <div className = 'navbar__links'>
-            <NavLink exact to="/">Home</NavLink>
-            <div className = 'dropdown'>{sessionLinks}</div>
+              <a className = 'anchor' href='/'>
+              <img src={logo}></img>
+              </a>
+            <div>{sessionLinks}</div>
         </div>
      </div>
   );

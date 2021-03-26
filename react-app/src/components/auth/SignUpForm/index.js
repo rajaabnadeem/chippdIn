@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Redirect, useHistory, NavLink } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../../store/session';
-import logo from '../../../images/logo3.jpg';
+import logo from '../../../images/logo3.png';
 import './SignUpForm.css';
 
 const SignUpForm = ({ authenticated, setAuthenticated }) => {

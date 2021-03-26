@@ -82,7 +82,7 @@ function App() {
                     <LandingPage />
                 </ProtectedRoute>
             </Switch>
-            {/* <Footer /> */}
+            <Footer />
         </>
     );
 }
