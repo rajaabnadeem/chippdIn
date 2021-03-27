@@ -42,9 +42,9 @@ function App() {
             />
 
             <Switch>
-                <Route path="/comment">
+                {/* <Route path="/comment">
                     <CommentContainer />
-                </Route>
+                </Route> */}
                 <Route path="/login" exact={true}>
                     <LoginForm
                         authenticated={authenticated}

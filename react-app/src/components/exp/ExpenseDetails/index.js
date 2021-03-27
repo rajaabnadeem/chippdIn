@@ -1,16 +1,20 @@
-import React, { useState } from 'react';
-import { Redirect, useHistory, NavLink } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useState } from "react";
+import { Redirect, useHistory, NavLink } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import CommentContainer from "../../cmt/CommentContainer";
 
 const ExpenseDetails = ({ expense }) => {
-    return (
-        <div>
-            <div>{expense.description} </div>
-            <div>{expense.amount}</div>
-            <div>{expense.date}</div>
-            <div> {expense.notes}</div>
-        </div>
-    );
+  return (
+    <div className="expenseDetails">
+      <div className="eD__expense">
+        <div>{expense.description} </div>
+        <div>{expense.amount}</div>
+        <div>{expense.date}</div>
+        <div> {expense.notes}</div>
+      </div>
+      <CommentContainer expense_id={expense.id}/>
+    </div>
+  );
 };
 
 export default ExpenseDetails;
