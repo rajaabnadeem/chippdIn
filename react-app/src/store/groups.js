@@ -1,9 +1,15 @@
 const LOAD_GROUPS = 'groups/getGroups';
 const SET_GROUP = 'groups/setGroup';
+const SET_USERGROUP = 'groups/setUserGroup';
 
 export const setGroup = (group) => ({
     type: SET_GROUP,
     payload: group,
+});
+
+export const setUserGroup = (userGroup) => ({
+    type: SET_USERGROUP,
+    payload: userGroup,
 });
 
 export const getUserGroups = (user_id) => async (dispatch) => {
@@ -12,6 +18,19 @@ export const getUserGroups = (user_id) => async (dispatch) => {
     const groups = await res.json();
         dispatch(setGroup(groups));
 };
+
+export const createUserGroup = (groupId, email) => async(dispatch) => {
+    console.log(groupId, email)
+
+    const res = await fetch(`/api/groups/${groupId}/user-groups/`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({email:email}),
+    });
+    const data = await res.json();
+}
 
 export const createGroup = (groupData, id) => async (dispatch) => {
     // const { name, type } = groupData;

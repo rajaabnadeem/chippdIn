@@ -7,6 +7,7 @@ import ExpenseForm from "../../exp/ExpenseForm";
 import ExpenseDetails from "../../exp/ExpenseDetails";
 import Modal from "react-modal";
 import { getExpenses, setExpense } from "../../../store/expenses";
+import UserGroupForm from './UserGroupForm'
 
 const Group = ({ group }) => {
   const dispatch = useDispatch();
@@ -63,6 +64,7 @@ const Group = ({ group }) => {
           <div className="groupTypeContainer">
             <p className="groupType">{group.type}</p>
           </div>
+          <UserGroupForm group={group} />
         </div>
         <div className="expenseDetails">
           <h1>Expense:</h1>
