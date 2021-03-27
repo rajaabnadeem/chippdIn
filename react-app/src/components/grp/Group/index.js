@@ -6,7 +6,7 @@ import { getTransactions } from '../../../store/transactions';
 import ExpenseForm from '../../exp/ExpenseForm';
 import ExpenseDetails from '../../exp/ExpenseDetails';
 import Modal from 'react-modal';
-import { setExpense } from '../../../store/expenses';
+import { getExpenses, setExpense } from '../../../store/expenses';
 
 const Group = ({ group }) => {
     const dispatch = useDispatch();
@@ -41,7 +41,7 @@ const Group = ({ group }) => {
     }
 
     useEffect(() => {
-        dispatch(getTransactions(userId, group.id));
+        dispatch(getExpenses(userId, group.id));
     }, [dispatch]);
 
     const handleExpenses = () => {
@@ -68,11 +68,7 @@ const Group = ({ group }) => {
                 </div>
                 <div className="expenseDetails">
                     <h1>Expense:</h1>
-                    <select
-                        value={expense}
-                        onChange={(e) => setExpense(e.target.value)}
-                        onClick={exp}
-                    >
+                    <select key={expense} value={expense} onChange={exp}>
                         {Object.entries(expenses).map(([key, value]) =>
                             value.group_id === group.id ? (
                                 <option key={key} value={`${key}`}>

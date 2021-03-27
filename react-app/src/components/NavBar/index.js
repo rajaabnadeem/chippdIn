@@ -1,43 +1,70 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { useSelector } from 'react-redux'
+import { useSelector } from 'react-redux';
 import LogoutButton from '../auth/LogoutButton';
 import ProfileButton from './ProfileButton';
 import logo from '../../images/logo3.png';
-import './NavBar.css'
+import './NavBar.css';
+import { authenticate } from '../../store/session';
 
+const NavBar = ({ authenticated }) => {
+    const sessionUser = useSelector((state) => state.session.user);
+    const errors = useSelector((state) => {
+        if (state.session.user) {
+            return state.session.user.errors;
+        } else {
+            return null;
+        }
+    });
 
-const NavBar = ({ setAuthenticated }) => {
-    const sessionUser = useSelector(state => state.session.user);
-    let sessionLinks
+    console.log(sessionUser);
 
-    if (sessionUser) {
-      sessionLinks = (
-        <ProfileButton user={sessionUser} />
-      );
+    // if (sessionUser) {
+    //     sessionLinks = <ProfileButton user={sessionUser} />;
+    // } else {
+    //     sessionLinks = (
+    //         <>
+    //             <NavLink to="/login">Log In</NavLink>
+    //             <NavLink to="/sign-up">Sign Up</NavLink>
+    //         </>
+    //     );
+    // }
+
+    if (sessionUser && !errors) {
+        return (
+            <div className="container__navbar">
+                <div className="navbar__links">
+                    <a className="anchor" href="/">
+                        <img src={logo}></img>
+                    </a>
+                    <div>
+                        <ProfileButton user={sessionUser} />
+                    </div>
+                </div>
+            </div>
+        );
     } else {
-      sessionLinks = (
-        <>
-        <NavLink to = '/login'>Log In</NavLink>
-        <NavLink to = '/sign-up'>Sign Up</NavLink>
-        </>
-      )
+        return (
+            <div className="container__navbar">
+                <div className="navbar__links">
+                    <div>
+                        <a className="anchor" href="/">
+                            <img src={logo}></img>
+                        </a>
+                    </div>
+                    <div>
+                        <NavLink to="/login">Log In</NavLink>
+                    </div>
+                    <div>
+                        <NavLink to="/sign-up">Sign Up</NavLink>
+                    </div>
+                </div>
+            </div>
+        );
     }
+};
 
-  return (
-    <div className = 'container__navbar'>
-        <div className = 'navbar__links'>
-              <a className = 'anchor' href='/'>
-              <img src={logo}></img>
-              </a>
-            <div>{sessionLinks}</div>
-        </div>
-     </div>
-  );
-  }
-
-  export default NavBar;
-
+export default NavBar;
 
 //   return (
 //     <nav>

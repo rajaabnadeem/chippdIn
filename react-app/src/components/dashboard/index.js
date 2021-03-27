@@ -26,7 +26,7 @@ const Dashboard = ({}) => {
     }
 
     useEffect(() => {
-        console.log(userId)
+        console.log(userId);
         if (userId) {
             dispatch(getUserGroups(user.id));
         }
