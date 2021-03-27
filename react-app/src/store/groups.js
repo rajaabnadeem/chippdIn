@@ -46,10 +46,11 @@ const groupsReducer = (state = initialState, action) => {
     let newState = JSON.parse(JSON.stringify(state));
     switch (action.type) {
         case SET_GROUP:
+            let loadState = {}
             for (let key in action.payload) {
-            newState[action.payload[key].id] = action.payload[key];
+            loadState[action.payload[key].id] = action.payload[key];
             }
-            return newState;
+            return loadState;
         default:
             return state;
     }

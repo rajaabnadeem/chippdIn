@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
 import LandingPage from './components/LandingPage';
-import Dashboard from './components/dashboard';
+import Dashboard from './components/Dashboard';
 import Transactions from './components/Transactions';
 import Group from './components/grp/Group';
 import Footer from './components/Footer';

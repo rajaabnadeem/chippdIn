@@ -29,3 +29,6 @@ def createComment(expense_id, user_id):
     returnObj['first_name'] = user.first_name
     returnObj['last_name'] = user.last_name
     return returnObj
+
+# @comment.routes.route('/', methods=['DELETE'])
+# def deleteComment(user_id):
