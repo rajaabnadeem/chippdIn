@@ -11,6 +11,7 @@ from .models import db, User
 from .api.auth_routes import auth_routes
 from .api.user_routes import user_routes
 from .api.group_routes import group_routes
+from .api.user_group_routes import user_group_routes
 from .api.expense_routes import expense_routes
 from .api.transaction_routes import transaction_routes
 from .api.comment_routes import comment_routes
@@ -38,6 +39,7 @@ app.cli.add_command(seed_commands)
 app.config.from_object(Config)
 app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
+app.register_blueprint(user_group_routes, url_prefix='/api/groups/<group_id>/user-groups/')
 app.register_blueprint(
     expense_routes, url_prefix='/api/users/<user_id>/groups/<group_id>/expenses/')
 app.register_blueprint(

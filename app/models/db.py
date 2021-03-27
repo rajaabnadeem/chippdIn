@@ -74,6 +74,13 @@ class UserGroup(db.Model):
     group = db.relationship(Group, backref=db.backref('user_groups'))
 
 
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "group_id": self.group_id,
+            "user_id": self.user_id,
+        }
+
 class Expense(db.Model):
     __tablename__ = 'expenses'
 
