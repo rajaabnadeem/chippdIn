@@ -1,11 +1,7 @@
 .footer-dash {
-    display: grid;
-    grid-template-rows: 1fr 1fr;
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas:
-        'line1 devs'
-        'line2 devs';
-    background-color: rgb(181, 181, 181);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;    background-color: rgb(108, 108, 108);
     position: relative;
     left: 0;
     bottom: 0;
@@ -21,18 +17,12 @@
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    /* grid-template-rows: 1fr 1fr;
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas:
-        'line1 devs'
-        'line2 devs'; */
-    background-color: rgb(181, 181, 181);
+    background-color: rgb(108, 108, 108);
     position: absolute;
     left: 0;
     bottom: 0;
     width: 100%;
     height: 15%;
-    /* text-align: center; */
     z-index: 1000;
     float: bottom;
     color: white;
@@ -41,30 +31,64 @@
 .rightFooter {
     display: flex;
     flex-direction: row;
+    justify-content: space-around;
+    padding: 30px
 }
 
-/* .line1,
-.line2 {
-    margin: auto 0;
-} */
-/* .devContainer {
-    display: grid;
-    grid-template-rows: 1fr 1fr;
-    grid-template-columns: 1fr 1fr;
-    grid-area: devs;
-    margin-left: auto;
-    background-color: black;
-    row-gap: 2px;
-    column-gap: 1px;
+p {
+    color:white
 }
+
+.fa-heart {
+    color: rgb(216, 6, 6)
+}
+
+
 .dev {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    padding: 10px;
-    background-color: rgb(148, 218, 176);
+    padding: 20px;
 }
 
-.dev > * {
-    margin: 0 10px;
-} */
+.line1 {
+    font-size: 22pt;
+    padding: 10px;
+    margin-top: 10px
+}
+
+.line2 {
+    padding: 10px;
+    text-align: center
+}
+
+.linkedin {
+    display: flex;
+    justify-content: space-around;
+    text-decoration: none;
+    /* padding: 10px; */
+}
+
+.pipe {
+    border: 1px solid white;
+    height: 60px;
+    margin: 0px 10px 0px 15px
+
+}
+
+.links, .name {
+    padding: 5px;
+    color: white;
+}
+
+.linkedicon {
+    color:rgb(41, 101, 188)
+}
+
+.links {
+    background-color: white;
+    height: 25px;
+    border-radius: 0.25em;
+    margin-left: 10px;
+}
+
+.splitwise {
+    color:rgb(162,216,179)
+}

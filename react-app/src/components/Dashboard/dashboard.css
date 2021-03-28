@@ -1,3 +1,18 @@
+.dashboard-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.left-dash {
+    width: 25%;
+}
+
 .center-dash {
-    margin-bottom: 100px;
+    width: 50%;
+    border-right: 1px solid black;
+    border-left: 1px solid black;
+}
+
+.right-dash {
+    width: 25%;
 }

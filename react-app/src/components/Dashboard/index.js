@@ -9,6 +9,7 @@ import Transactions from '../Transactions';
 import { getUserGroups, createGroup } from '../../store/groups';
 import { getComments } from '../../store/comments';
 import { getTransactions } from '../../store/transactions';
+import './dashboard.css'
 
 const Dashboard = ({ setPath }) => {
     const sessionGroups = useSelector((state) => state.groups);
