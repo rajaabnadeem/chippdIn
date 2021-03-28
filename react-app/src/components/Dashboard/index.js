@@ -9,7 +9,7 @@ import Transactions from '../Transactions';
 import { getUserGroups, createGroup } from '../../store/groups';
 import { getComments } from '../../store/comments';
 import { getTransactions } from '../../store/transactions';
-import './dashboard.css'
+import './dashboard.css';
 
 const Dashboard = ({ setPath }) => {
     const sessionGroups = useSelector((state) => state.groups);
@@ -37,7 +37,6 @@ const Dashboard = ({ setPath }) => {
                 <NewGroup />
             </div>
             <div className="center-dash">
-                <h1>GROUP CONTAINERS</h1>
                 <div className="groups-container">
                     {groups &&
                         Object.values(groups).map((group) => (

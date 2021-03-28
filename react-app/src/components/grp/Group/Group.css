@@ -1,34 +1,140 @@
 .groupContainer {
-    border: 1px solid black;
     padding: 10px;
-    margin: 10px;
+    margin: 0px 10px 20px 10px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border-radius: 1em;
+    box-shadow: 10px 0 10px -5px rgba(0, 0, 0, 0.2),
+        -10px 0 10px -5px rgba(0, 0, 0, 0.2),
+        10px 0 10px -5px rgba(0, 0, 0, 0.2),
+        -10px 0 10px -5px rgba(0, 0, 0, 0.2);
 }
 
-.groupContainer {
+.imageTitle {
+    display: flex;
+    flex-direction: row;
+}
+.viewExpenseButton {
+    height: 30px;
+    margin-top: 10px;
+    background-color: rgb(255, 98, 30);
+    border: 2px solid #ff621e;
+    border-radius: 0.5em;
+    color: white;
+    font-size: 12pt;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+.expSelector {
+    height: 30px;
+    border-radius: 0.5em;
+
+    font-size: 12pt;
+}
+.createExpButton {
+    height: 30px;
+    margin-top: 10px;
+    background-color: #ff621e;
+    border: 2px solid #ff621e;
+    border-radius: 0.5em;
+    color: white;
+    font-size: 12pt;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+}
+.transButton {
+    margin: 5px;
+    height: 40px;
+    width: 300px;
+    background-color: rgba(162, 216, 179, 0.5);
+    border: none;
+    border-radius: 0.5em;
+    color: rgb(148, 148, 148);
+    font-size: 12pt;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+.groupDetails {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.groupName {
+    font-size: 24pt;
+    padding-top: 20px;
+}
+
+.groupForm {
+    display: flex;
+}
+
+.gForm {
+    margin-left: 10px;
+}
+
+.gFormInput {
+    padding: 15px;
+    border: none;
+    width: 200px;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+    outline: none;
+    border-radius: 0.5em;
+    height: 30px;
+    background-color: rgb(252, 237, 215);
+}
+
+.fa-plus {
+    color: rgb(162, 216, 179);
+    font-size: 20pt;
+}
+
+.gFormIcon {
+    margin-top: 3px;
+}
+
+.groupImage {
+    position: relative;
+    height: 80px;
+    width: 80px;
+}
+
+.nameTypeContainer,
+.topRightContainer {
+    position: relative;
     display: flex;
     flex-direction: column;
 }
 
-.groupDetails,
+.groupType {
+    color: black;
+}
+
+.groupTypeContainer {
+    margin-top: 25px;
+}
+
 .expenseDetails {
+    padding: 10px;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
 }
 
-.groupName {
-    font-size: 22pt;
+.expenseLabel {
+    border-top: 1.5px solid rgb(162, 216, 179);
 }
 
-.groupImage {
-    height: 100px;
-    width: 100px;
-}
-
-.nameTypeContainer,
-.topRightContainer {
+.expense {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.expenseSelectorContainer,
+.expenseLabel {
+    padding: 10px;
 }
 
 .expModal,
@@ -43,4 +149,10 @@
     border-radius: 0.25em;
     padding: 50px;
     box-shadow: 0px 0px 5px 5px rgba(219, 218, 218, 0.7);
+}
+
+.transactionButtonContainer {
+    border-top: 1.5px solid rgb(162, 216, 179);
+    padding: 10px;
+    text-align: center;
 }

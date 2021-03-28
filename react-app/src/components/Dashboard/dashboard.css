@@ -8,9 +8,12 @@
 }
 
 .center-dash {
+    padding: 15px;
     width: 50%;
-    border-right: 1px solid black;
-    border-left: 1px solid black;
+    border-radius: 1em;
+    box-shadow: 0 5px 0px 0px white, 0 -5px 0px 0px white,
+        20px 0 15px -5px rgba(0, 0, 0, 0.3),
+        -20px 0 15px -5px rgba(0, 0, 0, 0.3);
 }
 
 .right-dash {
