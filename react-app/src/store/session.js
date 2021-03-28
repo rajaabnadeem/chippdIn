@@ -33,7 +33,7 @@ export const login = (user) => async (dispatch) => {
 };
 
 export const logout = () => async (dispatch) => {
-    const res = await fetch('/api/auth/logout/');
+    await fetch('/api/auth/logout/');
     return dispatch(removeUser());
 };
 

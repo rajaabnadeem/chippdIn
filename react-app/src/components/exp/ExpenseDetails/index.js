@@ -1,6 +1,4 @@
-import React, { useState } from "react";
-import { Redirect, useHistory, NavLink } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import React from "react";
 import CommentContainer from "../../cmt/CommentContainer";
 
 const ExpenseDetails = ({ expense }) => {

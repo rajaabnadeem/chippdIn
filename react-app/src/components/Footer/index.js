@@ -13,7 +13,7 @@ const Footer = () => {
             </p>
             <p className="line2">
                 This is a Clone app of{' '}
-                <a href="www.splitwise.com">www.splitwise.com</a>
+                <a href="https://www.splitwise.com">www.splitwise.com</a>
             </p>
             <div className="devContainer">
                 <div className="dev">
