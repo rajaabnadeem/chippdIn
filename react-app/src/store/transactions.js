@@ -1,4 +1,3 @@
-import { loadExpenses } from './expenses';
 
 const LOAD_TRANS = 'transactions/loadTransactions';
 

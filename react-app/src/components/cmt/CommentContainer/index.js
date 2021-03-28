@@ -19,7 +19,7 @@ const CommentContainer = ({expense_id}) => {
     if(user_id){
     return dispatch(getComments(expense_id, user_id));
     }
-  }, [user, dispatch]);
+  }, [user, dispatch, expense_id, user_id]);
 
   const handleSumbit = async (e) => {
     e.preventDefault();

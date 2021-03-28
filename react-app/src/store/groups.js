@@ -1,22 +1,25 @@
-const LOAD_GROUPS = 'groups/getGroups';
+// const LOAD_GROUPS = 'groups/getGroups';
 const SET_GROUP = 'groups/setGroup';
-const SET_USERGROUP = 'groups/setUserGroup';
+// const SET_USERGROUP = 'groups/setUserGroup';
 
-export const setGroup = (group) => ({
+// Action creators:
+const setGroup = (group) => ({
     type: SET_GROUP,
-    payload: group,
+    group,
 });
 
-export const setUserGroup = (userGroup) => ({
-    type: SET_USERGROUP,
-    payload: userGroup,
-});
+// const setUserGroup = (userGroup) => ({
+//     type: SET_USERGROUP,
+//     userGroup,
+// });
 
+
+// Thunk actions:
 export const getUserGroups = (user_id) => async (dispatch) => {
-    console.log('problem -> ', user_id);
     const res = await fetch(`/api/users/${user_id}/groups/`);
-    const groups = await res.json();
-    dispatch(setGroup(groups));
+    const data = await res.json();
+    // console.log(data)
+    dispatch(setGroup(data));
 };
 
 export const createUserGroup = (groupId, email) => async (dispatch) => {
@@ -29,11 +32,10 @@ export const createUserGroup = (groupId, email) => async (dispatch) => {
         },
         body: JSON.stringify({ email: email }),
     });
-    const data = await res.json();
+    // const data = await res.json();
 };
 
 export const createGroup = (groupData, id) => async (dispatch) => {
-    // const { name, type } = groupData;
     const res = await fetch(`/api/users/${id}/groups/`, {
         method: 'POST',
         headers: {
@@ -42,7 +44,7 @@ export const createGroup = (groupData, id) => async (dispatch) => {
         body: JSON.stringify(groupData),
     });
     const data = await res.json();
-    dispatch(setGroup(data));
+    dispatch(setGroup({ [data.id]: data }));
     return data;
 };
 
@@ -55,24 +57,22 @@ export const editGroup = (groupData, id) => async (dispatch) => {
         body: JSON.stringify(groupData),
     });
     const data = await res.json();
-    console.log(data);
+    // console.log(data);
     return dispatch(setGroup(data));
 };
 
-const initialState = {};
 
-const groupsReducer = (state = initialState, action) => {
-    let newState = JSON.parse(JSON.stringify(state));
+// Reducer:
+const groupsReducer = (state = {}, action) => {
     switch (action.type) {
         case SET_GROUP:
-            let loadState = {};
-            for (let key in action.payload) {
-                loadState[action.payload[key].id] = action.payload[key];
+            return { 
+                ...state,
+                ...action.group
             }
-            return loadState;
         default:
             return state;
     }
 };
-
 export default groupsReducer;
+

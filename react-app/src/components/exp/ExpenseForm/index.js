@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
 import './ExpenseForm.css';
 import { createExpense } from '../../../store/expenses';
 
@@ -16,7 +15,6 @@ const ExpenseForm = ({ group, toggleCreate }) => {
         userId = user.id;
     }
     const handleSumbit = async (e) => {
-        // console.log(group)
         e.preventDefault();
         toggleCreate();
         await dispatch(

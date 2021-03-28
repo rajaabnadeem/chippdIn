@@ -1,24 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import { Redirect, useHistory, NavLink } from 'react-router-dom';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Group from '../grp/Group';
 import NewGroup from '../grp/NewGroup';
-import ExpenseForm from '../exp/ExpenseForm';
-import ExpenseDetails from '../exp/ExpenseDetails';
-import Transactions from '../Transactions';
-import { getUserGroups, createGroup } from '../../store/groups';
-import { getComments } from '../../store/comments';
-import { getTransactions } from '../../store/transactions';
+import { getUserGroups } from '../../store/groups';
 
-const Dashboard = ({}) => {
-    const sessionGroups = useSelector((state) => state.groups);
+const Dashboard = () => {
     const dispatch = useDispatch();
     const user = useSelector((state) => state.session.user);
     const groups = useSelector((state) => state.groups);
-
-    // useEffect(() => {
-    //     return dispatch(getComments());
-    // }, []);
 
     let userId;
     if (user) {
@@ -26,11 +15,10 @@ const Dashboard = ({}) => {
     }
 
     useEffect(() => {
-        console.log(userId);
         if (userId) {
             dispatch(getUserGroups(user.id));
         }
-    }, [dispatch, user]);
+    }, [dispatch, user, userId]);
 
     return (
         <div className="dashboard-container">

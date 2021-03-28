@@ -7,7 +7,7 @@ const Transactions = ({ transactions }) => {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(false);
     const [sortType, setSortType] = useState('asc');
-    const [item, setItem] = useState('');
+    // const [item, setItem] = useState('');
 
     useEffect(() => {
         setData(Object.values(transactions));
@@ -55,7 +55,7 @@ const Transactions = ({ transactions }) => {
                 sortType={sortType}
                 onSortColumn={fakeLoader}
                 loading={loading}
-                onRowClick={(data) => setItem(data)}
+                // onRowClick={(data) => setItem(data)}
             >
                 <Column width={100} align="center" resizable sortable>
                     <HeaderCell>Expense</HeaderCell>

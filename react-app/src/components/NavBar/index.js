@@ -1,13 +1,11 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import LogoutButton from '../auth/LogoutButton';
 import ProfileButton from './ProfileButton';
 import logo from '../../images/logo3.png';
 import './NavBar.css';
-import { authenticate } from '../../store/session';
 
-const NavBar = ({ authenticated }) => {
+const NavBar = () => {
     const sessionUser = useSelector((state) => state.session.user);
     const errors = useSelector((state) => {
         if (state.session.user) {
@@ -17,25 +15,12 @@ const NavBar = ({ authenticated }) => {
         }
     });
 
-    console.log(sessionUser);
-
-    // if (sessionUser) {
-    //     sessionLinks = <ProfileButton user={sessionUser} />;
-    // } else {
-    //     sessionLinks = (
-    //         <>
-    //             <NavLink to="/login">Log In</NavLink>
-    //             <NavLink to="/sign-up">Sign Up</NavLink>
-    //         </>
-    //     );
-    // }
-
     if (sessionUser && !errors) {
         return (
             <div className="container__navbar">
                 <div className="navbar__links">
                     <a className="anchor" href="/">
-                        <img src={logo}></img>
+                        <img alt='logo' src={logo}></img>
                     </a>
                     <div>
                         <ProfileButton user={sessionUser} />
@@ -49,7 +34,7 @@ const NavBar = ({ authenticated }) => {
                 <div className="navbar__links">
                     <div>
                         <a className="anchor" href="/">
-                            <img src={logo}></img>
+                            <img alt='logo' src={logo}></img>
                         </a>
                     </div>
                     <div>
