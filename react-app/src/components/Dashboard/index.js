@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { Redirect, useHistory, NavLink } from 'react-router-dom';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Group from '../grp/Group';
 import NewGroup from '../grp/NewGroup';
+<<<<<<< HEAD
 import ExpenseForm from '../exp/ExpenseForm';
 import ExpenseDetails from '../exp/ExpenseDetails';
 import Transactions from '../Transactions';
@@ -13,6 +13,11 @@ import './dashboard.css';
 
 const Dashboard = ({ setPath }) => {
     const sessionGroups = useSelector((state) => state.groups);
+=======
+import { getUserGroups } from '../../store/groups';
+
+const Dashboard = () => {
+>>>>>>> main
     const dispatch = useDispatch();
     const user = useSelector((state) => state.session.user);
     const groups = useSelector((state) => state.groups);
@@ -23,12 +28,15 @@ const Dashboard = ({ setPath }) => {
     }
 
     useEffect(() => {
-        console.log(userId);
         if (userId) {
             dispatch(getUserGroups(user.id));
         }
+<<<<<<< HEAD
         setPath(window.location.pathname);
     }, [dispatch, user]);
+=======
+    }, [dispatch, user, userId]);
+>>>>>>> main
 
     return (
         <div className="dashboard-container">

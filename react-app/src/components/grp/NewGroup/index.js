@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-import { Redirect, useHistory, NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import Group from '../Group';
 import * as groupActions from '../../../store/groups';
 
 const NewGroup = () => {

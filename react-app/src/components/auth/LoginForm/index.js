@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 import React, { useState, useEffect } from 'react';
 import { Redirect, useHistory, NavLink } from 'react-router-dom';
+=======
+import React, { useState } from 'react';
+import { useHistory, NavLink } from 'react-router-dom';
+>>>>>>> main
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../../store/session';
 import logo from '../../../images/logo3.png';
@@ -41,66 +46,65 @@ const LoginForm = ({ authenticated, setAuthenticated, setPath }) => {
     };
 
     return (
-        <div className="login-container">
-            <div className="login-image-container">
-                <img className="login-image" src={logo}></img>
-            </div>
-            <div className="login-form-container">
-                <div className="login-title-container">
-                    <div className="login-title">WELCOME TO CHIPPDIN</div>
-                </div>
-                <form className="login-form" onSubmit={onLogin}>
-                    <div className="login-errors-container">
-                        <ul className="login-errors-list">
-                            {errors &&
-                                errors.map((error, idx) => (
-                                    <li key={idx}>{error}</li>
-                                ))}
-                        </ul>
-                    </div>
-                    <div className="email-label-container">
-                        <label className="email-label">Email address</label>
-                    </div>
-                    <div className="email-input-container">
-                        <input
-                            className="email-input"
-                            name="email"
-                            type="text"
-                            value={email}
-                            onChange={updateEmail}
-                        />
-                    </div>
-                    <div className="password-label-container">
-                        <label className="password-label">Password</label>
-                    </div>
-                    <div className="password-input-container">
-                        <input
-                            className="password-input"
-                            name="password"
-                            type={showPassword ? 'text' : 'password'}
-                            value={password}
-                            onChange={updatePassword}
-                        />
-                    </div>
-                    <div className="show-password" onClick={passwordToggle}>
-                        show password
-                    </div>
-                    <div className="login-button-container">
-                        <button className="login-button" type="submit">
-                            Log In
-                        </button>
-                    </div>
-                    <div className="not-member-container">
-                        <div className="not-member">
-                            {"Don't have an account?  "}
-                            <NavLink className="login-navlink" to="/sign-up">
-                                Click here
-                            </NavLink>
-                        </div>
-                    </div>
-                </form>
-            </div>
+      <div className="login-container">
+        <div className="login-image-container">
+          <img alt='loginimg' className="login-image" src={logo}></img>
         </div>
+        <div className="login-form-container">
+          <div className="login-title-container">
+            <div className="login-title">WELCOME TO CHIPPDIN</div>
+          </div>
+          <form className="login-form" onSubmit={onLogin}>
+            <div className="login-errors-container">
+              <ul className="login-errors-list">
+                {errors &&
+                  errors.map((error, idx) => <li key={idx}>{error}</li>)}
+              </ul>
+            </div>
+            <div className="email-label-container">
+              <label className="email-label">Email address</label>
+            </div>
+            <div className="email-input-container">
+              <input
+                className="email-input"
+                name="email"
+                type="text"
+                value={email}
+                onChange={updateEmail}
+              />
+            </div>
+            <div className="password-label-container">
+              <label className="password-label">Password</label>
+            </div>
+            <div className="password-input-container">
+              <input
+                className="password-input"
+                name="password"
+                type={showPassword ? "text" : "password"}
+                value={password}
+                onChange={updatePassword}
+              />
+            </div>
+            <div className="show-password" onClick={passwordToggle}>
+              show password
+            </div>
+            <div className="login-button-container">
+              <button className="login-button" type="submit">
+                Log In
+              </button>
+            </div>
+            <div className="not-member-container">
+              <div className="not-member">
+                {"Don't have an account?  "}
+                <NavLink className="login-navlink" to="/sign-up">
+                  Click here
+
+                </NavLink>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
     );
 };
 

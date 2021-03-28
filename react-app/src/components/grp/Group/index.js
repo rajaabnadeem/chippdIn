@@ -6,7 +6,7 @@ import { getTransactions } from '../../../store/transactions';
 import ExpenseForm from '../../exp/ExpenseForm';
 import ExpenseDetails from '../../exp/ExpenseDetails';
 import Modal from 'react-modal';
-import { getExpenses, setExpense } from '../../../store/expenses';
+import { getExpenses } from '../../../store/expenses';
 import UserGroupForm from './UserGroupForm';
 import logo from '../../../images/logo2.jpg';
 
@@ -44,8 +44,8 @@ const Group = ({ group }) => {
     }
 
     useEffect(() => {
-        dispatch(getExpenses(userId, group.id));
-    }, [dispatch]);
+      dispatch(getExpenses(userId, group.id));
+    }, [dispatch, userId, group.id]);
 
     const handleExpenses = () => {
         modalIsOpen ? setModalIsOpen(false) : setModalIsOpen(true);
@@ -69,8 +69,13 @@ const Group = ({ group }) => {
         return (
             <div className="groupContainer">
                 <div className="groupDetails">
+<<<<<<< HEAD
                     <div className="imageTitle">
                         <img className="groupImage" src={logo}></img>
+=======
+                    <div>
+                        <img alt='groupimg' className="groupImage" src={logo}></img>
+>>>>>>> main
                         {/* ^^^ above is a placeholder for group.img_url */}
 
                         <h1 className="groupName">{group.name}</h1>

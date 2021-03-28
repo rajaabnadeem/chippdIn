@@ -1,18 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from 'react-redux';
-import * as sessionActions from '../../store/session';
 import { NavLink } from 'react-router-dom'
-import { useHistory } from 'react-router-dom';
+import LogoutButton  from '../../components/auth/LogoutButton'
+
 
 function ProfileButton({ user }) {
-  const dispatch = useDispatch();
-  const history = useHistory();
   const [showMenu, setShowMenu] = useState(false);
-
-
-  // const toggleMenu = () => {
-  //   showMenu ? setShowMenu(false) : setShowMenu(true)
-  // }
 
   const openMenu = () => {
     if (showMenu) return;
@@ -31,10 +23,6 @@ function ProfileButton({ user }) {
     return () => document.removeEventListener("click", closeMenu);
   }, [showMenu]);
 
-  const logout = (e) => {
-    e.preventDefault();
-    dispatch(sessionActions.logout());
-  };
 
   return (
     <>
@@ -48,7 +36,8 @@ function ProfileButton({ user }) {
             <div>My Balance: ${user.balance}</div>
             <NavLink to = '/dashboard'>Add a Group</NavLink>
             {/* <NavLink to = '/transactions'>My Transactions</NavLink> */}
-            <button onClick={logout}>Log Out</button>
+            {/* <button onClick={logout}>Log Out</button> */}
+            <LogoutButton />
         </ul>
       )}
       </div>
