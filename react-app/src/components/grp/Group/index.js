@@ -14,6 +14,7 @@ const Group = ({ group }) => {
     const dispatch = useDispatch();
     const [showTransactions, setShowTransactions] = useState(false);
     const [modalIsOpen, setModalIsOpen] = useState(false);
+    const [createModalIsOpen, setCreateModalIsOpen] = useState(false);
     const [expense, setExpense] = useState([]);
     const user = useSelector((state) => state.session.user);
     const expenses = useSelector((state) => state.expenses);
@@ -48,6 +49,12 @@ const Group = ({ group }) => {
 
     const handleExpenses = () => {
         modalIsOpen ? setModalIsOpen(false) : setModalIsOpen(true);
+    };
+
+    const toggleCreate = () => {
+        createModalIsOpen
+            ? setCreateModalIsOpen(false)
+            : setCreateModalIsOpen(true);
     };
 
     const exp = (e) => {
@@ -113,14 +120,22 @@ const Group = ({ group }) => {
                     </Modal>
 
                     <div className="expButtonContainer">
-                        <button className="createExpButton">
+                        <button
+                            className="createExpButton"
+                            onClick={toggleCreate}
+                        >
                             <i class="fas fa-plus"></i>
                         </button>
                     </div>
                 </div>
-                <div className="create-expense">
-                    <ExpenseForm group={group} />
-                </div>
+                <Modal
+                    className="createExpModal"
+                    style={style}
+                    isOpen={createModalIsOpen}
+                >
+                    <ExpenseForm group={group} toggleCreate={toggleCreate} />
+                    <button onClick={toggleCreate}>x</button>
+                </Modal>
             </div>
         );
     } else {

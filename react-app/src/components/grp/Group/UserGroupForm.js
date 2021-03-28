@@ -13,7 +13,8 @@ const UserGroupForm = ({ group }) => {
 
     return (
         <form onSubmit={handleSubmit}>
-            <i class="fas fa-plus"></i>
+            {/* <button type='submit'></button> */}
+            <i onClick={handleSubmit} class="fas fa-plus"></i>
             <input
                 placeholder="add group members by email"
                 value={email}

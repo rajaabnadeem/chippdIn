@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import './ExpenseForm.css';
 import { createExpense } from '../../../store/expenses';
 
-const ExpenseForm = ({ group }) => {
+const ExpenseForm = ({ group, toggleCreate }) => {
     const dispatch = useDispatch();
     const [description, setDescription] = useState('');
     const [amount, setAmount] = useState('');
@@ -18,6 +18,7 @@ const ExpenseForm = ({ group }) => {
     const handleSumbit = async (e) => {
         // console.log(group)
         e.preventDefault();
+        toggleCreate();
         await dispatch(
             createExpense({
                 description,
