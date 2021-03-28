@@ -104,7 +104,7 @@ const Group = ({ group }) => {
                         <button onClick={handleExpenses}>view expense</button>
                     </div>
                     <Modal
-                        className="exp-modal"
+                        className="expModal"
                         style={style}
                         isOpen={modalIsOpen}
                     >
@@ -112,9 +112,14 @@ const Group = ({ group }) => {
                         <button onClick={handleExpenses}>x</button>
                     </Modal>
 
-                    <div className="create-expense">
-                        <ExpenseForm group={group} />
+                    <div className="expButtonContainer">
+                        <button className="createExpButton">
+                            <i class="fas fa-plus"></i>
+                        </button>
                     </div>
+                </div>
+                <div className="create-expense">
+                    <ExpenseForm group={group} />
                 </div>
             </div>
         );
