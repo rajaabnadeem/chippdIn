@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { createUserGroup } from '../../../store/groups';
+import './Group.css';
 
 const UserGroupForm = ({ group }) => {
     const dispatch = useDispatch();
@@ -12,15 +13,26 @@ const UserGroupForm = ({ group }) => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            {/* <button type='submit'></button> */}
-            <i onClick={handleSubmit} class="fas fa-plus"></i>
-            <input
-                placeholder="add group members by email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-            ></input>
-        </form>
+        <div className="groupForm">
+            <div className="gForm">
+                <form className="gForm" onSubmit={handleSubmit}>
+                    {/* <button type='submit'></button> */}
+                    <div>
+                        <input
+                            className="gFormInput"
+                            placeholder="add group members by email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                        ></input>
+                    </div>
+                </form>
+            </div>
+            <div className="gForm">
+                <div className="gFormIcon">
+                    <i onClick={handleSubmit} class="fas fa-plus"></i>
+                </div>
+            </div>
+        </div>
     );
 };
 

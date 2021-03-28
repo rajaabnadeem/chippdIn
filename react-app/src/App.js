@@ -14,6 +14,7 @@ import './index.css';
 
 function App() {
     const dispatch = useDispatch();
+    const [path, setPath] = useState('');
     const [authenticated, setAuthenticated] = useState(false);
     const [loaded, setLoaded] = useState(false);
 
@@ -25,6 +26,10 @@ function App() {
         }
         setLoaded(true);
     });
+
+    useEffect(() => {
+        setPath(window.location.pathname);
+    }, [loaded]);
 
     if (!loaded) {
         return null;
@@ -41,6 +46,42 @@ function App() {
           {/* <Route path="/comment">
                     <CommentContainer />
                 </Route> */}
+<<<<<<< HEAD
+                <Route path="/login" exact={true}>
+                    <LoginForm
+                        authenticated={authenticated}
+                        setAuthenticated={setAuthenticated}
+                        setPath={setPath}
+                    />
+                </Route>
+                <Route path="/sign-up" exact={true}>
+                    <SignUpForm
+                        authenticated={authenticated}
+                        setAuthenticated={setAuthenticated}
+                        setPath={setPath}
+                    />
+                </Route>
+                <Route path="/groups">{/* <Group /> */}</Route>
+
+                <ProtectedRoute
+                    path="/dashboard"
+                    exact={true}
+                    authenticated={authenticated}
+                >
+                    <Dashboard setPath={setPath} />
+                </ProtectedRoute>
+
+                <ProtectedRoute
+                    path="/"
+                    exact={true}
+                    authenticated={authenticated}
+                >
+                    <LandingPage />
+                </ProtectedRoute>
+            </Switch>
+            <Footer path={path} />
+        </>
+=======
           <Route path="/login" exact={true}>
             <LoginForm
               authenticated={authenticated}
@@ -71,6 +112,7 @@ function App() {
         </Switch>
         <Footer />
       </>
+>>>>>>> main
     );
 }
 

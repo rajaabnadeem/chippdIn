@@ -69,63 +69,71 @@ const Group = ({ group }) => {
         return (
             <div className="groupContainer">
                 <div className="groupDetails">
+<<<<<<< HEAD
+                    <div className="imageTitle">
+                        <img className="groupImage" src={logo}></img>
+=======
                     <div>
                         <img alt='groupimg' className="groupImage" src={logo}></img>
+>>>>>>> main
                         {/* ^^^ above is a placeholder for group.img_url */}
+
+                        <h1 className="groupName">{group.name}</h1>
                     </div>
-                    <div className="nameTypeContainer">
-                        <div className="groupName">
-                            <h1>{group.name}</h1>
-                        </div>
-                        <div className="groupTypeContainer">
-                            <p className="groupType">{`for your, ${group.type}`}</p>
-                        </div>
-                    </div>
+
                     <div className="topRightContainer">
                         <div className="groupForm">
                             <UserGroupForm group={group} />
                         </div>
-                        <div>
-                            <button onClick={toggleTransactions}>
-                                group transactions
-                            </button>
-                        </div>
                     </div>
                 </div>
-                <div className="expenseDetails">
-                    <div className="expenseLabel">
-                        <h1>Expense:</h1>
-                    </div>
-                    <div className="expenseSelectorContainer">
-                        <select key={expense} value={expense} onChange={exp}>
-                            {Object.entries(expenses).map(([key, value]) =>
-                                value.group_id === group.id ? (
-                                    <option key={key} value={`${key}`}>
-                                        {value.description}
-                                    </option>
-                                ) : null
-                            )}
-                        </select>
-                    </div>
-                    <div className="viewExpenseButton">
-                        <button onClick={handleExpenses}>view expense</button>
-                    </div>
-                    <Modal
-                        className="expModal"
-                        style={style}
-                        isOpen={modalIsOpen}
-                    >
-                        <ExpenseDetails expense={expense} />
-                        <button onClick={handleExpenses}>x</button>
-                    </Modal>
 
-                    <div className="expButtonContainer">
-                        <button
-                            className="createExpButton"
-                            onClick={toggleCreate}
+                <div className="expenseLabel"></div>
+
+                <div className="expenseDetails">
+                    <div className="expense">
+                        <div className="expenseSelectorContainer">
+                            <select
+                                className="expSelector"
+                                key={expense}
+                                value={expense}
+                                onChange={exp}
+                            >
+                                {Object.entries(expenses).map(([key, value]) =>
+                                    value.group_id === group.id ? (
+                                        <option key={key} value={`${key}`}>
+                                            {value.description}
+                                        </option>
+                                    ) : null
+                                )}
+                            </select>
+                        </div>
+                        <div className="viewExpenseButtonContainer">
+                            <button
+                                className="viewExpenseButton"
+                                onClick={handleExpenses}
+                            >
+                                view expense
+                            </button>
+                        </div>
+                        <Modal
+                            className="expModal"
+                            style={style}
+                            isOpen={modalIsOpen}
                         >
-                            <i class="fas fa-plus"></i>
-                        </button>
+                            <ExpenseDetails expense={expense} />
+                            <button onClick={handleExpenses}>x</button>
+                        </Modal>
+                    </div>
+                    <div>
+                        <div>
+                            <button
+                                className="createExpButton"
+                                onClick={toggleCreate}
+                            >
+                                + new expense
+                            </button>
+                        </div>
                     </div>
                 </div>
                 <Modal
@@ -136,6 +144,14 @@ const Group = ({ group }) => {
                     <ExpenseForm group={group} toggleCreate={toggleCreate} />
                     <button onClick={toggleCreate}>x</button>
                 </Modal>
+                <div className="transactionButtonContainer">
+                    <button
+                        className="transButton"
+                        onClick={toggleTransactions}
+                    >
+                        view transactions
+                    </button>
+                </div>
             </div>
         );
     } else {
