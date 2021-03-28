@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Redirect, useHistory, NavLink } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../../store/session';
 import logo from '../../../images/logo3.png';
 import './LoginForm.css';
 
-const LoginForm = ({ authenticated, setAuthenticated }) => {
+const LoginForm = ({ authenticated, setAuthenticated, setPath }) => {
     const dispatch = useDispatch();
     const history = useHistory();
     const [errors, setErrors] = useState([]);
@@ -27,6 +27,10 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
             setErrors(user.payload.errors);
         }
     };
+
+    useEffect(() => {
+        setPath(window.location.pathname);
+    }, []);
 
     const updateEmail = (e) => {
         setEmail(e.target.value);

@@ -1,21 +1,31 @@
 import React from 'react';
 import './Footer.css';
+import { useState, useEffect } from 'react';
+import NewGroup from '../grp/NewGroup';
 
-const Footer = () => {
+const Footer = ({ path }) => {
     return (
-        <div className="footer">
-            <p className="line1">
-                Made with{' '}
-                <span>
-                    <i class="fas fa-heart"></i>
-                </span>{' '}
-                from all over the globe...
-            </p>
-            <p className="line2">
-                This is a Clone app of{' '}
-                <a href="www.splitwise.com">www.splitwise.com</a>
-            </p>
-            <div className="devContainer">
+        <div
+            className={
+                path === '/login' || path === '/signup'
+                    ? 'footer-login'
+                    : 'footer-dash'
+            }
+        >
+            <div className="leftFooter">
+                <p className="line1">
+                    Made with{' '}
+                    <span>
+                        <i class="fas fa-heart"></i>
+                    </span>{' '}
+                    from all over the globe...
+                </p>
+                <p className="line2">
+                    This is a Clone app of{' '}
+                    <a href="www.splitwise.com">www.splitwise.com</a>
+                </p>
+            </div>
+            <div className="rightFooter">
                 <div className="dev">
                     <p>Dorn Holland</p>
                     <a href="https://www.linkedin.com/in/dorn-holland-0a22b6173">

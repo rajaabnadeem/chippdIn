@@ -18,6 +18,7 @@ import './index.css';
 
 function App() {
     const dispatch = useDispatch();
+    const [path, setPath] = useState('');
     const [authenticated, setAuthenticated] = useState(false);
     const [loaded, setLoaded] = useState(false);
 
@@ -29,6 +30,10 @@ function App() {
         }
         setLoaded(true);
     });
+
+    useEffect(() => {
+        setPath(window.location.pathname);
+    }, [loaded]);
 
     if (!loaded) {
         return null;
@@ -49,12 +54,14 @@ function App() {
                     <LoginForm
                         authenticated={authenticated}
                         setAuthenticated={setAuthenticated}
+                        setPath={setPath}
                     />
                 </Route>
                 <Route path="/sign-up" exact={true}>
                     <SignUpForm
                         authenticated={authenticated}
                         setAuthenticated={setAuthenticated}
+                        setPath={setPath}
                     />
                 </Route>
                 <Route path="/groups">{/* <Group /> */}</Route>
@@ -64,7 +71,7 @@ function App() {
                     exact={true}
                     authenticated={authenticated}
                 >
-                    <Dashboard />
+                    <Dashboard setPath={setPath} />
                 </ProtectedRoute>
 
                 <ProtectedRoute
@@ -75,7 +82,7 @@ function App() {
                     <LandingPage />
                 </ProtectedRoute>
             </Switch>
-            <Footer />
+            <Footer path={path} />
         </>
     );
 }

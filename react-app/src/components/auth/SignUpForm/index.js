@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Redirect, useHistory, NavLink } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../../store/session';
 import logo from '../../../images/logo3.png';
 import './SignUpForm.css';
 
-const SignUpForm = ({ authenticated, setAuthenticated }) => {
+const SignUpForm = ({ authenticated, setAuthenticated, setPath }) => {
     const dispatch = useDispatch();
     const history = useHistory();
     const [first_name, setFirstName] = useState('');
@@ -46,6 +46,10 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
             setErrors(user.payload.errors);
         }
     };
+
+    useEffect(() => {
+        setPath(window.location.pathname);
+    }, []);
 
     const updateFirstName = (e) => {
         setFirstName(e.target.value);

@@ -1,26 +1,53 @@
-.footer {
+.footer-dash {
     display: grid;
     grid-template-rows: 1fr 1fr;
     grid-template-columns: 1fr 1fr;
     grid-template-areas:
-    "line1 devs"
-    "line2 devs";
-    background-color: rgb(148, 218, 176);
-    position: fixed;
+        'line1 devs'
+        'line2 devs';
+    background-color: rgb(181, 181, 181);
+    position: relative;
     left: 0;
     bottom: 0;
     width: 100%;
     height: 15%;
     text-align: center;
     z-index: 1000;
-    float: bottom
+    float: bottom;
+    color: white;
 }
 
-.line1,
+.footer-login {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    /* grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+        'line1 devs'
+        'line2 devs'; */
+    background-color: rgb(181, 181, 181);
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 15%;
+    /* text-align: center; */
+    z-index: 1000;
+    float: bottom;
+    color: white;
+}
+
+.rightFooter {
+    display: flex;
+    flex-direction: row;
+}
+
+/* .line1,
 .line2 {
     margin: auto 0;
-}
-.devContainer {
+} */
+/* .devContainer {
     display: grid;
     grid-template-rows: 1fr 1fr;
     grid-template-columns: 1fr 1fr;
@@ -29,7 +56,6 @@
     background-color: black;
     row-gap: 2px;
     column-gap: 1px;
-
 }
 .dev {
     display: flex;
@@ -39,6 +65,6 @@
     background-color: rgb(148, 218, 176);
 }
 
-.dev >  * {
+.dev > * {
     margin: 0 10px;
-}
+} */
