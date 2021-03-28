@@ -19,6 +19,7 @@ def getComments(expense_id, user_id):
 def createComment(expense_id, user_id):
     form = CommentForm()
     comment = Comment()
+    print(form.comment)
     form.populate_obj(comment)
     comment.user_id = user_id
     comment.expense_id = expense_id
