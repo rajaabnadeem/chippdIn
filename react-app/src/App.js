@@ -36,17 +36,16 @@ function App() {
     }
 
     return (
-      <>
-        <NavBar
-          authenticated={authenticated}
-          setAuthenticated={setAuthenticated}
-        />
+        <>
+            <NavBar
+                authenticated={authenticated}
+                setAuthenticated={setAuthenticated}
+            />
 
-        <Switch>
-          {/* <Route path="/comment">
+            <Switch>
+                {/* <Route path="/comment">
                     <CommentContainer />
                 </Route> */}
-<<<<<<< HEAD
                 <Route path="/login" exact={true}>
                     <LoginForm
                         authenticated={authenticated}
@@ -81,38 +80,6 @@ function App() {
             </Switch>
             <Footer path={path} />
         </>
-=======
-          <Route path="/login" exact={true}>
-            <LoginForm
-              authenticated={authenticated}
-              setAuthenticated={setAuthenticated}
-              
-            />
-
-          </Route>
-          <Route path="/sign-up" exact={true}>
-            <SignUpForm
-              authenticated={authenticated}
-              setAuthenticated={setAuthenticated}
-            />
-          </Route>
-          <Route path="/groups">{/* <Group /> */}</Route>
-
-          <ProtectedRoute
-            path="/dashboard"
-            exact={true}
-            authenticated={authenticated}
-          >
-            <Dashboard />
-          </ProtectedRoute>
-
-          <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
-            <LandingPage />
-          </ProtectedRoute>
-        </Switch>
-        <Footer />
-      </>
->>>>>>> main
     );
 }
 

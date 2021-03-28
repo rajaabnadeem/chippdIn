@@ -44,7 +44,7 @@ const Group = ({ group }) => {
     }
 
     useEffect(() => {
-      dispatch(getExpenses(userId, group.id));
+        dispatch(getExpenses(userId, group.id));
     }, [dispatch, userId, group.id]);
 
     const handleExpenses = () => {
@@ -69,13 +69,8 @@ const Group = ({ group }) => {
         return (
             <div className="groupContainer">
                 <div className="groupDetails">
-<<<<<<< HEAD
                     <div className="imageTitle">
                         <img className="groupImage" src={logo}></img>
-=======
-                    <div>
-                        <img alt='groupimg' className="groupImage" src={logo}></img>
->>>>>>> main
                         {/* ^^^ above is a placeholder for group.img_url */}
 
                         <h1 className="groupName">{group.name}</h1>
