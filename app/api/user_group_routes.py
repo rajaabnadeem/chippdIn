@@ -10,7 +10,7 @@ user_group_routes = Blueprint('user_groups', __name__)
 def add_user_group(group_id):
     form = UserGroupForm()
     usergroup = UserGroup()
-    email = form.email.data
+    email = form.data['email']
     user = User.query.filter(User.email == email).one()
     usergroup.user_id = user.id
     usergroup.group_id = group_id
