@@ -1,25 +1,33 @@
 .groupContainer {
     border: 1px solid black;
-    max-width: 500px;
     padding: 10px;
     margin: 10px;
-    height: 200px;
+}
+
+.groupContainer {
+    display: flex;
+    flex-direction: column;
 }
 
 .groupDetails {
     display: flex;
-    justify-content: space-between;
-    margin: 10px;
+    flex-direction: row;
+    justify-content: space-around;
 }
 
-.expenseDetails {
-    display: flex;
-    justify-content: space-between;
-    margin: 10px;
+.groupName {
+    font-size: 22pt;
 }
 
-.groupDetails > img {
+.groupImage {
+    height: 100px;
     width: 100px;
+}
+
+.nameTypeContainer,
+.topRightContainer {
+    display: flex;
+    flex-direction: column;
 }
 
 .exp-modal {
