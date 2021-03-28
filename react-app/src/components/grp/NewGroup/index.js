@@ -15,6 +15,7 @@ const NewGroup = () => {
         e.preventDefault();
         await dispatch(groupActions.createGroup({ name, type }, user.id));
     };
+
     return (
         <div>
             <form onSubmit={submit}>

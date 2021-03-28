@@ -13,24 +13,24 @@ export const setUserGroup = (userGroup) => ({
 });
 
 export const getUserGroups = (user_id) => async (dispatch) => {
-    console.log('problem -> ', user_id)
+    console.log('problem -> ', user_id);
     const res = await fetch(`/api/users/${user_id}/groups/`);
     const groups = await res.json();
-        dispatch(setGroup(groups));
+    dispatch(setGroup(groups));
 };
 
-export const createUserGroup = (groupId, email) => async(dispatch) => {
-    console.log(groupId, email)
+export const createUserGroup = (groupId, email) => async (dispatch) => {
+    console.log(groupId, email);
 
     const res = await fetch(`/api/groups/${groupId}/user-groups/`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({email:email}),
+        body: JSON.stringify({ email: email }),
     });
     const data = await res.json();
-}
+};
 
 export const createGroup = (groupData, id) => async (dispatch) => {
     // const { name, type } = groupData;
@@ -65,9 +65,9 @@ const groupsReducer = (state = initialState, action) => {
     let newState = JSON.parse(JSON.stringify(state));
     switch (action.type) {
         case SET_GROUP:
-            let loadState = {}
+            let loadState = {};
             for (let key in action.payload) {
-            loadState[action.payload[key].id] = action.payload[key];
+                loadState[action.payload[key].id] = action.payload[key];
             }
             return loadState;
         default:

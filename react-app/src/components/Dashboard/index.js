@@ -6,7 +6,7 @@ import NewGroup from '../grp/NewGroup';
 import ExpenseForm from '../exp/ExpenseForm';
 import ExpenseDetails from '../exp/ExpenseDetails';
 import Transactions from '../Transactions';
-import { getUserGroups } from '../../store/groups';
+import { getUserGroups, createGroup } from '../../store/groups';
 import { getComments } from '../../store/comments';
 import { getTransactions } from '../../store/transactions';
 
