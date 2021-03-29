@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import logo from '../../images/logo3.png';
 import './NavBar.css';
+import LogoutButton from "../../components/auth/LogoutButton";
 
 const NavBar = () => {
     const sessionUser = useSelector((state) => state.session.user);
@@ -17,16 +18,16 @@ const NavBar = () => {
 
     if (sessionUser && !errors) {
         return (
-            <div className="container__navbar">
-                <div className="navbar__links">
-                    <a className="anchor" href="/">
-                        <img alt='logo' src={logo}></img>
-                    </a>
-                    <div>
-                        <ProfileButton user={sessionUser} />
-                    </div>
-                </div>
+          <div className="container__navbar">
+            <div className="navbar__links">
+              <a className="anchor" href="/">
+                <img alt="logo" src={logo}></img>
+              </a>
+              <div>
+                <LogoutButton />
+              </div>
             </div>
+          </div>
         );
     } else {
         return (
