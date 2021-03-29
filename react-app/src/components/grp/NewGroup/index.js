@@ -18,8 +18,8 @@ const NewGroup = () => {
         <div>
             <form onSubmit={submit}>
                 <div>
-                    <label>Name</label>
                     <input
+                        placeholder="group name"
                         name="name"
                         value={name}
                         type="text"
@@ -27,7 +27,6 @@ const NewGroup = () => {
                     ></input>
                 </div>
                 <div>
-                    <label>Type</label>
                     <select
                         value={type}
                         onChange={(e) => setType(e.target.value)}
@@ -41,7 +40,7 @@ const NewGroup = () => {
                         })}
                     </select>
                 </div>
-                <button type="submit">Submit</button>
+                <button type="submit">Create New Group</button>
             </form>
         </div>
     );

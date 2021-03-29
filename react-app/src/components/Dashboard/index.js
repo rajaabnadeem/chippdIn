@@ -31,8 +31,9 @@ const Dashboard = ({ setPath }) => {
     return (
         <div className="dashboard-container">
             <div className="left-dash">
-                <h1>NEW GROUP</h1>
-                <NewGroup />
+                <div className="newGroup">
+                    <NewGroup />
+                </div>
             </div>
             <div className="center-dash">
                 <div className="groups-container">

@@ -1,44 +1,45 @@
-
 .container__navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     /* background-color: rgb(125, 185, 149); */
     background-color: rgb(148, 218, 176);
-
     width: 100%;
     font-size: larger;
-    height: 50px
-  }
+    height: 50px;
+    padding: 5px;
+}
 
-  .container__navbar a:hover {
+.container__navbar a:hover {
     color: black;
     position: sticky;
     background-color: rgb(148, 218, 176);
-  }
+}
 
-  .container__navbar a {
-    color: #ffffff;
-    margin-right: 20px;
-  }
+.navbar__links {
+    display: flex;
+    flex-direction: row;
+    /* padding: 8px 5px; */
+    height: 10%;
+}
 
-  .navbar__links {
-        display:flex;
-        flex-direction: row;
-        padding: 8px 5px;
-        height: 10%;
-  }
+.profile_button {
+    margin: 10px;
+}
 
-   img {
+img {
     height: 35px;
-    margin: 0px 10px
-  }
+    margin: 0px 10px;
+}
 
-  .anchor {
-    height: 100px
-  }
+.anchor {
+    height: 100px;
+}
 
-  .anchor:hover{
-    height: 1px
-  }
+.anchor:hover {
+    height: 1px;
+}
 
-  .dropdown {
-    color: yellow
-  }
+.dropdown {
+    color: yellow;
+}
