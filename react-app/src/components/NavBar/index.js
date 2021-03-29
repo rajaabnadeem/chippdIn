@@ -8,8 +8,7 @@ import './NavBar.css';
 
 import Modal from 'react-modal';
 
-import LogoutButton from "../../components/auth/LogoutButton";
-
+import LogoutButton from '../../components/auth/LogoutButton';
 
 const NavBar = () => {
     const dispatch = useDispatch();
@@ -43,9 +42,6 @@ const NavBar = () => {
                     <a className="anchor" href="/">
                         <img alt="logo" src={logo}></img>
                     </a>
-                    <div className="profile-button">
-                        <ProfileButton user={sessionUser} />
-                    </div>
                 </div>
                 <div className="navbar__left">
                     <div>
@@ -60,12 +56,10 @@ const NavBar = () => {
                         <button onClick={toggleModal}>Create New Group</button>
                     </div>
                     <div>
-                      <LogoutButton />
+                        <LogoutButton />
                     </div>
                 </div>
-
             </div>
-          </div>
         );
     } else {
         return (
