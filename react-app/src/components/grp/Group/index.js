@@ -163,9 +163,13 @@ const Group = ({ group }) => {
     } else {
         return (
             <div className="transactionContainer">
-                <Transactions transactions={transactions} group={group} />
                 <div>
-                    <button onClick={toggleTransactions}>{'< back'}</button>
+                    <Transactions transactions={transactions} group={group} />
+                </div>
+                <div>
+                    <button className="xButton" onClick={toggleTransactions}>
+                        x
+                    </button>
                 </div>
             </div>
         );
