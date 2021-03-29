@@ -16,6 +16,7 @@ const Group = ({ group }) => {
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [createModalIsOpen, setCreateModalIsOpen] = useState(false);
     const [expense, setExpense] = useState([]);
+    const [value, setValue] = useState([]);
     const user = useSelector((state) => state.session.user);
     const expenses = useSelector((state) => state.expenses);
     const transactions = useSelector((state) => state.transactions);
@@ -60,6 +61,7 @@ const Group = ({ group }) => {
     const exp = (e) => {
         Object.entries(expenses).map(([key, value]) => {
             if (key === e.target.value) {
+                setValue(key);
                 setExpense(value);
             }
         });
@@ -91,7 +93,7 @@ const Group = ({ group }) => {
                             <select
                                 className="expSelector"
                                 key={expense}
-                                value={expense}
+                                value={value}
                                 onChange={exp}
                             >
                                 {Object.entries(expenses).map(([key, value]) =>
