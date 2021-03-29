@@ -5,7 +5,11 @@ import NewGroup from '../grp/NewGroup';
 import ProfileButton from './ProfileButton';
 import logo from '../../images/logo3.png';
 import './NavBar.css';
+
 import Modal from 'react-modal';
+
+import LogoutButton from "../../components/auth/LogoutButton";
+
 
 const NavBar = () => {
     const dispatch = useDispatch();
@@ -55,8 +59,13 @@ const NavBar = () => {
                         </Modal>
                         <button onClick={toggleModal}>Create New Group</button>
                     </div>
+                    <div>
+                      <LogoutButton />
+                    </div>
                 </div>
+
             </div>
+          </div>
         );
     } else {
         return (
