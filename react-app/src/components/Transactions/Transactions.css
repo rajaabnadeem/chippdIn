@@ -6,3 +6,18 @@
         10px 0 10px -5px rgba(0, 0, 0, 0.2),
         -10px 0 10px -5px rgba(0, 0, 0, 0.2);
 }
+
+.cell {
+    font-size: 12pt;
+    font-family: 'Lato', sans-serif;
+}
+
+.c {
+    font-family: 'Lato', sans-serif;
+    font-size: 10pt;
+    padding: 10px;
+}
+
+.cAmount {
+    color: red;
+}

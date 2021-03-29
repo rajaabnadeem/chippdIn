@@ -60,24 +60,24 @@ const Transactions = ({ transactions }) => {
                 // onRowClick={(data) => setItem(data)}
             >
                 <Column width={100} align="center" resizable sortable>
-                    <HeaderCell>Expense</HeaderCell>
-                    <Cell dataKey="description" />
+                    <HeaderCell className="cell">Expense</HeaderCell>
+                    <Cell className="c" dataKey="description" />
                 </Column>
                 <Column width={260} align="center" resizable sortable>
-                    <HeaderCell>Date</HeaderCell>
-                    <Cell dataKey="date"></Cell>
+                    <HeaderCell className="cell">Date</HeaderCell>
+                    <Cell className="c" dataKey="date"></Cell>
                 </Column>
                 <Column width={80} align="center" resizable sortable>
-                    <HeaderCell>Sender</HeaderCell>
-                    <Cell dataKey="sender" />
+                    <HeaderCell className="cell">Sender</HeaderCell>
+                    <Cell className="c" dataKey="sender" />
                 </Column>
                 <Column width={80} align="center" resizable sortable>
-                    <HeaderCell>Getter</HeaderCell>
-                    <Cell dataKey="getter" />
+                    <HeaderCell className="cell">Getter</HeaderCell>
+                    <Cell className="c" dataKey="getter" />
                 </Column>
                 <Column width={100} align="center" resizable sortable>
-                    <HeaderCell>Amount</HeaderCell>
-                    <Cell dataKey="transactionAmount" />
+                    <HeaderCell className="cell">Amount</HeaderCell>
+                    <Cell className="c cAmount" dataKey={'transactionAmount'} />
                 </Column>
                 <Column width={100} align="center" resizable sortable>
                     <HeaderCell></HeaderCell>
