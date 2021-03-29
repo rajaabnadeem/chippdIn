@@ -8,7 +8,7 @@ const Transactions = ({ transactions }) => {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(false);
     const [sortType, setSortType] = useState('asc');
-    // const [item, setItem] = useState('');
+    const [item, setItem] = useState('');
 
     useEffect(() => {
         setData(Object.values(transactions));
@@ -45,41 +45,40 @@ const Transactions = ({ transactions }) => {
             setLoading(false);
         }, 1000);
     };
-
+    console.log(item);
     return (
         <div>
             <Table
                 className="table"
                 data={getData()}
                 height={220}
-                width={645}
                 sortColumn={sortColumn}
                 sortType={sortType}
                 onSortColumn={fakeLoader}
                 loading={loading}
-                // onRowClick={(data) => setItem(data)}
+                onRowClick={(data) => setItem(data)}
             >
-                <Column width={100} align="center" resizable sortable>
+                <Column align="center" resizable sortable>
                     <HeaderCell className="cell">Expense</HeaderCell>
                     <Cell className="c" dataKey="description" />
                 </Column>
-                <Column width={260} align="center" resizable sortable>
+                <Column width={220} align="center" resizable sortable>
                     <HeaderCell className="cell">Date</HeaderCell>
                     <Cell className="c" dataKey="date"></Cell>
                 </Column>
-                <Column width={80} align="center" resizable sortable>
+                <Column align="center" resizable sortable>
                     <HeaderCell className="cell">Sender</HeaderCell>
                     <Cell className="c" dataKey="sender" />
                 </Column>
-                <Column width={80} align="center" resizable sortable>
+                <Column align="center" resizable sortable>
                     <HeaderCell className="cell">Getter</HeaderCell>
                     <Cell className="c" dataKey="getter" />
                 </Column>
-                <Column width={100} align="center" resizable sortable>
+                <Column align="center" resizable sortable>
                     <HeaderCell className="cell">Amount</HeaderCell>
                     <Cell className="c cAmount" dataKey={'transactionAmount'} />
                 </Column>
-                <Column width={100} align="center" resizable sortable>
+                <Column align="center" resizable sortable>
                     <HeaderCell></HeaderCell>
                     <Cell dataKey="paid">
                         {(rowData) => {

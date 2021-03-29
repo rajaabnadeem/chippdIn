@@ -1,6 +1,6 @@
 from flask import Blueprint
 from flask_login import login_required
-from app.models import Expense, Transaction, db
+from app.models import Expense, Transaction, db, User
 from app.forms import ExpenseForm
 from flask import jsonify
 
@@ -15,13 +15,15 @@ def getTransactions(user_id, group_id):
         trans = Transaction.query.filter(
             Transaction.expense_id == expense.id).all()
         for tran in trans:
+            getter = User.query.filter(User.id == expense.user_id).one()
+            sender = User.query.filter(User.id == tran.user_id).one()
             print('this is the transaction:', tran.id)
             result[tran.id] = {
                 "description": expense.description,
                 "transactionAmount": tran.amount,
                 "date": expense.date,
-                "getter": expense.user_id,
-                'sender': tran.user_id,
+                "getter": getter.first_name,
+                'sender': sender.first_name,
                 'paid': tran.paid
             }
     return result
