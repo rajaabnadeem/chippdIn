@@ -7,7 +7,7 @@ const Footer = ({ path }) => {
     return (
         <div
             className={
-                path === '/login' || path === '/sign-up'
+                path === '/login' || path === '/'
                     ? 'footer-login'
                     : 'footer-dash'
             }

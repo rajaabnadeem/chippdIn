@@ -41,11 +41,7 @@ function App() {
                 authenticated={authenticated}
                 setAuthenticated={setAuthenticated}
             />
-
             <Switch>
-                {/* <Route path="/comment">
-                    <CommentContainer />
-                </Route> */}
                 <Route path="/login" exact={true}>
                     <LoginForm
                         authenticated={authenticated}
@@ -53,29 +49,19 @@ function App() {
                         setPath={setPath}
                     />
                 </Route>
-                <Route path="/sign-up" exact={true}>
+                <Route exact path="/" exact={true}>
                     <SignUpForm
                         authenticated={authenticated}
                         setAuthenticated={setAuthenticated}
                         setPath={setPath}
                     />
                 </Route>
-                <Route path="/groups">{/* <Group /> */}</Route>
-
                 <ProtectedRoute
                     path="/dashboard"
                     exact={true}
                     authenticated={authenticated}
                 >
                     <Dashboard setPath={setPath} />
-                </ProtectedRoute>
-
-                <ProtectedRoute
-                    path="/"
-                    exact={true}
-                    authenticated={authenticated}
-                >
-                    <LandingPage />
                 </ProtectedRoute>
             </Switch>
             <Footer path={path} />
