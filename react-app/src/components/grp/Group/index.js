@@ -46,7 +46,8 @@ const Group = ({ group }) => {
 
     useEffect(() => {
         dispatch(getExpenses(userId, group.id));
-    }, [dispatch, userId, group.id]);
+        dispatch(getTransactions(userId, group.id));
+    }, [dispatch, userId, group.id, Transactions]);
 
     const handleExpenses = () => {
         modalIsOpen ? setModalIsOpen(false) : setModalIsOpen(true);

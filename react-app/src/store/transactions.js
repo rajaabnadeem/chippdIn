@@ -1,4 +1,3 @@
-
 const LOAD_TRANS = 'transactions/loadTransactions';
 
 export const loadTransactions = (transactions) => ({
@@ -19,7 +18,7 @@ export const getTransactions = (user_id, group_id) => async (dispatch) => {
 const initialState = {};
 
 const transactionsReducer = (state = initialState, action) => {
-    let newState = JSON.parse(JSON.stringify(state));
+    let newState = {};
     switch (action.type) {
         case LOAD_TRANS:
             for (let key in action.payload) {
