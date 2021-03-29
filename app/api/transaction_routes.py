@@ -18,6 +18,7 @@ def getTransactions(user_id, group_id):
             getter = User.query.filter(User.id == expense.user_id).one()
             sender = User.query.filter(User.id == tran.user_id).one()
             print('this is the transaction:', tran.id)
+
             result[tran.id] = {
                 "description": expense.description,
                 "transactionAmount": tran.amount,

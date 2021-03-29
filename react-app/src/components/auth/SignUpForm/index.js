@@ -53,6 +53,9 @@ const SignUpForm = ({ authenticated, setAuthenticated, setPath }) => {
         setPassword(e.target.value);
     };
 
+    if (authenticated) {
+        return <Redirect to="/dashboard" />;
+    }
     return (
         <div className="signup-container">
             <div className="signup-image-container">

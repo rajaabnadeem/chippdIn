@@ -80,8 +80,8 @@ const Transactions = ({ transactions }) => {
                 </Column>
                 <Column align="center" resizable sortable>
                     <HeaderCell></HeaderCell>
-                    <Cell dataKey="paid">
-                        {(rowData) => {
+                    <Cell dataKey={'paid'}>
+                        {/* {(rowData) => {
                             function handlePaidClick() {
                                 if (rowData) {
                                     return '✅';
@@ -90,7 +90,7 @@ const Transactions = ({ transactions }) => {
                                 }
                             }
                             return <span>{handlePaidClick}</span>;
-                        }}
+                        }} */}
                     </Cell>
                 </Column>
             </Table>
