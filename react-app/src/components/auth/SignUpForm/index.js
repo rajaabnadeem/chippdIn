@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useSelector } from 'react';
 import { Redirect, useHistory, NavLink } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../../store/session';
@@ -22,6 +22,7 @@ const SignUpForm = ({ authenticated, setAuthenticated, setPath }) => {
 
     const onSignUp = async (e) => {
         e.preventDefault();
+
         const user = await dispatch(
             sessionActions.signUp({ first_name, last_name, email, password })
         );
@@ -53,9 +54,6 @@ const SignUpForm = ({ authenticated, setAuthenticated, setPath }) => {
         setPassword(e.target.value);
     };
 
-    if (authenticated) {
-        return <Redirect to="/dashboard" />;
-    }
     return (
         <div className="signup-container">
             <div className="signup-image-container">

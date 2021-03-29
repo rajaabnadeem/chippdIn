@@ -78,7 +78,7 @@ const NavBar = () => {
                     </div>
                     <div className="slash">|</div>
                     <div className="signups">
-                        <NavLink to="/sign-up">Sign Up</NavLink>
+                        <NavLink to="/">Sign Up</NavLink>
                     </div>
                 </div>
             </div>

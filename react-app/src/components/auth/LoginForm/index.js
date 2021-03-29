@@ -40,10 +40,6 @@ const LoginForm = ({ authenticated, setAuthenticated, setPath }) => {
         setPassword(e.target.value);
     };
 
-    if (authenticated) {
-        return <Redirect to="/dashboard" />;
-    }
-
     return (
         <div className="login-container">
             <div className="login-image-container">
