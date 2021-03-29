@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import * as groupActions from '../../../store/groups';
+import './NewGroup.css';
 
 const NewGroup = () => {
     const dispatch = useDispatch();
@@ -17,8 +18,9 @@ const NewGroup = () => {
     return (
         <div>
             <form onSubmit={submit}>
-                <div>
+                <div className="groupNameContainer">
                     <input
+                        className="groupNameInput"
                         placeholder="group name"
                         name="name"
                         value={name}
@@ -26,8 +28,9 @@ const NewGroup = () => {
                         onChange={(e) => setName(e.target.value)}
                     ></input>
                 </div>
-                <div>
+                <div className="groupTypeContainers">
                     <select
+                        className="groupTypeInput"
                         value={type}
                         onChange={(e) => setType(e.target.value)}
                     >
@@ -40,7 +43,9 @@ const NewGroup = () => {
                         })}
                     </select>
                 </div>
-                <button type="submit">Create New Group</button>
+                <button className="groupButton" type="submit">
+                    Create New Group
+                </button>
             </form>
         </div>
     );

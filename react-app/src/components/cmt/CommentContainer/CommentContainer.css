@@ -1,0 +1,49 @@
+.all__comments {
+    /* margin: 10px; */
+    font-family: 'Lato', sans-serif;
+    padding: 10px;
+    text-align: right;
+    background-color: white;
+    height: 200px;
+    width: 400px;
+    border-radius: 0.5em;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+    overflow: scroll;
+}
+
+.form__container {
+    font-family: 'Lato', sans-serif;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.form {
+    font-family: 'Lato', sans-serif;
+    border: none;
+    border-radius: 0.5em;
+    height: 30px;
+    margin: 10px;
+    width: 300px;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+.commentAuthor {
+    font-family: 'Lato', sans-serif;
+    padding: 10px;
+    border-bottom: 1px solid rgb(210, 210, 210);
+    font-size: 10pt;
+}
+
+.comment {
+    font-family: 'Lato', sans-serif;
+    background-color: rgb(230, 230, 230);
+    border-radius: 0.5em;
+    padding: 10px;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+.comments {
+    font-family: 'Lato', sans-serif;
+    padding: 10px;
+}

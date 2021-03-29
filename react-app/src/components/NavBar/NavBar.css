@@ -1,28 +1,19 @@
-.container__navbar {
+.navContainer {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     /* background-color: rgb(125, 185, 149); */
     background-color: rgb(148, 218, 176);
     width: 100%;
-    font-size: larger;
+    font-family: 'Lato', sans-serif;
     height: 50px;
     padding: 5px;
 }
 
-.container__navbar a:hover {
-    color: black;
-    position: sticky;
-    background-color: rgb(148, 218, 176);
-}
-
-.navbar__links {
+.navRight {
     display: flex;
     flex-direction: row;
-    /* padding: 8px 5px; */
-    height: 10%;
 }
-
 .profile_button {
     margin: 10px;
 }
@@ -32,14 +23,17 @@ img {
     margin: 0px 10px;
 }
 
-.anchor {
-    height: 100px;
+.addGroup,
+.logoutButton,
+.logins,
+.signups {
+    cursor: pointer;
+    color: white;
+    margin: 10px 50px 10px 50px;
 }
 
-.anchor:hover {
-    height: 1px;
-}
-
-.dropdown {
-    color: yellow;
+.slash {
+    color: white;
+    margin: 0px 50px 10px 50px;
+    font-size: 24pt;
 }

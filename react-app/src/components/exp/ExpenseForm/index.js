@@ -31,52 +31,48 @@ const ExpenseForm = ({ group, toggleCreate }) => {
 
     return (
         <form onSubmit={handleSumbit}>
-            <div>
-                <label>
-                    Description
-                    <input
-                        type="text"
-                        value={description}
-                        onChange={(e) => setDescription(e.target.value)}
-                        required
-                    />
-                </label>
+            <div className="nameContainer">
+                <input
+                    className="name"
+                    placeholder="expense name"
+                    type="text"
+                    value={description}
+                    onChange={(e) => setDescription(e.target.value)}
+                    required
+                />
             </div>
-            <div>
-                <label>
-                    Amount
-                    <input
-                        type="number"
-                        step="1.00"
-                        value={amount}
-                        onChange={(e) => setAmount(e.target.value)}
-                        required
-                    />
-                </label>
+            <div className="amountContainer">
+                <input
+                    className="amount"
+                    placeholder="$0.00"
+                    type="number"
+                    step="1.00"
+                    value={amount}
+                    onChange={(e) => setAmount(e.target.value)}
+                    required
+                />
             </div>
-            <div>
-                <label>
-                    Date
-                    <input
-                        type="date"
-                        value={date}
-                        onChange={(e) => setDate(e.target.value)}
-                        required
-                    />
-                </label>
+            <div className="dateContainer">
+                <input
+                    className="date"
+                    type="date"
+                    value={date}
+                    onChange={(e) => setDate(e.target.value)}
+                    required
+                />
             </div>
-            <div>
-                <label>
-                    Notes
-                    <input
-                        type="text"
-                        value={notes}
-                        onChange={(e) => setNotes(e.target.value)}
-                        required
-                    />
-                </label>
+            <div className="notesContainer">
+                <textarea
+                    className="notes"
+                    placeholder="any notes?"
+                    value={notes}
+                    onChange={(e) => setNotes(e.target.value)}
+                    required
+                />
             </div>
-            <button type="submit">Create Expense</button>
+            <button className="createExpense" type="submit">
+                Create Expense
+            </button>
         </form>
     );
 };

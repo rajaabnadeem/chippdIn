@@ -25,8 +25,8 @@ const Group = ({ group }) => {
     const style = {
         overlay: {
             textAlign: 'center',
-            top: '35px',
-            backgroundColor: 'rgba(0,0, 0, 0.1)',
+            top: '45px',
+            backgroundColor: 'rgba(0,0, 0, 0.8)',
             zIndex: '1000',
         },
     };
@@ -116,8 +116,15 @@ const Group = ({ group }) => {
                             style={style}
                             isOpen={modalIsOpen}
                         >
-                            <ExpenseDetails expense={expense} />
-                            <button onClick={handleExpenses}>x</button>
+                            <div>
+                                <button
+                                    className="xButton"
+                                    onClick={handleExpenses}
+                                >
+                                    x
+                                </button>
+                                <ExpenseDetails expense={expense} />
+                            </div>
                         </Modal>
                     </div>
                     <div>
@@ -137,7 +144,9 @@ const Group = ({ group }) => {
                     isOpen={createModalIsOpen}
                 >
                     <ExpenseForm group={group} toggleCreate={toggleCreate} />
-                    <button onClick={toggleCreate}>x</button>
+                    <button className="xButton" onClick={toggleCreate}>
+                        x
+                    </button>
                 </Modal>
                 <div className="transactionButtonContainer">
                     <button

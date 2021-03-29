@@ -1,4 +1,5 @@
 .groupContainer {
+    font-family: 'Lato', sans-serif;
     padding: 10px;
     margin: 0px 10px 20px 10px;
     display: flex;
@@ -138,21 +139,34 @@
 }
 
 .expModal,
-.createExpModal {
+.createExpModal,
+.groupModal {
     z-index: 1000;
-    width: 300px;
+    border: none;
+    width: 700px;
     margin-top: 100px;
-    margin-left: 40%;
-    margin-right: 40%;
-    background-color: rgba(255, 255, 255, 0.9);
+    margin-left: 20%;
+    margin-right: 20%;
+    background-color: rgba(233, 252, 239, 0.9);
     color: black;
-    border-radius: 0.25em;
+    border-radius: 2em;
     padding: 50px;
-    box-shadow: 0px 0px 5px 5px rgba(219, 218, 218, 0.7);
+    font-family: 'Lato', sans-serif;
 }
 
 .transactionButtonContainer {
     border-top: 1.5px solid rgb(162, 216, 179);
     padding: 10px;
     text-align: center;
+}
+
+.xButton {
+    margin-bottom: 40px;
+    margin-left: 525px;
+    background-color: rgb(255, 98, 30);
+    border: 2px solid #ff621e;
+    border-radius: 0.5em;
+    color: white;
+    font-size: 12pt;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
 }

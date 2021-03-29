@@ -25,8 +25,8 @@ const NavBar = () => {
     const style = {
         overlay: {
             textAlign: 'center',
-            top: '35px',
-            backgroundColor: 'rgba(0,0, 0, 0.1)',
+            top: '45px',
+            backgroundColor: 'rgba(0,0, 0, 0.8)',
             zIndex: '1000',
         },
     };
@@ -37,25 +37,28 @@ const NavBar = () => {
 
     if (sessionUser && !errors) {
         return (
-            <div className="container__navbar">
-                <div className="navbar__links">
+            <div className="navContainer">
+                <div className="navLeft">
                     <a className="anchor" href="/">
                         <img alt="logo" src={logo}></img>
                     </a>
                 </div>
-                <div className="navbar__left">
-                    <div>
+                <div className="navRight">
+                    <div className="addGroup">
                         <Modal
                             className="groupModal"
                             style={style}
                             isOpen={modalIsOpen}
                         >
                             <NewGroup />
-                            <button onClick={toggleModal}>x</button>
+                            <button className="xButton" onClick={toggleModal}>
+                                x
+                            </button>
                         </Modal>
-                        <button onClick={toggleModal}>Create New Group</button>
+                        <div onClick={toggleModal}>Create New Group</div>
                     </div>
-                    <div>
+                    <div className="slash">|</div>
+                    <div className="logoutButton">
                         <LogoutButton />
                     </div>
                 </div>
@@ -63,17 +66,18 @@ const NavBar = () => {
         );
     } else {
         return (
-            <div className="container__navbar">
-                <div className="navbar__links">
-                    <div>
-                        <a className="anchor" href="/">
-                            <img alt="logo" src={logo}></img>
-                        </a>
-                    </div>
-                    <div>
+            <div className="navContainer">
+                <div className="navLeft">
+                    <a className="anchor" href="/">
+                        <img alt="logo" src={logo}></img>
+                    </a>
+                </div>
+                <div className="navRight">
+                    <div className="logins">
                         <NavLink to="/login">Log In</NavLink>
                     </div>
-                    <div>
+                    <div className="slash">|</div>
+                    <div className="signups">
                         <NavLink to="/sign-up">Sign Up</NavLink>
                     </div>
                 </div>

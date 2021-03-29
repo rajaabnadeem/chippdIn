@@ -133,3 +133,9 @@ table {
     font-family: 'Lato', sans-serif;
     color: rgb(49, 51, 46);
 }
+
+.xButton {
+    font-size: 15pt;
+    font-weight: bold;
+    color: rgb(198, 27, 27);
+}

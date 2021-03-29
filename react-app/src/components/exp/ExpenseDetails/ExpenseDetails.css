@@ -1,0 +1,17 @@
+.detail {
+    margin-bottom: 20px;
+    margin-left: 5px;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.description {
+    font-size: 15pt;
+    font-weight: bold;
+    color: rgb(198, 27, 27);
+}
