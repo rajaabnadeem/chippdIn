@@ -144,3 +144,7 @@ a,
 button {
   cursor: pointer;
 }
+
+.content {
+  min-height: calc(100vh - 175px);
+}
