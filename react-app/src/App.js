@@ -18,10 +18,8 @@ function App() {
   const [path, setPath] = useState("");
   const [authenticated, setAuthenticated] = useState(false);
   const [loaded, setLoaded] = useState(false);
-  const isAuthenticated = useSelector((state) =>
-    state.session.user ? !state.session.user.errors : null
-  );
-
+  const user = useSelector((state) => state.session.user);
+  const isAuthenticated = user ? !!user.errors : false;
   useEffect(() => {
     const user = authenticate();
     console.log(isAuthenticated);
@@ -30,13 +28,13 @@ function App() {
       setAuthenticated(true);
     }
     setLoaded(true);
-  });
+  }, []);
 
   useEffect(() => {
     setPath(window.location.pathname);
   }, [loaded]);
 
-  if (!loaded) {
+  if (!loaded || !user) {
     return null;
   }
 
