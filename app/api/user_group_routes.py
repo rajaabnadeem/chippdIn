@@ -20,11 +20,10 @@ def add_user_group(group_id):
 
 
 @user_group_routes.route('/')
-def get_user_groups():
-    data = request.data
-    j = json.loads(data)
+def get_user_groups(group_id):
     users_in_group = {}
-    users = UserGroup.query.filter(UserGroup.group_id == j['groupId']).all()
+    users = UserGroup.query.filter(UserGroup.group_id === group_id).all()
+    print('--------------------', users_in_group)
     for user in users:
         users_in_group[user.id] = user.to_dict()
     return users_in_group
