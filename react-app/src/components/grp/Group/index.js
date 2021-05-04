@@ -44,11 +44,7 @@ const Group = ({ group }) => {
     if (user) {
         userId = user.id;
     }
-
-    useEffect(async () => {
-        dispatch(getExpenses(userId, group.id));
-        dispatch(getTransactions(userId, group.id));
-    }, [dispatch, userId, group.id, Transactions]);
+    const [usersInGroup, setUsersInGroup] = useState([]);
 
     const handleExpenses = () => {
         if (value == -6) return;
@@ -69,13 +65,20 @@ const Group = ({ group }) => {
     const getUsersInGroup = async () => {
         const res = await fetch(`/api/groups/${group.id}/user-groups/`);
         let x = await res.json();
+        let arr = [];
         for (let y in x) {
-            console.log(x[y].first_name);
+            arr.push(`${x[y].first_name} ${x[y].last_name}`);
         }
+        setUsersInGroup(arr);
     };
 
-    getUsersInGroup();
+    useEffect(() => {
+        dispatch(getExpenses(userId, group.id));
+        dispatch(getTransactions(userId, group.id));
+        getUsersInGroup();
+    }, [dispatch, userId, group.id, Transactions]);
 
+    usersInGroup.map((el) => console.log(el));
     if (!showTransactions) {
         return (
             <div className="groupContainer">
@@ -86,10 +89,22 @@ const Group = ({ group }) => {
 
                         <h1 className="groupName">{group.name}</h1>
                     </div>
-
-                    <div className="topRightContainer">
-                        <div className="groupForm">
-                            <UserGroupForm group={group} />
+                    <div>
+                        <div className="groupMemberTitle">Members</div>
+                        <div>
+                            {usersInGroup &&
+                                usersInGroup.map((el, idx) => {
+                                    return (
+                                        <div className="usersInGroup" key={idx}>
+                                            {el}
+                                        </div>
+                                    );
+                                })}
+                        </div>
+                        <div className="topRightContainer">
+                            <div className="groupForm">
+                                <UserGroupForm group={group} />
+                            </div>
                         </div>
                     </div>
                 </div>

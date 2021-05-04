@@ -20,7 +20,7 @@ const UserGroupForm = ({ group }) => {
                     <div>
                         <input
                             className="gFormInput"
-                            placeholder="add group members by email"
+                            placeholder="User Email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                         ></input>

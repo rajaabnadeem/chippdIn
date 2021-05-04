@@ -12,10 +12,22 @@
         -10px 0 10px -5px rgba(0, 0, 0, 0.2);
 }
 
+.groupMemberTitle {
+    font-size: 18pt;
+    text-align: right;
+    margin: 5px 25px 5px 0;
+}
+
+.usersInGroup {
+    text-align: right;
+    margin: 10px 35px 5px 0;
+}
+
 .imageTitle {
     display: flex;
     flex-direction: row;
 }
+
 .viewExpenseButton {
     height: 30px;
     margin-top: 10px;
