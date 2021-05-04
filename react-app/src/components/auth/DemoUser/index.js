@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { login } from "../../../store/session";
 
 const DemoUser = () => {
-  dispatch = useDispatch();
+  const dispatch = useDispatch();
   const handleDemo = () => {
     const demoUser = {
       email: "demo@user.com",
