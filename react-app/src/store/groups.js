@@ -13,7 +13,6 @@ const setGroup = (group) => ({
 //     userGroup,
 // });
 
-
 // Thunk actions:
 export const getUserGroups = (user_id) => async (dispatch) => {
     const res = await fetch(`/api/users/${user_id}/groups/`);
@@ -61,18 +60,16 @@ export const editGroup = (groupData, id) => async (dispatch) => {
     return dispatch(setGroup(data));
 };
 
-
 // Reducer:
 const groupsReducer = (state = {}, action) => {
     switch (action.type) {
         case SET_GROUP:
-            return { 
+            return {
                 ...state,
-                ...action.group
-            }
+                ...action.group,
+            };
         default:
             return state;
     }
 };
 export default groupsReducer;
-

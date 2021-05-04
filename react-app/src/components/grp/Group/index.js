@@ -17,6 +17,7 @@ const Group = ({ group }) => {
     const [createModalIsOpen, setCreateModalIsOpen] = useState(false);
     const [expense, setExpense] = useState(-6);
     const [value, setValue] = useState(-6);
+
     const user = useSelector((state) => state.session.user);
     const expenses = useSelector((state) => state.expenses);
     const transactions = useSelector((state) => state.transactions);
@@ -65,12 +66,16 @@ const Group = ({ group }) => {
         setExpense(expenses[e.target.value]);
     };
 
-    const getUsers = () => {
-        const res = fetch(`/api/groups/${group.id}/user-groups/`);
-        return res;
+    const getUsersInGroup = async () => {
+        const res = await fetch(`/api/groups/${group.id}/user-groups/`);
+        let x = await res.json();
+        for (let y in x) {
+            console.log(x[y].first_name);
+        }
     };
 
-    console.log(getUsers());
+    getUsersInGroup();
+
     if (!showTransactions) {
         return (
             <div className="groupContainer">
