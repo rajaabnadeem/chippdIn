@@ -5,7 +5,7 @@ const UnprotectedRoute = (props) => {
   console.log(props.authenticated);
   return (
     <Route {...props}>
-      {props.authenticated ? <Redirect to="/dashboard" /> : props.children}
+      {!props.authenticated ? <Redirect to="/dashboard" /> : props.children}
     </Route>
   );
 };
