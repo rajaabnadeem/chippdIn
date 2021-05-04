@@ -30,6 +30,7 @@ def createExpense(group_id, user_id):
     db.session.commit()
     return created_expense
 
+
 @expense_routes.route('/')
 def getExpenses(group_id, user_id):
     expenses = Expense.query.all()
@@ -37,5 +38,3 @@ def getExpenses(group_id, user_id):
     for expense in expenses:
         expenseDict[expense.id] = expense.to_dict()
     return expenseDict
-
-

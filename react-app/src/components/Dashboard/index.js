@@ -15,6 +15,7 @@ const Dashboard = ({ setPath }) => {
     const dispatch = useDispatch();
     const user = useSelector((state) => state.session.user);
     const groups = useSelector((state) => state.groups);
+    const userGroups = useSelector((state) => state.userGroups);
 
     let userId;
     if (user) {
