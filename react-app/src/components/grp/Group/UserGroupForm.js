@@ -10,6 +10,7 @@ const UserGroupForm = ({ group }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         await dispatch(createUserGroup(group.id, email));
+        window.location.reload(false);
     };
 
     return (
