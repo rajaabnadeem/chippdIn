@@ -1,39 +1,49 @@
 .navContainer {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    /* background-color: rgb(125, 185, 149); */
-    background-color: rgb(148, 218, 176);
-    width: 100%;
-    font-family: 'Lato', sans-serif;
-    height: 50px;
-    padding: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  /* background-color: rgb(125, 185, 149); */
+  background-color: rgb(148, 218, 176);
+  width: 100%;
+  font-family: "Lato", sans-serif;
+  height: 50px;
+  padding: 5px;
 }
 
 .navRight {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 .profile_button {
-    margin: 10px;
+  margin: 10px;
+}
+
+.demoUser {
+  border: none;
+  background-color: transparent;
+  text-decoration: underline;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  margin: 10px 50px 10px 50px;
 }
 
 img {
-    height: 35px;
-    margin: 0px 10px;
+  height: 35px;
+  margin: 0px 10px;
 }
 
 .addGroup,
 .logoutButton,
 .logins,
 .signups {
-    cursor: pointer;
-    color: white;
-    margin: 10px 50px 10px 50px;
+  cursor: pointer;
+  color: white;
+  margin: 10px 50px 10px 50px;
 }
 
 .slash {
-    color: white;
-    margin: 0px 50px 10px 50px;
-    font-size: 24pt;
+  color: white;
+  margin: 0px 50px 10px 50px;
+  font-size: 24pt;
 }
