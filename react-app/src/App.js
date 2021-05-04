@@ -44,38 +44,40 @@ function App() {
         authenticated={authenticated}
         setAuthenticated={setAuthenticated}
       />
-      <Switch>
-        <UnprotectedRoute
-          path="/login"
-          exact={true}
-          authenticated={isAuthenticated}
-        >
-          <LoginForm
+      <div className="content">
+        <Switch>
+          <UnprotectedRoute
+            path="/login"
+            exact={true}
             authenticated={isAuthenticated}
-            setAuthenticated={setAuthenticated}
-            setPath={setPath}
-          />
-        </UnprotectedRoute>
-        <UnprotectedRoute
-          exact
-          path="/"
-          exact={true}
-          authenticated={isAuthenticated}
-        >
-          <SignUpForm
+          >
+            <LoginForm
+              authenticated={isAuthenticated}
+              setAuthenticated={setAuthenticated}
+              setPath={setPath}
+            />
+          </UnprotectedRoute>
+          <UnprotectedRoute
+            exact
+            path="/"
+            exact={true}
             authenticated={isAuthenticated}
-            setAuthenticated={setAuthenticated}
-            setPath={setPath}
-          />
-        </UnprotectedRoute>
-        <ProtectedRoute
-          path="/dashboard"
-          exact={true}
-          authenticated={isAuthenticated}
-        >
-          <Dashboard setPath={setPath} />
-        </ProtectedRoute>
-      </Switch>
+          >
+            <SignUpForm
+              authenticated={isAuthenticated}
+              setAuthenticated={setAuthenticated}
+              setPath={setPath}
+            />
+          </UnprotectedRoute>
+          <ProtectedRoute
+            path="/dashboard"
+            exact={true}
+            authenticated={isAuthenticated}
+          >
+            <Dashboard setPath={setPath} />
+          </ProtectedRoute>
+        </Switch>
+      </div>
       <Footer path={path} />
     </>
   );

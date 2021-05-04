@@ -13,6 +13,7 @@
 .navRight {
   display: flex;
   flex-direction: row;
+  align-items: center;
 }
 .profile_button {
   margin: 10px;
