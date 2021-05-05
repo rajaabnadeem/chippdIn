@@ -47,42 +47,30 @@ function App() {
                 setAuthenticated={setAuthenticated}
             />
             <Switch>
-                <LandingPage
-                    exact
-                    path="/"
-                    exact={true}
-                    authenticated={isAuthenticated}
-                />
-                <UnprotectedRoute
-                    path="/login"
-                    exact={true}
-                    authenticated={isAuthenticated}
-                >
+                <Route exact path="/" exact={true}>
+                    <LandingPage authenticated={isAuthenticated} />
+                </Route>
+                <Route path="/login">
                     <LoginForm
                         authenticated={isAuthenticated}
                         setAuthenticated={setAuthenticated}
                         setPath={setPath}
                     />
-                </UnprotectedRoute>
-                <UnprotectedRoute
-                    exact
-                    path="/signup"
-                    exact={true}
-                    authenticated={isAuthenticated}
-                >
+                </Route>
+                <Route path="/signup">
                     <SignUpForm
                         authenticated={isAuthenticated}
                         setAuthenticated={setAuthenticated}
                         setPath={setPath}
                     />
-                </UnprotectedRoute>
-                <ProtectedRoute
+                </Route>
+                <Route
                     path="/dashboard"
                     exact={true}
                     authenticated={isAuthenticated}
                 >
                     <Dashboard setPath={setPath} />
-                </ProtectedRoute>
+                </Route>
             </Switch>
             <Footer path={path} />
         </>

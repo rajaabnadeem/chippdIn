@@ -16,11 +16,14 @@
     font-size: 18pt;
     text-align: right;
     margin: 5px 25px 5px 0;
+    color: rgb(54, 54, 54);
 }
 
 .usersInGroup {
+    font-size: 10pt;
     text-align: right;
     margin: 10px 35px 5px 0;
+    color: rgb(54, 54, 54);
 }
 
 .imageTitle {

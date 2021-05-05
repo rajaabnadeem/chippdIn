@@ -56,7 +56,9 @@ const NavBar = () => {
                                 x
                             </button>
                         </Modal>
-                        <div onClick={toggleModal}>Create New Group</div>
+                        <div className="createNew" onClick={toggleModal}>
+                            Create New Group
+                        </div>
                     </div>
                     <div className="slash">|</div>
                     <div className="logoutButton">

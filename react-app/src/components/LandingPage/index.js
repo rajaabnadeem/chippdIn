@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import './LandingPage.css';
 import logo from '../../images/logo3.png';
 import airplane from '../../images/airplane.jpg';
@@ -8,8 +9,11 @@ import asterisk from '../../images/bigAsterisk.jpg';
 import bigHouse from '../../images/bigHouse.jpg';
 import expensesEasily from '../../images/expensesEasily.jpg';
 import payFriends from '../../images/payFriends.jpg';
+import { authenticate } from '../../store/session';
+import { Redirect } from 'react-router';
 
 const LandingPage = () => {
+    const user = useSelector((state) => state.session.user);
     const [i, setI] = useState(0);
     const [j, setJ] = useState(0);
     const [a, setA] = useState(0);
@@ -25,6 +29,11 @@ const LandingPage = () => {
         'with anyone.',
     ];
     let arrClass = ['plane', 'housemates', 'partner', 'anyone'];
+
+    if (user && !user.errors) {
+        return <Redirect to="/dashboard" />;
+    }
+
     return (
         <div className="landingPage">
             <div className="landingContainerTop">
