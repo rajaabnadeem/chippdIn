@@ -1,0 +1,100 @@
+.landingPage {
+    height: 100vh;
+    margin-bottom: 50px;
+}
+
+.landingIconsC {
+    display: flex;
+    flex-direction: row;
+    margin: 30px 0 0 0;
+}
+
+.landingContainerTop,
+.landingContainerMid {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.landingContainerMidRight {
+    padding: 25px;
+    margin-bottom: 125px;
+    text-align: center;
+    background-color: rgba(37, 182, 142, 0.8);
+}
+
+.landingContainerMidLeft {
+    margin-bottom: 125px;
+    text-align: center;
+    padding: 25px;
+    background-color: rgba(48, 51, 55, 0.8);
+}
+
+.expensesImage {
+    margin: 50px;
+    height: 400px;
+    width: 350px;
+    border-radius: 10px;
+}
+
+.featuresTitle {
+    color: white;
+    font-size: 20pt;
+    margin: 35px 0 15px 0;
+}
+
+.landingIcon {
+    height: 50px;
+    margin: 15px;
+    opacity: 0.6;
+}
+
+.landingContainerMidLeft,
+.landingContainerMidRight {
+    width: 50%;
+}
+
+.landingTopLeft,
+.landingTopRight {
+    margin: 50px 5px 50px 5px;
+    width: 450px;
+}
+
+.landingTitleC {
+    font-size: 42pt;
+    margin: 75px 0 0 0;
+}
+
+.landingExplanationC {
+    margin: 30px 0 30px 0;
+}
+
+.landingExplanationC p {
+    font-size: 16pt;
+    color: black;
+}
+
+.landingImg {
+    width: 500px;
+    height: 500px;
+}
+
+.landingTextCarouselC p {
+    font-size: 42pt;
+    color: rgba(133, 129, 219, 0.9);
+}
+
+.landingSignupButton {
+    color: white;
+    border: none;
+    background-color: rgba(133, 129, 219, 0.9);
+    font-size: 14pt;
+    font-weight: bold;
+    height: 60px;
+    width: 200px;
+    border-radius: 7px;
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.6);
+}
+
+.landingTitleC p {
+    color: black;
+}

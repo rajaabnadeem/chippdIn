@@ -93,7 +93,7 @@ const LoginForm = ({ authenticated, setAuthenticated, setPath }) => {
                     <div className="not-member-container">
                         <div className="not-member">
                             {"Don't have an account?  "}
-                            <NavLink className="login-navlink" to="/sign-up">
+                            <NavLink className="login-navlink" to="/signup">
                                 Click here
                             </NavLink>
                         </div>
