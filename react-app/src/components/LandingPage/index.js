@@ -4,12 +4,27 @@ import logo from '../../images/logo3.png';
 import airplane from '../../images/airplane.jpg';
 import house from '../../images/house.jpg';
 import heart from '../../images/heart.jpg';
-import asterisk from '../../images/asterisk.jpg';
+import asterisk from '../../images/bigAsterisk.jpg';
 import bigHouse from '../../images/bigHouse.jpg';
 import expensesEasily from '../../images/expensesEasily.jpg';
 import payFriends from '../../images/payFriends.jpg';
 
 const LandingPage = () => {
+    const [i, setI] = useState(0);
+    const [j, setJ] = useState(0);
+    const [a, setA] = useState(0);
+    const [b, setB] = useState(0);
+
+    let imgArr = [airplane, bigHouse, heart, asterisk];
+
+    let buttonClass = ['green', 'purple', 'red', 'grey'];
+    let arr = [
+        'on trips.',
+        'with housemates.',
+        'with your partner.',
+        'with anyone.',
+    ];
+    let arrClass = ['plane', 'housemates', 'partner', 'anyone'];
     return (
         <div className="landingPage">
             <div className="landingContainerTop">
@@ -18,8 +33,25 @@ const LandingPage = () => {
                         <p>Less stress when</p>
                         <p>sharing expenses</p>
                     </div>
+
                     <div className="landingTextCarouselC">
-                        <p>with housemates.</p>
+                        <p
+                            className={arrClass[j]}
+                            onLoad={setTimeout(() => {
+                                if (i === 3) {
+                                    setI(0);
+                                } else {
+                                    setI(i + 1);
+                                }
+                                if (j === 3) {
+                                    setJ(0);
+                                } else {
+                                    setJ(j + 1);
+                                }
+                            }, 4000)}
+                        >
+                            {arr[i]}
+                        </p>
                     </div>
                     <div className="landingIconsC">
                         <div>
@@ -41,12 +73,33 @@ const LandingPage = () => {
                         <p>friends, and family.</p>
                     </div>
                     <div className="landingSignupButtonC">
-                        <button className="landingSignupButton">Sign up</button>
+                        <button
+                            className={`landingSignupButton ${buttonClass[a]}`}
+                            onLoad={setTimeout(() => {
+                                if (a === 3) {
+                                    setA(0);
+                                } else {
+                                    setA(a + 1);
+                                }
+                            }, 4000)}
+                        >
+                            Sign up
+                        </button>
                     </div>
                 </div>
                 <div className="landingTopRight">
                     <div className="imageCarouselC">
-                        <img className="landingImg" src={bigHouse}></img>
+                        <img
+                            className={`image${b}`}
+                            onLoad={setTimeout(() => {
+                                if (b === 3) {
+                                    setB(0);
+                                } else {
+                                    setB(b + 1);
+                                }
+                            }, 4000)}
+                            src={imgArr[b]}
+                        ></img>
                     </div>
                 </div>
             </div>

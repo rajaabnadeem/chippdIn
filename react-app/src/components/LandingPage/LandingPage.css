@@ -9,6 +9,12 @@
     margin: 30px 0 0 0;
 }
 
+.landingTopRight {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .landingContainerTop,
 .landingContainerMid {
     display: flex;
@@ -27,6 +33,276 @@
     text-align: center;
     padding: 25px;
     background-color: rgba(48, 51, 55, 0.8);
+}
+
+@keyframes landingImage0 {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    80% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes landingImage1 {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 10;
+    }
+    80% {
+        opacity: 10;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+@keyframes landingImage2 {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 0.6;
+    }
+    80% {
+        opacity: 0.6;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+@keyframes landingImage3 {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 0.6;
+    }
+    80% {
+        opacity: 0.6;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.image0 {
+    height: 400px;
+    width: 400px;
+    animation-name: landingImage0;
+    animation-duration: 4000ms;
+}
+.image1 {
+    height: 400px;
+    width: 400px;
+    animation-name: landingImage1;
+    animation-duration: 4000ms;
+}
+.image2 {
+    height: 400px;
+    width: 400px;
+    animation-name: landingImage2;
+    animation-duration: 4000ms;
+}
+.image3 {
+    height: 400px;
+    width: 400px;
+    animation-name: landingImage3;
+    animation-duration: 4000ms;
+}
+
+@keyframes housemates {
+    0% {
+        color: white;
+    }
+    50% {
+        color: rgba(133, 129, 219, 0.9);
+    }
+    80% {
+        color: rgba(133, 129, 219, 0.9);
+    }
+    100% {
+        color: white;
+    }
+}
+
+.housemates {
+    animation-name: housemates;
+    animation-duration: 4000ms;
+}
+
+@keyframes plane {
+    0% {
+        color: white;
+    }
+    50% {
+        color: rgba(112, 177, 116, 0.7);
+    }
+    80% {
+        color: rgba(112, 177, 116, 0.7);
+    }
+    100% {
+        color: white;
+    }
+}
+
+.plane {
+    animation-name: plane;
+    animation-duration: 4000ms;
+}
+
+@keyframes partner {
+    0% {
+        color: white;
+    }
+    50% {
+        color: rgba(247, 106, 108, 0.8);
+    }
+    80% {
+        color: rgba(247, 106, 108, 0.8);
+    }
+    100% {
+        color: white;
+    }
+}
+
+.partner {
+    animation-name: partner;
+    animation-duration: 4000ms;
+}
+
+@keyframes anyone {
+    0% {
+        color: white;
+    }
+    50% {
+        color: rgb(194, 195, 196);
+    }
+    80% {
+        color: rgb(194, 195, 196);
+    }
+    100% {
+        color: white;
+    }
+}
+
+.anyone {
+    animation-name: anyone;
+    animation-duration: 4000ms;
+}
+
+@keyframes greens {
+    0% {
+        background-color: white;
+        box-shadow: none;
+    }
+    50% {
+        background-color: rgba(112, 177, 116, 0.7);
+        box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.6);
+    }
+    80% {
+        background-color: rgba(112, 177, 116, 0.7);
+        box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.6);
+    }
+    100% {
+        background-color: white;
+        box-shadow: none;
+    }
+}
+
+.landingSignupButton.green {
+    animation-name: greens;
+    animation-duration: 4000ms;
+}
+
+@keyframes purples {
+    0% {
+        background-color: white;
+        box-shadow: none;
+    }
+    50% {
+        background-color: rgba(133, 129, 219, 0.9);
+        box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.6);
+    }
+    80% {
+        background-color: rgba(133, 129, 219, 0.9);
+        box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.6);
+    }
+    100% {
+        background-color: white;
+        box-shadow: none;
+    }
+}
+
+.landingSignupButton.purple {
+    animation-name: purples;
+    animation-duration: 4000ms;
+}
+
+@keyframes reds {
+    0% {
+        background-color: white;
+        box-shadow: none;
+    }
+    50% {
+        background-color: rgba(247, 106, 108, 0.8);
+        box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.6);
+    }
+    80% {
+        background-color: rgba(247, 106, 108, 0.8);
+        box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.6);
+    }
+    100% {
+        background-color: white;
+        box-shadow: none;
+    }
+}
+
+.landingSignupButton.red {
+    animation-name: reds;
+    animation-duration: 4000ms;
+}
+
+@keyframes greys {
+    0% {
+        background-color: white;
+        box-shadow: none;
+    }
+    50% {
+        background-color: rgb(194, 195, 196);
+        box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.6);
+    }
+    80% {
+        background-color: rgb(194, 195, 196);
+        box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.6);
+    }
+    100% {
+        background-color: white;
+        box-shadow: none;
+    }
+}
+
+.landingSignupButton.grey {
+    animation-name: greys;
+    animation-duration: 4000ms;
+}
+
+.landingSignupButton {
+    color: white;
+    border: none;
+    background-color: white;
+    font-size: 14pt;
+    font-weight: bold;
+    height: 60px;
+    width: 200px;
+    border-radius: 7px;
 }
 
 .expensesImage {
@@ -73,26 +349,8 @@
     color: black;
 }
 
-.landingImg {
-    width: 500px;
-    height: 500px;
-}
-
 .landingTextCarouselC p {
     font-size: 42pt;
-    color: rgba(133, 129, 219, 0.9);
-}
-
-.landingSignupButton {
-    color: white;
-    border: none;
-    background-color: rgba(133, 129, 219, 0.9);
-    font-size: 14pt;
-    font-weight: bold;
-    height: 60px;
-    width: 200px;
-    border-radius: 7px;
-    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.6);
 }
 
 .landingTitleC p {
