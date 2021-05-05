@@ -1,6 +1,6 @@
 /* TODO Add site wide styles */
 
-@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
 
 html,
 body,
@@ -83,13 +83,13 @@ time,
 mark,
 audio,
 video {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    font-size: 100%;
-    font: inherit;
-    vertical-align: baseline;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  box-sizing: border-box;
 }
 /* HTML5 display-role reset for older browsers */
 article,
@@ -103,39 +103,48 @@ hgroup,
 menu,
 nav,
 section {
-    display: block;
+  display: block;
 }
 body {
-    line-height: 1;
+  line-height: 1;
 }
 ol,
 ul {
-    list-style: none;
+  list-style: none;
 }
 blockquote,
 q {
-    quotes: none;
+  quotes: none;
 }
 blockquote:before,
 blockquote:after,
 q:before,
 q:after {
-    content: '';
-    content: none;
+  content: "";
+  content: none;
 }
 table {
-    border-collapse: collapse;
-    border-spacing: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 
 * {
-    box-sizing: border-box;
-    font-family: 'Lato', sans-serif;
-    color: rgb(49, 51, 46);
+  box-sizing: border-box;
+  font-family: "Lato", sans-serif;
+  color: rgb(49, 51, 46);
 }
 
 .xButton {
-    font-size: 15pt;
-    font-weight: bold;
-    color: rgb(198, 27, 27);
+  font-size: 15pt;
+  font-weight: bold;
+  color: rgb(198, 27, 27);
+}
+
+a,
+button {
+  cursor: pointer;
+}
+
+.content {
+  min-height: calc(100vh - 175px);
 }
